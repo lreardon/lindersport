@@ -1,3 +1,10 @@
+.product__column {
+  flex: 1;
+  overflow-y: auto; /* Enable vertical scrolling */
+  height: 100%; /* Full height of the container */
+  padding: 20px; /* Add some padding for aesthetics */
+}
+
 .product-wrapper {
   pointer-events: none;
 }
@@ -86,10 +93,8 @@ section.product.is-fixed {
 
 
 .product__price {
-  font-family: "interstate", sans-serif;
-  font-weight: 550;
-  font-style: normal;
   font-size: 1.9rem;
+  font-weight: 400;
   display: inline-block;
   max-width: fit-content;
   margin-bottom: 0.6rem;
@@ -210,19 +215,8 @@ section.product.is-fixed {
   .product__form {
     margin-top: 1rem;
   }
-  .product__description {
-    font-weight: 500 !important 
-  }
-  .category__product-description{
-    font-family: interstate,sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  font-size: 1.1rem;
-  line-height: 1.4;
-
-  }
 }
-/*Jack code affects BIT button on main-prodect.liquid  */
+/* Jack code. Applies to BIS button on section/main-product.liquid  */
 .waitlist-button{
   font-weight:600 !important
 }
