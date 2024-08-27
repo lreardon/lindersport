@@ -1,0 +1,42 @@
+{% comment %}
+  Accepts:
+    option: {Product Option} The product option corresponding to the swatches
+
+  Requires:
+    component-product-swatch.css
+{% endcomment %}
+
+{% assign index = option.position | minus: 1 %}
+
+<div class="product__swatches">
+  {%-
+    liquid
+    assign used_swatches = ''
+    assign used_colors = ''
+  -%}
+
+  {%- for variant in product.variants -%}
+    {% assign color = variant.options[index] %}
+    {% assign swatch = variant.metafields.custom.swatch %}
+    
+    {%- assign current_swatch = '%' | append: swatch | append: '%' -%}
+    {%- assign current_color = '%' | append: variant.options[index] | append: '%' -%}
+
+    {%- if swatch == blank or used_swatches contains current_swatch or used_colors contains current_color -%}
+      {%- continue -%}
+    {%- endif -%}
+
+    <div class="product-swatch js-swatch" data-color="{{- color -}}">
+      <button
+        type="button"
+        style="cursor: pointer;"
+        onclick="selectProductColor('{{- color -}}')"
+      >
+        <img src="{{- swatch | image_url: width: 88 -}}" alt="{{- variant.title -}}" width="auto" height="auto" loading="lazy">
+      </button>
+    </div>
+
+    {%- assign used_swatches = used_swatches | append: current_swatch -%}
+    {%- assign used_colors = used_colors | append: current_color -%}
+  {%- endfor -%}
+</div><!-- /.product__swatches -->

@@ -1,0 +1,51 @@
+{%- if section.settings.collection != blank -%}
+  {{- 'section-featured-collection.css' | asset_url | stylesheet_tag -}}
+  {{- 'component-product-item.css' | asset_url | stylesheet_tag -}}
+
+  <script src="{{- 'featured-collection.js' | asset_url -}}" defer></script>
+  <script src="{{- 'featured-slider.js' | asset_url -}}" defer></script>
+
+  <style>
+    @media (max-width: 989px) {
+      .featured-collection--{{- section.id }} .product__item-image--background {
+        background-color: {{- section.settings.background -}};
+      }
+    }
+  </style>
+
+  <section>
+    <featured-collection class="featured-collection featured-collection--{{- section.id -}}">
+      <featured-slider class="featured__slider swiper">
+        <div class="featured__slider-inner swiper-wrapper">
+          {%- for product_item in section.settings.collection.products -%}
+            {%- render 'product-item', product_item: product_item, collection: section.settings.collection, index: forloop.index, class: 'swiper-slide' -%}
+          {%- endfor -%}
+        </div><!-- /.swiper-wrapper -->
+      </featured-slider>
+    </featured-collection>
+  </section><!-- /.featured-collection -->
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background Color (Mobile only)",
+      "default": "#F6F6F6"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

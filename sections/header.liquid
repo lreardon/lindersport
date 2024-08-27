@@ -1,0 +1,109 @@
+{% comment %}
+  * logo is fixed in the middle. If a logo isn't uploaded, it will use the shop name
+  * left of the logo is a menu you can choose in the settings
+  * right of the logo are utility links (search/accounts/cart)
+{% endcomment %}
+
+<link rel="stylesheet" href="{{- 'section-header.css' | asset_url -}}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'section-header.css' | asset_url | stylesheet_tag }}</noscript>
+
+<header class="header">
+  <header-drawer class="header__drawer">
+    <details>
+      <summary class="header__link js-summary" data-menu-text="{{- 'general.header.menu' | t -}}" data-close-text="{{- 'general.header.close' | t -}}">
+      </summary>
+
+      <div class="header__drawer-inner js-drawer-inner">
+        <nav>
+          <ul class="header__menu header__menu--primary list-unstyled">
+            {%- render 'flat-menu', menu: section.settings.menu -%}
+          </ul>
+
+          {%- if section.settings.secondary_menu != blank -%}
+            <ul class="header__menu header__menu--secondary list-unstyled">
+              {%- render 'flat-menu', menu: section.settings.secondary_menu -%}
+
+              {%- for block in section.blocks -%}
+                {%- if block.settings.email and block.settings.text != blank -%}
+                  <li>
+                    <span class="color-subdued">{{- block.settings.text | escape -}}</span>
+
+                    <a href="mailto:{{- block.settings.email -}}" class="header__link">{{- block.settings.email -}}</a>
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul><!-- /.header__menu header__menu--secondary -->
+          {%- endif -%}
+        </nav>
+      </div><!-- /.header__drawer-inner -->
+
+      <a href="#" class="header__drawer-close js-drawer-close" aria-label="{{- 'general.header.close' | t -}}"></a><!-- /.header__drawer-close js-drawer-close -->
+    </details>
+  </header-drawer>
+
+  <a href="{{- routes.root_url -}}" class="header__logo" aria-label="{{- shop.name -}}">
+    {%- if section.settings.logo != blank -%}
+      <img src="{{- section.settings.logo | image_url -}}" alt="{{- section.settings.logo.alt | default: shop.name -}}" width="auto" height="auto" loading="lazy">
+    {%- else -%}
+      {% render 'svg-logo' %}
+    {%- endif -%}
+  </a><!-- /.header__logo -->
+
+  <div class="header__utility">
+    <a href="{{- routes.cart_url -}}" class="header__link">
+      {{- 'general.cart.title' | t -}}
+
+      <span class="header__cart-count js-cart-count">
+        {%- if cart.item_count > 0 -%}
+          {{- cart.item_count -}}
+        {%- endif -%}
+      </span><!-- /.js-cart-count -->
+
+    </a><!-- /.header__cart -->
+  </div><!-- /.header__utility -->
+</header><!-- /.header -->
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "class": "header-wrapper",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "link_list",
+      "id": "secondary_menu",
+      "label": "Secondary Menu"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "email_link",
+      "name": "Email Link",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

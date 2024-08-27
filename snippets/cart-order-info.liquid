@@ -1,0 +1,30 @@
+<div class="mini-cart__order" id="mini-cart__order">
+  <h5 class="mini-cart__order-summary">{{ 'cart.general.order_summary' | t }}</h5>
+  <div class="mini-cart__suborder js-contents">
+    <ul>
+      <li>
+        <h6>{{ 'cart.general.subtotal' | t }}</h6>
+        <h6>{{- cart.total_price | money -}}</h6>
+      </li>
+      <!-- <li>
+        <h6>{{ 'cart.general.shipping_and_taxes' | t }}</h6>
+        <h6>{{ 'cart.general.taxes_and_shipping_at_checkout' | t }}</h6>
+      </li> -->
+      {%- if cart.total_discount > 0 -%}
+        {%- assign original_total_price = cart.original_total_price | times: 1.0 -%}
+        {%- assign discountPercent = cart.total_discount | times: 100 | divided_by: original_total_price | round: 2 -%}
+        <li>
+          <h6>
+            {{ 'cart.general.savings' | t }}
+            <span>({{- discountPercent -}}%)</span>
+          </h6>
+          <h6>-{{- cart.total_discount | money -}}</h6>
+        </li>
+      {%- endif -%}
+    </ul>
+  </div>
+  <!-- <div class="mini-cart__total">
+    <h5>{{ 'cart.label.total' | t }}</h5>
+    <h5>{{- cart.total_price | money -}}</h5>
+  </div> -->
+</div>

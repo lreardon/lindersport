@@ -1,0 +1,24 @@
+.styleguide__group,
+.styleguide__grid {
+  margin-bottom: 80px;
+}
+
+.styleguide__grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.styleguide__color {
+  text-align: center;
+}
+
+@media (min-width: 767px) {
+  .styleguide__color {
+    width: 100%;
+    max-width: 20%;
+  }
+
+  .styleguide__color--large {
+    max-width: 33.33%;
+  }
+}

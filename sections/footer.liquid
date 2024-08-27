@@ -1,0 +1,42 @@
+{%- if template.name != 'product' %}
+  {{ 'section-footer.css' | asset_url | stylesheet_tag }}
+
+  {%- if section.settings.menu != blank or section.settings.copyright != blank -%}
+    <footer class="footer">
+      {%- if section.settings.menu != blank -%}
+        {%- for link in section.settings.menu.links limit: 2 -%}
+          <a href="{{- link.url -}}" class="footer__link full-unstyled-link caption">
+            {{- link.title -}}
+          </a><!-- /.footer__link -->
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- if section.settings.copyright != blank -%}
+        <p class="footer__copyright color-subdued caption">
+          &copy; {{ section.settings.copyright | escape | strip }} {{ "today" | date: "%Y" }}
+        </p><!-- /.footer__copyright -->
+      {%- endif -%}
+    </footer>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "info": "Limited to two (2) links"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright",
+      "default": "Linder Sport",
+      "info": "The year after the copyright text is automatically updated"
+    }
+  ]
+}
+{% endschema %}

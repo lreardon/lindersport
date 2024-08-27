@@ -1,0 +1,191 @@
+{%- if section.settings.collection != blank -%}
+  <link rel="stylesheet" href="{{- 'section-category.css' | asset_url -}}" media="print" onload="this.media = 'all'">
+<script src="{{- 'back-button-section-navigation.js' | asset_url -}}" defer></script>
+  <script src="{{- 'back-button-section-scroll.js' | asset_url -}}" defer></script>
+  {%- if section.settings.heading_color != blank or section.settings.body_color != blank -%}
+    <style>
+      {%- if section.settings.heading_color != blank -%}
+        .category--{{- section.id }} {
+          color: {{ section.settings.body_color }} !important;
+        }
+      {%- endif -%}
+
+      {%- if section.settings.body_color != blank -%}
+        .category--{{- section.id }} .category__title {
+          color: {{ section.settings.heading_color }} !important;
+        }
+      {%- endif -%}
+    </style>
+  {%- endif -%}
+
+  <section class="category category--{{- section.id }} color-ink" {%- if section.settings.custom_id != blank -%} id="{{- section.settings.custom_id -}}"{%- endif -%}>
+    {%- if section.settings.collection.featured_image != blank or section.settings.video != blank -%}
+      <div class="category__head category__head--{{- section.settings.ratio -}}">
+        <h2 class="h2 category__title">
+          {{- section.settings.collection.title -}}
+        </h2><!-- /.h2 -->
+
+        <div class="category__media">
+          {%- if section.settings.video != blank -%}
+            <video
+              autoplay
+              muted
+              loop
+              preload="metadata"
+              crossorigin="anonymous"
+              {%- if section.settings.poster_desktop != blank -%} poster="{{- section.settings.poster_desktop | image_url -}}" {%- endif -%}
+              {%- if section.settings.video_mobile != blank -%} class="small-hide medium-hide" {%- endif -%}
+            >
+              {%- for src in section.settings.video.sources -%}
+                <source src="{{- src.url -}}" type="{{- src.mime_type -}}">
+              {%- endfor -%}
+
+              {%- if section.settings.cc_url_desktop != blank -%}
+                <track
+                  default
+                  kind="captions"
+                  srclang="en"
+                  src="{{- section.settings.cc_url_desktop -}}"
+                >
+              {%- endif -%}
+            </video>
+
+            {%- if section.settins.video_mobile != blank -%}
+              <video
+                autoplay
+                muted
+                loop
+                preload="metadata"
+                crossorigin="anonymous"
+                class="large-up-hide"
+                {%- if section.settings.poster_mobile != blank -%} poster="{{- section.settings.poster_mobile | image_url -}}" {%- endif -%}
+              >
+                {%- for src in section.settings.video_mobile.sources -%}
+                  <source src="{{- src.url -}}" type="{{- src.mime_type -}}">
+                {%- endfor -%}
+
+                {%- if section.settings.cc_url_mobile != blank -%}
+                  <track
+                    default
+                    kind="captions"
+                    srclang="en"
+                    src="{{- section.settings.cc_url_mobile -}}"
+                  >
+                {%- endif -%}
+              </video>
+            {%- endif -%}
+          {%- else -%}
+            {%-
+              liquid
+
+              assign image = section.settings.poster_desktop | default: section.settings.collection.featured_image
+              assign image_mobile = section.settings.poster_mobile
+
+              render 'image', image: image, image_mobile: image_mobile
+            -%}
+          {%- endif -%}
+        </div><!-- /.category__media -->
+      </div><!-- /.category__head -->
+    {%- endif -%}
+
+    {%- if section.settings.collection.products.size > 0 -%}
+      <div class="category__body">
+        {%- for product_item in section.settings.collection.products -%}
+          {%- render 'category-item', product_item: product_item -%}
+        {%- endfor -%}
+      </div><!-- /.category__body -->
+    {%- endif -%}
+  </section><!-- /.category -->
+  <script src="{{ 'section-id-tracker.js' | asset_url }}" defer></script>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Category",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Custom ID",
+      "info": "Set the link in the navigation that leads to this section to #{Custom ID}"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Category"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color"
+    },
+    {
+      "type": "select",
+      "id": "ratio",
+      "label": "Ratio (Desktop)",
+      "options": [
+        {
+          "value": "halfwidth",
+          "label": "1:1"
+        },
+        {
+          "value": "right",
+          "label": "2:3"
+        },
+        {
+          "value": "fullwidth",
+          "label": "1:2"
+        }
+      ],
+      "default": "halfwidth",
+      "info": "On mobile the ratio is always 1:1"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video (Desktop)",
+      "info": "Overrides the image"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_desktop",
+      "label": "Poster (Desktop)"
+    },
+    {
+      "type": "text",
+      "id": "cc_url_desktop",
+      "label": "Closed Captions File URL (Desktop)",
+      "info": "Copy the closed captions file url from the uploaded [files](/admin/settings/files)."
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "Video (Mobile)",
+      "info": "Overrides the image"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_mobile",
+      "label": "Poster (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "cc_url_mobile",
+      "label": "Closed Captions File URL (Mobile)",
+      "info": "Copy the closed captions file url from the uploaded [files](/admin/settings/files)."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

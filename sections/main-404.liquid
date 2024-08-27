@@ -1,0 +1,78 @@
+{%-
+  liquid
+
+  assign color = section.settings.color
+  assign heading = section.settings.heading | escape | newline_to_br
+  assign subcopy = section.settings.subcopy | escape | newline_to_br
+  assign button_text = section.settings.button_text | escape
+  assign button_url = section.settings.button_url
+  assign has_button = false
+
+  if button_text != blank and button_url != blank
+    assign has_button = true
+  endif
+-%}
+
+{%- if heading != blank or subcopy != blank or has_button != blank -%}
+  {%- if color != blank -%}
+    <style>
+      .section-404 * {
+        color: {{ color }};
+      }
+    </style>
+  {%- endif -%}
+
+  <link rel="stylesheet" href="{{- 'section-404.css' | asset_url -}}" media="print" onload="this.media = 'all'">
+
+  <div class="section-404">
+    {%- if heading != blank -%}
+      <h1 class="section__title utility">{{- heading -}}</h1><!-- /.utility -->
+    {%- endif -%}
+
+    {%- if subcopy != blank -%}
+      <p class="section__subtitle caption">{{- subcopy -}}</p><!-- /.caption -->
+    {%- endif -%}
+
+    {%- if has_button -%}
+      <a href="{{- button_url -}}" class="button button--primary">
+        {{- button_text -}}
+      </a>
+    {%- endif -%}
+  </div><!-- /.section-404 -->
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "404",
+  "settings": [
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text Color"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We can’t find that page."
+    },
+    {
+      "type": "textarea",
+      "id": "subcopy",
+      "label": "Subcopy",
+      "default": "404 Error - Page Not Found"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Continue Shopping"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ]
+}
+{% endschema %}

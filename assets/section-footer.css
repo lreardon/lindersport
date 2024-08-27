@@ -1,0 +1,40 @@
+.footer {
+  text-align: center;
+  padding: 2rem;
+}
+
+.footer a + a {
+  margin-top: 1rem;
+}
+
+.footer a {
+  transition: opacity var(--duration-default) ease-in-out;
+}
+
+.footer__copyright {
+  margin-block: 1rem 0;
+}
+
+@media (hover: hover) {
+  .footer a:hover {
+    opacity: 0.7;
+  }
+}
+
+@media (min-width: 990px) {
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 6.25vw;
+    padding-top: 0;
+  }
+
+  .footer a:nth-child(2) {
+    order: 2;
+  }
+
+  .footer__copyright {
+    width: fit-content;
+  }
+}

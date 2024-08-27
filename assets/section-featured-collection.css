@@ -1,0 +1,28 @@
+.featured-collection {
+  background-color: var(--color-reverse);
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: var(--zmodal);
+}
+
+.featured-collection .featured__slider {
+  display: block;
+  overflow: hidden;
+}
+
+.featured-collection .featured__slider-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (min-width: 990px) {
+  .featured-collection .featured__slider-inner {
+    display: flex;
+  }
+
+  .featured-collection {
+    padding-block: 1rem 1.3rem;
+  }
+}

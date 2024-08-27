@@ -1,0 +1,33 @@
+{% comment %}
+  Accepts:
+    product_item {Object} Product
+    collection {Object} Collection
+    index {Number} Forloop.index
+    class {String}
+
+  Requires:
+    component-product-item.css
+{% endcomment %}
+
+{%-
+  liquid
+  assign url = product_item.url | within: collection
+  assign index_mod = index | modulo: 2
+-%}
+
+<div class="product-item {%- if class %} {{- class -}}{%- endif -%}">
+  <div class="product-item__image {%- if index_mod != 0 %} product__item-image--background{%- endif -%}">
+    <a href="{{- url -}}">
+      <img src="{{- product_item.featured_image | image_url: width: 220 -}}" alt="{{- product_item.title -}}" width="auto" height="auto" loading="lazhy">
+    </a>
+  </div><!-- /.product-item__image -->
+
+  <a href="{{- url -}}" class="product-item__title utility full-unstyled-link center">
+    {{- product_item.title -}}
+  </a>
+
+  <div class="product-item__price caption">
+    {%- render 'price', variant: product_item.selected_or_first_available_variant, price_class: 'justify-center' -%}
+  </div><!-- /.product-item__price -->
+</div><!-- /.product-item -->
+

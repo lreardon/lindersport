@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="{{- 'section-main-cart.css' | asset_url -}}" media="print" onload="this.media = 'all'">
+
+<script src="{{- 'quantity-selector.js' | asset_url -}}" defer></script>
+<script src="{{- 'cart-remove.js' | asset_url -}}" defer></script>
+
+<section class="cart js-cart">
+  {%- if cart.item_count > 0 -%}
+    <h1 class="cart__title utility">{{ 'sections.cart.title' | t: count: cart.item_count }}</h1>
+
+    <div class="cart__items">
+      {%- for cart_item in cart.items -%}
+        {%- render 'cart-item', item: cart_item -%}
+      {%- endfor -%}
+    </div><!-- /.cart__items -->
+
+    <div class="cart__actions center">
+      <p class="cart__subtotal body">
+        {{- 'sections.cart.subtotal' | t -}}
+
+        <span class="js-subtotal">{{- cart.items_subtotal_price | money -}}</span><!-- /.js-subtotal -->
+      </p><!-- /.body -->
+
+      <form action="{{ routes.cart_url }}" id="Cart-Form" method="post">
+        <button
+          type="submit"
+          id="CartDrawer-Checkout"
+          class="cart__checkout-button button button--primary"
+          name="checkout"
+          form="Cart-Form"
+          {% if cart == empty %}
+            disabled
+          {% endif %}
+        >
+          {{ 'sections.cart.checkout' | t }}
+        </button>
+      </form>
+
+      <p class="caption">
+        {{- 'sections.cart.taxes_and_shipping_at_checkout_1' | t -}}
+
+        <br />
+
+        {{- 'sections.cart.taxes_and_shipping_at_checkout_2' | t -}}
+      </p><!-- /.caption -->
+    </div><!-- /.cart__actions -->
+  {%- else -%}
+
+  {%- endif -%}
+
+</section><!-- /.cart -->
+
+{% schema %}
+{
+  "name": "Main Cart",
+  "settings": []
+}
+{% endschema %}

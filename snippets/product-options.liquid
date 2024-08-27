@@ -1,0 +1,49 @@
+{% comment %}
+  Accepts:
+    option {Object} - Product Option - product.options_with_values
+    variant {Object} - Shopify variant object
+    index {Number} - The index of the option (1, 2 or 3)
+
+  Requires:
+    component-radio.css
+{% endcomment %}
+
+{%- assign index0 = index | minus: 1 -%}
+
+<div class="product__options js-product-options" data-index="{{- index -}}">
+  {%- for value in option.values -%}
+    {%-
+      liquid
+
+      assign is_available = false
+
+      for variant in product.variants
+        if variant.options[position] != color
+          continue
+        endif
+
+        unless variant.options[index0] == value
+          continue
+        endunless
+
+        assign is_available = variant.available
+        break
+      endfor
+    -%}
+
+    <div class="radio {%- unless is_available %} radio--sold-out{%- endunless -%}">
+      <input
+        type="radio"
+        name="{{- option.name | handle -}}"
+        id="{{- option.name | handle -}}{{- forloop.index -}}"
+        value="{{- value -}}"
+        data-index="{{- index -}}"
+        {%- if option.selected_value == value -%}
+          checked
+        {%- endif -%}
+      >
+
+      <label for="{{- option.name | handle -}}{{- forloop.index -}}" class="utility">{{- value -}}</label>
+    </div><!-- /.radio -->
+  {%- endfor -%}
+</div><!-- /.product__options -->

@@ -1,0 +1,54 @@
+{% comment %}
+  Accepts:
+    item {Object} Shopify cart line_item
+
+  Requires:
+    quantity-selector.js
+    cart-remove.js
+{% endcomment %}
+
+<div class="cart__item js-cart-item">
+  <div class="cart__item-image">
+    <a href="{{- item.url -}}">
+      {%- if item.image != blank -%}
+        <img src="{{- item.image | image_url: width: 200 -}}" alt="{{- item.title -}}" width="auto" height="auto" loading="lazy">
+      {%- else -%}
+        {{- 'product-1' | placeholder_svg_tag -}}
+      {%- endif -%}
+    </a>
+  </div><!-- /.cart__item-image -->
+
+  <div class="cart__item-body">
+    <h2 class="cart__item-title utility flex-center-between">
+      <a href="{{- item.url -}}" class="full-unstyled-link">
+        {{- item.product.title -}}
+      </a>
+
+      <span class="large-up-hide">{{- item.price | money -}}</span>
+    </h2><!-- /.utility -->
+
+    <p class="cart__item-variant body">{{- item.variant.title -}}</p><!-- /.body -->
+
+    <div class="cart__item-actions flex-center-between">
+      <quantity-selector class="cart__item-quantity flex-center-between" data-key="{{- item.variant.id -}}" data-quantity="{{- item.quantity -}}">
+        <button class="full-unstyled-link" data-action="-1" {%- if item.quantity == 1 -%} disabled{%- endif -%}>
+          {%- render 'icon-minus' -%}
+        </button>
+
+        <span class="body">{{- item.quantity -}}</span>
+
+        <button class="full-unstyled-link" data-action="1" {%- if item.quantity == item.variant.inventory_quantity -%} disabled{%- endif -%}>
+          {%- render 'icon-plus' -%}
+        </button>
+      </quantity-selector>
+
+      <cart-remove class="cart__remove color-subdued">
+        <a href="{{- item.url_to_remove -}}" class="full-unstyled-link body">
+          {{- 'sections.cart.remove' | t -}}
+        </a><!-- /.full-unstyled-link color-subdued -->
+      </cart-remove><!-- /.cart__remove -->
+    </div><!-- /.cart__item-actions -->
+
+    <span class="cart__item-price body small-hide medium-hide">{{- item.price | money -}}</span>
+  </div><!-- /.cart__item-body -->
+</div><!-- /.cart__item -->

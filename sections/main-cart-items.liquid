@@ -1,0 +1,13 @@
+<div class="main-cart__container" id="cart" data-id="{{ section.id }}">
+  <div class="js-contents">
+    <h1 class="title title--primary h4">{{ 'sections.cart.title' | t }}</h1>
+
+    {%- render 'cart-items' -%}
+
+    {%- render 'cart-order-info' -%}
+
+    <a class="main-cart__checkout-button button" href="/checkout" {% if cart == empty %} disabled{% endif %} >
+      {{ 'sections.cart.checkout' | t }}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.main-page {
+  padding-bottom: 8rem;
+}
+
+.main-page__title {
+  margin-block: 3.8rem 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .main-page__title {
+    margin-block: 10rem 2.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .main-page {
+    padding-bottom: 21rem;
+  }
+}
+
+.page-placeholder-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.page-placeholder {
+  width: 52.5rem;
+  height: 52.5rem;
+}
+

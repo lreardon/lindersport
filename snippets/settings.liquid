@@ -1,0 +1,94 @@
+<style>
+  {%- if settings.use_default_fonts -%}
+    @font-face {
+      font-family: 'P22 Underground';
+      src: url({{- 'P22Underground.woff2' | asset_url -}}) format('woff2'),
+          url({{- 'P22Underground.woff' | asset_url -}}) format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'P22 Underground';
+      src: url({{- 'P22Underground-Medium.woff2' | asset_url -}}) format('woff2'),
+          url({{- 'P22Underground-Medium.woff2' | asset_url -}}) format('woff');
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'P22 Underground';
+      src: url({{- 'P22Underground-DemiBold.woff2' | asset_url -}}) format('woff2'),
+          url({{- 'P22Underground-DemiBold.woff2' | asset_url -}}) format('woff');
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'GT America';
+      src: url({{- 'GTAmerica-Regular.woff2' | asset_url -}}) format('woff2'),
+          url({{- 'GTAmerica-Regular.woff2' | asset_url -}}) format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'NB Akademie';
+      src: url({{- 'NBAkademieStd-Bold.woff2' | asset_url -}}) format('woff2'),
+          url({{- 'NBAkademieStd-Bold.woff2' | asset_url -}}) format('woff');
+      font-weight: 700;
+      font-style: normal;
+    }
+  {%- endif -%}
+
+  :root {
+    --color-focus: {{- settings.color_ink -}};
+    --color-primary: {{- settings.color_primary -}};
+    --color-secondary: {{- settings.color_secondary -}};
+    --color-tertiary: {{- settings.color_tertiary -}};
+    --color-ink: {{- settings.color_ink -}};
+    --color-subdued: {{- settings.color_subdued -}};
+    --color-neutral: {{- settings.color_neutral -}};
+    --color-light: {{- settings.color_light -}};
+    --color-reverse: {{- settings.color_reverse -}};
+
+    {%- if settings.use_default_fonts -%}
+      --font-heading-family: 'P22 Underground', sans-serif;
+      --font-heading-style: {{ settings.type_header_font.style }};
+      --font-heading-weight: 500;
+
+      --font-body-family: 'P22 Underground', sans-serif;
+      --font-body-style: {{ settings.type_body_font.style }};
+      --font-body-weight: 400;
+
+      --font-quote-family: 'GT America', sans-serif;
+      --font-utility-family: 'NB Akademie Std', serif;
+    {%- else -%}
+      --font-headings: {{- settings.type_header_font -}};
+      --font-heading-style: {{ settings.type_header_font.style }};
+      --font-heading-weight: {{ settings.type_header_font.weight }};
+
+      --font-body-family: {{- settings.type_body_font -}};
+      --font-body-style: {{ settings.type_body_font.style }};
+      --font-body-weight: {{ settings.type_body_font.weight }};
+
+      --font-quote-family: {{ settings.type_quote_font }};
+      --font-utility-family: {{ settings.type_utility_font }};
+
+      {%- liquid
+        assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+        assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+        assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+      %}
+
+      {{ settings.type_body_font | font_face: font_display: 'swap' }}
+        {{ body_font_bold | font_face: font_display: 'swap' }}
+        {{ body_font_italic | font_face: font_display: 'swap' }}
+        {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+        {{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+    {%- endif -%}
+  }
+</style>

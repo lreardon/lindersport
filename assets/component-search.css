@@ -1,0 +1,87 @@
+.search {
+  background-color: var(--color-light);
+  border-radius: 53px;
+  flex: 1;
+}
+
+@media screen and (min-width: 990px) {
+  .search {
+    background-color: white;
+    border-radius: 0;
+  }
+}
+
+.search__input.field__input {
+  box-shadow: none;
+  padding: 0 3rem;
+}
+
+/* Remove extra spacing for search inputs in Safari */
+input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.search-modal {
+  height: 100%;
+  top: 100%;
+}
+
+.search-modal__content {
+  display: flex;
+  flex: 1;
+}
+
+.search-modal__field {
+  border-bottom: 1px solid black;
+  margin-top: 2rem;
+}
+
+.search-modal__input {
+  border: none;
+  flex: 1;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 4.8rem;
+}
+
+.search-modal__label {
+  color: var(--color-subdued);
+  display: block;
+  margin-bottom: 2rem;
+}
+
+::placeholder {
+  color: black;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: black;
+}
+
+.template-search__search {
+  margin: 0 auto;
+  max-width: 29.5rem;
+}
+
+.template-search__search .search {
+  margin-top: 3rem;
+}
+
+.template-search__results {
+  margin-top: 6rem;
+}
+
+.template-search--empty {
+  padding-bottom: 18rem;
+}
+
+@media screen and (min-width: 750px) {
+  .template-search__search {
+    max-width: 47.8rem;
+  }
+}
+
+.search__button .icon {
+  height: 1.8rem;
+}

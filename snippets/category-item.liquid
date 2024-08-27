@@ -1,0 +1,75 @@
+{%-
+  liquid
+
+  assign used_colors = blank
+
+  for option in product_item.options
+    if option != 'Color'
+      continue
+    endif
+
+    assign key = 'option' | append: forloop.index
+    break
+  endfor
+-%}
+
+{%- for variant in product_item.variants -%}
+  {%-
+    liquid
+
+    assign current_color = '%' | append: variant[key] | append: '%'
+    assign should_skip = false
+
+    if used_colors contains current_color
+      assign should_skip = true
+    endif
+
+    if variant.metafields.custom.full_body_image == blank or should_skip == true
+      continue
+    endif
+
+    assign used_colors = used_colors | append: current_color
+  -%}
+
+
+  <div class="category__item transition-fade-in js-animated" style="opacity: 0;" data-js-animation="animation-fade-in">
+    <div class="category__image">
+      <a href="{{- variant.url -}}" tabindex="-1" aria-label="Visit {{ product_item.title }}">
+        {%- render 'image', image: variant.metafields.custom.full_body_image, sizes: '50vw', image_mobile: variant.metafields.custom.full_body_image, image_mobile_width: 375 -%}
+      </a>
+    </div><!-- /.category__image -->
+
+    <div class="category__product center">
+      <div class="category__product-image">
+        {%- assign image_ref = variant.image | default: product_item.featured_image -%}
+
+        <a href="{{- variant.url -}}" aria-label="Visit {{ product_item.title }}">
+          {%- render 'image', image: image_ref, sizes: '(min-width: 990px) 50vw, 100vw', image_mobile: image_ref, image_mobile_width: 375 -%}
+        </a>
+      </div><!-- /.category__product-image -->
+
+      <div class="category__product-content center">
+        <div class="category__product-title">
+          <a href="{{- variant.url -}}" class="full-unstyled-link utility">
+            {{- product_item.title | escape -}}
+          </a>
+            <!-- Render option2 dynamically here -->
+           <p class="utility caption">
+               {{- variant.option2 -}}
+           </p>
+          <div class="category__product-price caption">
+            {% render 'price', product: product_item, variant: variant, price_class: 'justify-center' %}
+          </div><!-- /.category__product-price caption -->
+        </div><!-- /.category__product-title utility -->
+
+        {%- assign description = variant.metafields.custom.description.value | default: product_item.description -%}
+
+        {%- if description != blank -%}
+          <p class="category__product-description caption">
+            {{- description -}}
+          </p><!-- /.category__product-description caption -->
+        {%- endif -%}
+      </div><!-- /.category__product-content -->
+    </div><!-- /.category__product -->
+  </div><!-- /.category__item -->
+{%- endfor -%}
