@@ -31,7 +31,7 @@ if (!customElements.get('product-gallery')) {
       if (hasMousewheel) {
         options.mousewheel = {}
         options.mousewheel.releaseOnEdges = true
-        options.mousewheel.eventsTarget = this.closest('section')
+        // options.mousewheel.eventsTarget = this.closest('section')
       }
 
       this.slider = new Swiper(this, options)
@@ -60,8 +60,6 @@ if (!customElements.get('product-gallery')) {
         if (!this.slider) return
         return this.toggle()
 
-        if (window.scrollY == 0) return this.slider.mousewheel.enable()
-        if (window.scrollY > 0) return this.slider.mousewheel.disable()
       })
 
       this.slider.on('scroll', (event) => {
