@@ -222,11 +222,39 @@ body,
 
 /* Caption */
 
-.caption {
-  font-size: 1.1rem;
-  line-height: 1.4;
+.caption-description {
+    font-family: "interstate", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+.caption-description + span {
+  /* Styles for the <span> immediately following the <p> */
+  color: #555;
+  font-weight: bold;
 }
 
+.caption-price {
+      font-family: "interstate", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+ font-size: 2rem;
+  line-height: 1.4;
+}
+.caption-price + span {
+  /* Styles for the <span> immediately following the <p> */
+  color: #555;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 750px) {
+  .caption-price {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    
+  }
+}
 @media screen and (min-width: 750px) {
   .caption {
     font-size: 1.6rem;
@@ -237,11 +265,16 @@ body,
 /* Utility */
 
 .utility {
-  font-size: 1.8rem;
-  font-weight: 600;
+  
+  font-family: "interstate", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.6rem;
   line-height: 1.7;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+    margin-top: 0;
+  margin-bottom:0;
 }
 
 .utility--large {
@@ -257,7 +290,13 @@ body,
     letter-spacing: 0.1rem;
   }
 }
-
+/* title */
+.title-font {
+    font-family: "interstate", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: larger;
+}
 /* Blockquote */
 
 blockquote {
@@ -431,7 +470,7 @@ body {
   margin: 0;
   font-size: 2.2vw;  /* Pat Code: changed this from 1.5 rem*/
   letter-spacing: 0.06rem;
-  line-height: 1.8;
+  line-height: 1.0; /* Jack change, changed from 1.8*/
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
   font-weight: var(--font-body-weight);
@@ -640,8 +679,20 @@ table:not([class]) th {
 }
 
 /* Pat Code Starts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-
+/* Product description generates an additional p tag with white-space as the value, as seen in Chino Pants Army at the time of writing. Neccesitates having both of these classes that target  */
+.category__product-description p{
+  
+    font-family: "interstate", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    margin-bottom:10rem
+}
+ .category__product-title ~ p{
+  
+    font-family: "interstate", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+   
 /* Testing on making the desc text hidden when on mobile */
 @media screen and (max-width: 749px){
   .category__product-content > p { 
@@ -653,14 +704,19 @@ table:not([class]) th {
     font-size: 1.6rem;
     
   }
-  
+ 
+  /* Jack: added font-size value to increase mobile font. This media screen overrode caption-price class, so the property is declared here  */
   .category__product-price {
-    font-size: 1.8rem;
+    font-family: "interstate", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+     font-size: 1.6rem;
   }   
 }
  /*Pat Code Ends ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 
+}
 /*
 
  h1{
@@ -681,10 +737,17 @@ table:not([class]) th {
   .large-up-hide {
     display: none !important;
   }
+  .center {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-content:center;
+}
 }
 
 .center {
   text-align: center;
+ 
 }
 
 .right {
@@ -1501,7 +1564,16 @@ button {
   height: 2.5rem;
   width: 2.5rem;
 }
+/*description for product page  */
+.description {
+ 
+  font-family: interstate,sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.6rem;
+  line-height: 1.4;
 
+}
 /* Text area */
 
 .text-area {

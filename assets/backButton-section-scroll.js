@@ -1,4 +1,3 @@
-// jack code
 document.addEventListener('DOMContentLoaded', () => {
   
   const pollForElement = (selector, interval = 100, maxAttempts = 50) => {

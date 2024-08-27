@@ -14,9 +14,7 @@
 -%}
 
 {%- for variant in product_item.variants -%}
-  {%-
-    liquid
-
+  {%- liquid
     assign current_color = '%' | append: variant[key] | append: '%'
     assign should_skip = false
 
@@ -30,7 +28,6 @@
 
     assign used_colors = used_colors | append: current_color
   -%}
-
 
   <div class="category__item transition-fade-in js-animated" style="opacity: 0;" data-js-animation="animation-fade-in">
     <div class="category__image">
@@ -49,15 +46,18 @@
       </div><!-- /.category__product-image -->
 
       <div class="category__product-content center">
-        <div class="category__product-title">
-          <a href="{{- variant.url -}}" class="full-unstyled-link utility">
+        <div class="category__product-title title ">
+          <a href="{{- variant.url -}}" class="full-unstyled-link title-font utility ">
             {{- product_item.title | escape -}}
           </a>
-            <!-- Render option2 dynamically here -->
-           <p class="utility caption">
-               {{- variant.option2 -}}
-           </p>
-          <div class="category__product-price caption">
+
+  <!-- Render option2 dynamically here -->
+          
+         <p class="utility">
+    {{- variant.option2 -}}
+  </p>
+         
+          <div class="category__product-price caption-price">   <!-- Need to make another css variable for price-caption to distingusih it from description caption -->
             {% render 'price', product: product_item, variant: variant, price_class: 'justify-center' %}
           </div><!-- /.category__product-price caption -->
         </div><!-- /.category__product-title utility -->
@@ -65,7 +65,7 @@
         {%- assign description = variant.metafields.custom.description.value | default: product_item.description -%}
 
         {%- if description != blank -%}
-          <p class="category__product-description caption">
+          <p class="category__product-description caption-description">
             {{- description -}}
           </p><!-- /.category__product-description caption -->
         {%- endif -%}

@@ -31,7 +31,7 @@ if (!customElements.get('product-gallery')) {
       if (hasMousewheel) {
         options.mousewheel = {}
         options.mousewheel.releaseOnEdges = true
-        // options.mousewheel.eventsTarget = this.closest('section')
+        options.mousewheel.eventsTarget = this.closest('section')
       }
 
       this.slider = new Swiper(this, options)

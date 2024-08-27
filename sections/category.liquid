@@ -1,7 +1,8 @@
 {%- if section.settings.collection != blank -%}
   <link rel="stylesheet" href="{{- 'section-category.css' | asset_url -}}" media="print" onload="this.media = 'all'">
-<script src="{{- 'back-button-section-navigation.js' | asset_url -}}" defer></script>
-  <script src="{{- 'back-button-section-scroll.js' | asset_url -}}" defer></script>
+  
+  <script src="{{- 'back-button-workaround.js' | asset_url -}}" defer></script>
+  <script src="{{- 'backButton-section-scroll.js' | asset_url -}}" defer></script>
   {%- if section.settings.heading_color != blank or section.settings.body_color != blank -%}
     <style>
       {%- if section.settings.heading_color != blank -%}
@@ -95,9 +96,8 @@
         {%- endfor -%}
       </div><!-- /.category__body -->
     {%- endif -%}
+    <script src="{{ 'section-id-tracker.js' | asset_url }}" defer></script>
   </section><!-- /.category -->
-  <script src="{{ 'section-id-tracker.js' | asset_url }}" defer></script>
-
 {%- endif -%}
 
 {% schema %}

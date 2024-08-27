@@ -1,13 +1,11 @@
 .radio {
   display: inline-block;
   position: relative;
-  padding: 0 10px;
 }
 
 .radio--sold-out {
   color: var(--color-neutral);
 }
-
 
 .radio input {
   position: absolute;
@@ -15,14 +13,6 @@
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-}
-
-.radio--sold-out input {
-  cursor: default;
-}
-
-.radio--sold-out label {
-  cursor: default;
 }
 
 .radio input:checked + label {

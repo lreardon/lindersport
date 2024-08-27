@@ -1,14 +1,9 @@
 .product-swatch {
+  display: inline-block;
   width: 4.4rem;
   height: 4.4rem;
-  display: inline-block;
   position: relative;
   transition: transform var(--duration-long) ease-in-out;
-  overflow: hidden; /* Add this to clip the image to the button boundaries */
-  padding: 0; /* Ensure no padding affects the shape */
-  border: none; /* Remove any border that might affect the shape */
-  background: none; /* Remove any background */
-  cursor: pointer; /* Add pointer cursor for better UX */
 }
 
 .product-swatch img {
@@ -17,7 +12,6 @@
   position: absolute;
   inset: 0;
   object-fit: cover;
-  display: block;
 }
 
 @media (hover: hover) {

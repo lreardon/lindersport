@@ -1,113 +1,85 @@
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <link rel="stylesheet" href="{{- 'section-product.css' | asset_url -}}" media="print" onload="this.media = 'all'">
 <link rel="stylesheet" href="{{- 'component-product-swatch.css' | asset_url -}}" media="print" onload="this.media = 'all'">
 <link rel="stylesheet" href="{{- 'component-radio.css' | asset_url -}}" media="print" onload="this.media = 'all'">
-
+<link rel="stylesheet" href="{{- 'size-guide-drawer.css' | asset_url -}}" media="print" onload="this.media='all'">
+<noscript>{{ 'size-guide-drawer.css' | asset_url | stylesheet_tag }}</noscript>
 <script src="{{- 'swiper.min.js' | asset_url -}}" defer></script>
 {{- 'swiper.min.css' | asset_url | stylesheet_tag -}}
 
 <script src="{{- 'product-gallery.js' | asset_url -}}" defer></script>
 <script src="{{- 'product-form.js' | asset_url -}}" defer></script>
 <script src="{{- 'featured-collection.js' | asset_url -}}" defer></script>
-<script src="{{- 'select-product-variant.js' | asset_url -}}" defer></script>
 
-{% capture color_option_index %}
-  {% for option in product.options %}
-    {% if option == "Color" %}
-       {{ forloop.index }}
-      {%  break %}
-    {% endif %}
-  {% endfor %}
-  0
-{% endcapture %}
-{% assign color_option_index_0 = color_option_index | minus: 1 %}
-
-{% capture size_option_index %}
-  {% for option in product.options %}
-    {% if option == "Size" %}
-       {{ forloop.index }}
-      {%  break %}
-    {% endif %}
-  {% endfor %}
-  0
-{% endcapture %}
-{% assign size_option_index_0 = size_option_index | minus: 1 %}
-
-
-{% assign current_variant = product.selected_or_first_available_variant %}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
 
 <section class="product js-target-section">
   <div class="product__gallery">
-      {%- for variant in product.variants -%}
-        
-        {% capture maybe_hidden %}          
-          {% unless variant.id == current_variant.id %}
-            hidden
-          {% endunless %}
-        {% endcapture %}
-        
-        <product-gallery class="swiper {{- maybe_hidden -}}" data-variant-id="{{- variant.id -}}">
-          <div class="swiper-wrapper">
-            {%- assign used_images = 0 -%}
-    
-            {%- for image in product.images -%}
-              {%-
-                liquid
-    
-                assign should_continue = true
-                assign image_alt = image.alt | handle
-    
-                for option in variant.options
-                  assign option_handle = option | handle
-    
-                  if option_handle == image_alt
-                    assign should_continue = false
-                  endif
-                endfor
-    
-                if should_continue and product.variants.size > 1
-                  continue
-                endif
-    
-                assign used_images = used_images | plus: 1
-              -%}
-    
-              {%- assign variant_ids = image.variants | map: 'id' | join: ' ' -%}
-    
-              <div class="swiper-slide product__gallery-image" data-variants="{{- variant_ids -}}">
-                {%- render 'image', image: image, sizes: '50vw' -%}
-              </div>
-            {%- endfor -%}
-    
-            {%- if used_images == 0 -%}
-              {%- for image in product.images -%}
-                <div class="swiper-slide product__gallery-image" data-variants="{{- variant_ids -}}">
-                  {%- render 'image', image: image, sizes: '50vw' -%}
-                </div>
-              {%- endfor -%}
-            {%- endif -%}
+    <product-gallery class="swiper">
+      <div class="swiper-wrapper">
+        {%- assign used_images = 0 -%}
+
+        {%- for image in product.images -%}
+          {%-
+            liquid
+
+            assign should_continue = true
+            assign image_alt = image.alt | handle
+
+            for option in current_variant.options
+              assign option_handle = option | handle
+
+              if option_handle == image_alt
+                assign should_continue = false
+              endif
+            endfor
+
+            if should_continue and product.variants.size > 1
+              continue
+            endif
+
+            assign used_images = used_images | plus: 1
+          -%}
+
+          {%- assign variant_ids = image.variants | map: 'id' | join: ' ' -%}
+
+          <div class="swiper-slide product__gallery-image" data-variants="{{- variant_ids -}}">
+            {%- render 'image', image: image, sizes: '50vw' -%}
           </div>
-          <div class="swiper-pagination"></div>
-        </product-gallery>
-      {%- endfor -%}
-  </div>
+        {%- endfor -%}
+
+        {%- if used_images == 0 -%}
+          {%- for image in product.images -%}
+            <div class="swiper-slide product__gallery-image" data-variants="{{- variant_ids -}}">
+              {%- render 'image', image: image, sizes: '50vw' -%}
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+
+      <div class="swiper-pagination"></div>
+    </product-gallery>
+  </div><!-- /.product__gallery -->
 
   <div class="product__content center">
-    {% for variant in product.variants %}
-      {%- assign image = variant.image | default: product.featured_image -%}
-      {%- if image != blank -%}
-        <div class="product__image js-product-image {% unless variant == current_variant %}hidden{% endunless %}" data-variant-id="{{ variant.id }}">
-          {%- render 'image', image: image, sizes: '50vw' -%}
-        </div>
-      {%- endif -%}
-    {% endfor %}
+    {%- assign image = current_variant.image | default: product.featured_image -%}
+
+    {%- if image != blank -%}
+      <div class="product__image js-product-image">
+        {%- render 'image', image: image, sizes: '50vw' -%}
+      </div><!-- /.product__image -->
+    {%- endif -%}
 
     <product-form class="product__form">
-      <h1 class="product__title utility">
+      <h1 class="product__title utility title-font">
         {{- product.title -}}
 
         {%- for option in product.options_with_values -%}
-          {%- if option.name == 'Color' -%}
+          {%- if option.name == 'color' or option.name == 'Color' -%}
             {%- assign option_index = forloop.index0 -%}
+
             <span class="product__title-variant js-variant-title">{{- option.selected_value -}}</span>
           {%- endif -%}
         {%- endfor -%}
@@ -115,15 +87,13 @@
 
       {%- render 'price', product: product, variant: current_variant, price_class: 'product__price js-price' -%}
 
-      <div class="product__description caption">
+      <div class="product__description description">
         {{- product.description -}}
       </div><!-- /.product__description caption -->
 
       {%- form 'product', product -%}
         <select name="id" id="master-select" class="hidden js-master-select">
           {%- for variant in product.variants -%}
-            <div>
-            </div>
             <option
               value="{{- variant.id -}}"
               {% if variant.id == current_variant.id %}
@@ -136,41 +106,41 @@
               data-title="{{- variant.options[option_index] -}}"
               data-price="{{- variant.price | money -}}"
               data-compare="{{- variant.compare_at_price | money -}}"
-              {% if color_option_index_0 > -1 %}
-                data-color="{{ variant.options[color_option_index_0] }}"
-              {%  endif %}
-              {%  if size_option_index_0 > -1 %}
-                data-size="{{ variant.options[size_option_index_0] }}"
-              {% endif %}
             >
               {{- variant.title -}}
             </option>
           {%- endfor -%}
-        </select>
+        </select><!-- /# -->
 
         {%- if product.variants.size > 1 -%}
-          {%- assign swatches = blank -%}
-          {%- assign sizes = blank -%}
-          
-          {%- for option in product.options_with_values -%}    
-            {% if option.name == 'Color' %}
-              {% capture swatches %}
-                {% render 'swatches', option: option %}
-              {% endcapture %}
-            {% endif %}
-            
-            {% if option.name == 'Size' -%}
-              {% capture sizes %}
-                {% render 'sizes', option: option %}
-              {% endcapture %}
-            {% endif %}
-          {% endfor %}
-          
-          {{ swatches }}
-          {{ sizes }}
-          <br>
-        {%- endif -%}
+          {%-
+            liquid
 
+            assign color_position = product.options_by_name['Color'].position | minus: 1
+            assign current_variant_color = current_variant.options[color_position]
+            assign swatches = blank
+            assign options = blank
+
+            for option in product.options_with_values
+              assign option_name_handle = option.name | handle
+
+              if option_name_handle == 'color'
+                capture swatches
+                  render 'swatches', option: option, position: color_position
+                endcapture
+              else
+                capture options
+                  echo options
+                  render 'product-options', option: option, variant: current_variant, index: forloop.index, position: color_position, color: current_variant_color
+                endcapture
+              endif
+            endfor
+          -%}
+
+          {{- swatches -}}
+
+          {{- options -}}
+        {%- endif -%}
         <div class="product__actions">
           {%- if current_variant.available -%}
             <button type="submit" class="button button--primary js-product-submit" 
@@ -182,7 +152,6 @@
           <button id="BIS_trigger" type="button" class="waitlist-button">Waitlist</button>
             {%- endif -%}
         </div><!-- /.product__actions -->
-
 
         <p class="form-error js-error"></p><!-- /.form-error js-error -->
 
@@ -200,14 +169,47 @@
       {%- endform -%}
 
       {%- if section.settings.button_text != blank and section.settings.button_url != blank -%}
-        <a href="{{- section.settings.button_url -}}" target="_blank" class="product__button button-small caption color-ink js-button">
-          {{- section.settings.button_text | escape -}}
-        </a><!-- /.button-small -->
+        <!-- <a href="{{- section.settings.button_url -}}" target="_blank" class="product__button button-small caption color-ink js-button">
+         
+          
+        </a><!-- /.button-small --> 
+
+        <div class="product__button button-small caption color-ink js-button "> 
+         
+        <size-guide-drawer class="size-guide__drawer"> 
+          <details>
+            <summary class="size-guide__link js-summary" data-menu-text="{{- section.settings.button_text | escape -}}" data-close-text="{{- 'general.header.close' | t -}}">  {{ section.settings.button_text | default: 'Size Guide' }}</summary>
+            <div class="size-guide__drawer-inner js-drawer-inner">
+              {%- assign image = current_variant.metafields.custom.size_guide.value | default: "" -%}
+                {% if image != "" %}
+                  <img src="{{ image }}" alt="Size Guide">
+                {% else %}
+                  <p>No size guide available</p>
+                {% endif %}
+
+              {%- if image != blank -%}
+      <div class="size-guide-img js-product-image">
+        {%- render 'image', image: image, sizes: '50vw' -%}
+      </div>
+    {%- endif -%}
+              <!-- <img class="size-guide-img"src="https://plus.unsplash.com/premium_photo-1671461774955-7aab3ab41b90?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c3ByZWFkc2hlZXR8ZW58MHx8MHx8fDA%3D" alt="Your image description"> -->
+    
+            
+
+              <button type="button" class="size-guide__drawer-close js-drawer-close">
+                Close
+              </button>
+            </div>
+          </details>
+        </size-guide-drawer>
+            
+
+        </div
       {%- endif -%}
     </product-form>
-  </div><!-- /.product__content -->  
+  </div><!-- /.product__content -->
 </section><!-- /.product -->
-
+<!-- 
 {% schema %}
 {
   "name": "Main Product",
@@ -227,3 +229,4 @@
   ]
 }
 {% endschema %}
+ -->

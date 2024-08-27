@@ -1,4 +1,4 @@
-// Jack code
+// Function to handle URL updates
 function updateUrl(section) {
     if (section) {
         const currentHash = window.location.hash.slice(1);
@@ -56,7 +56,7 @@ function handleInitialLoad() {
 }
 
 // Event listener for DOMContentLoaded
-document.addEventListener('DOMContentLoaded', handleInitialLoad);
+// 
 
 // Listen for page visibility changes
 document.addEventListener('visibilitychange', function() {
@@ -65,10 +65,28 @@ document.addEventListener('visibilitychange', function() {
         updateUrlFromStorage();
     }
 });
+// unction doSomething() {
+//   if (document.readyState === "loading") {
+//     // Document still loading, wait for it
+//     document.addEventListener("DOMContentLoaded", doSomething);
+//     return;
+//   }
+//   // Document is ready, do your stuff
+//   console.log("Document is ready!");
+// }
+
+// doSomething();
 
 // Update URL when page is loaded or becomes visible
-if (document.readyState === 'complete') {
-    handleInitialLoad();
+function initialLoadTrial (){
+  if (document.readyState === 'loading') {
+    console.log('/~/~/~?~/~/WERE LOADING BIATCH /~/~?~?~')
+    document.addEventListener('DOMContentLoaded', initialLoadTrial);
 } else {
-    window.addEventListener('load', handleInitialLoad);
+    console.log('WEVE LOADED IN')
+    handleInitialLoad
+   
 }
+
+}
+initialLoadTrial();

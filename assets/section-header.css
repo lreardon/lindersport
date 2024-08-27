@@ -4,7 +4,7 @@ header-drawer {
 
 @media screen and (min-width: 990px) {
   header-drawer {
-    display: none;
+    /* display: none; */
   }
 }
 
@@ -240,3 +240,19 @@ details[open]>.header__icon--menu .icon-hamburger {
     max-width: 25vw;
   }
 }
+
+
+/* Klaviyo container */
+/* 
+@media (min-width: 400px){
+  .header__klaviyo {
+    width: 40vw;
+  }
+}
+
+@media (min-width: 990px){
+  .header__klaviyo {
+    width: 15vw;
+  }
+}
+ */

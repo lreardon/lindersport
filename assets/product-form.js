@@ -1,8 +1,10 @@
+
 if (!customElements.get('product-form')) {
   class ProductForm extends HTMLElement {
     constructor() {
       super()
     }
+
 
     /**
      * Changes the variant title based on the selected variant (option)
@@ -91,38 +93,69 @@ if (!customElements.get('product-form')) {
      * @param {Number} variantId - The current variant ID
      */
 
-   updateURL(variantId) {
+  updateURL(variantId) {
   if (!variantId) return;
-
+    const lastSection = localStorage.getItem('currentSection');
+  console.log('lastSection:', lastSection);
   var url = new URL(window.location.toString());
+
   var searchParams = url.searchParams;
   searchParams.set('variant', variantId);
   url.search = searchParams.toString();
+
   var newUrl = url.toString();
-
+      
   history.pushState({}, '', newUrl);
-
- 
+// This function encapsulates the scrolling logic
+// function navigateToLastSection() {
+//   console.log('__NavigateToLast called')
+//   const lastSection = localStorage.getItem('currentSection');
+//   if (lastSection) {
+//     setTimeout(() => {
+//       const targetSection = document.getElementById(lastSection);
+//       if (targetSection) {
+//         targetSection.scrollIntoView({ behavior: 'smooth' });
+//       } else {
+//         console.warn(`Section with id "${lastSection}" not found`);
+//       }
+//     }, 1000); // Adjust this delay as needed
+//   }
+// }
+  // Call changeActiveSlide function if it exists
   if (typeof changeActiveSlide === 'function') {
     changeActiveSlide(variantId);
+    console.log('changeActiveSlide called with variantId:', variantId);
   }
 
-   // Due to the product form using history API to switch between variants of products,
-  // setTimeout is necessary to await the navigation to homepage until after the client-side nav happens.
-  // Ideally refactor to prevent navigation with conditional logic to prevent navigation with history.pushState({}, '', newUrl); on popstate/backbutton event
+  // Add event listener for popstate event
   let redirectScheduled = false;
-  window.addEventListener('popstate', function() {
-    
-    if (!redirectScheduled) {
-      redirectScheduled = true;
-      setTimeout(function() {
-        window.location.href = '/';
-        // One second seems to be long enough for navigation to take place on 4G/LTE service and above.
-      }, 1000);
-    }
-  }, { once: true });
-}
+  // due to the product form using history api to switch between variants of products, setTimeout is necessary to await the navigation to homepage until after the client-side nav happens. 
+  // ideally refactor to prevent navigation with conditional logic to prevent navigation with history.pushState({}, '', newUrl); on popstate/backbutton event
+window.addEventListener('popstate', function() {
+  console.log('__Popstate event triggered');
+  event.preventDefault();
+  if (!redirectScheduled) {
+    redirectScheduled = true;
+    setTimeout(function() {
+      console.log('Redirecting to root page');
+      const lastSection = localStorage.getItem('currentSection');
+      console.log('lastSection on popstate:', lastSection);
+      
+      // Use history.pushState to change the URL without reloading the page
+      // const pushed = `/#${lastSection}`;
+      window.location.href = `/#${lastSection}`;
+      
+      // Dispatch a custom event to notify your app of the change
+            setTimeout(navigateToLastSection, 500); // Adjust this delay as needed
 
+      window.dispatchEvent(new CustomEvent('urlChanged', { detail: { url: newUrl } }));
+      // setTimeout(navigateToLastSection, 2500); // Adjust this delay as needed
+      redirectScheduled = false;
+    }, 300);
+  }
+}, { once: true });
+window.addEventListener('load', navigateToLastSection);
+   }
 
     /**
      * Changes the current slide of the ProductGallery
@@ -305,28 +338,35 @@ if (!customElements.get('product-form')) {
      * Initializes the event listener for the swatch elements. Fetches the main-product section from the variant with the same color as the swatch and renders new product options (radios) {@link setNewOptions} and the variant image {@link setNewImage}
      */
 
-    initSwatches() {
-      this.addEventListener('click', (event) => {
-        const swatch = event.target.closest('.js-swatch')
-        if (!swatch) return
+   initSwatches() {
+  this.addEventListener('click', (event) => {
+    const swatch = event.target.closest('.js-swatch')
+    if (!swatch) return
 
-        event.preventDefault()
-        event.stopPropagation()
+    event.preventDefault()
+    event.stopPropagation()
 
-        fetch(`${swatch.getAttribute('href')}`)
-          .then((res) => res.text())
-          .then((data) => {
-            const html = new DOMParser().parseFromString(data, 'text/html')
+    fetch(swatch.getAttribute('href'), {
+      method: 'GET',
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      } 
+    })
+      .then((res) => res.text())
+      .then((data) => {
+        const html = new DOMParser().parseFromString(data, 'text/html')
 
-            this.setNewGallery(html)
+        this.setNewGallery(html)
 
-            this.setNewImage(html, swatch)
-            this.setNewOptions(html)
-            this.setNewVariantTitle(html)
-          })
-          .catch((err) => console.error(err))
+        this.setNewImage(html, swatch)
+        this.setNewOptions(html)
+        this.setNewVariantTitle(html)
       })
-    }
+      .catch((err) => console.error(err))
+  })
+}
 
     init() {
       this.button = this.querySelector('.js-product-submit')

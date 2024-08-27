@@ -1,12 +1,20 @@
 <style>
   {%- if settings.use_default_fonts -%}
-    @font-face {
+
+      @font-face { /*added by jack*/
+      font-family: 'Interstate-Regular';
+      src: url({{- 'INTERstate-black.woff2' | asset_url -}}) format('woff2'),
+          url({{- 'INTERstate-black.woff' | asset_url -}}) format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    /* @font-face {
       font-family: 'P22 Underground';
       src: url({{- 'P22Underground.woff2' | asset_url -}}) format('woff2'),
           url({{- 'P22Underground.woff' | asset_url -}}) format('woff');
       font-weight: normal;
       font-style: normal;
-    }
+    } */
 
     @font-face {
       font-family: 'P22 Underground';
@@ -15,7 +23,7 @@
       font-weight: 500;
       font-style: normal;
     }
-
+  /*stays the same  */
     @font-face {
       font-family: 'P22 Underground';
       src: url({{- 'P22Underground-DemiBold.woff2' | asset_url -}}) format('woff2'),
@@ -56,8 +64,8 @@
       --font-heading-family: 'P22 Underground', sans-serif;
       --font-heading-style: {{ settings.type_header_font.style }};
       --font-heading-weight: 500;
-
-      --font-body-family: 'P22 Underground', sans-serif;
+      --font-title-family: 'P22 Underground', sans-serif; /* added in by Jack*/
+      --font-body-family: 'Interstate-Regular', sans-serif;
       --font-body-style: {{ settings.type_body_font.style }};
       --font-body-weight: 400;
 
@@ -71,7 +79,7 @@
       --font-body-family: {{- settings.type_body_font -}};
       --font-body-style: {{ settings.type_body_font.style }};
       --font-body-weight: {{ settings.type_body_font.weight }};
-
+    
       --font-quote-family: {{ settings.type_quote_font }};
       --font-utility-family: {{ settings.type_utility_font }};
 
