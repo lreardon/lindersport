@@ -38,7 +38,7 @@
               {%- if section.settings.video_mobile != blank -%} class="small-hide medium-hide" {%- endif -%}
             >
               {%- for src in section.settings.video.sources -%}
-                <source src="{{- src.url -}}" type="{{- src.mime_type -}}">
+								<source src="{{ src.url | asset_url }}" type="{{ src.mime_type }}">
               {%- endfor -%}
 
               {%- if section.settings.cc_url_desktop != blank -%}
@@ -62,7 +62,7 @@
                 {%- if section.settings.poster_mobile != blank -%} poster="{{- section.settings.poster_mobile | image_url -}}" {%- endif -%}
               >
                 {%- for src in section.settings.video_mobile.sources -%}
-                  <source src="{{- src.url -}}" type="{{- src.mime_type -}}">
+                  <source src="{{ src.url | asset_url }}" type="{{ src.mime_type }}">
                 {%- endfor -%}
 
                 {%- if section.settings.cc_url_mobile != blank -%}
@@ -96,7 +96,6 @@
         {%- endfor -%}
       </div><!-- /.category__body -->
     {%- endif -%}
-    <script src="{{ 'section-id-tracker.js' | asset_url }}" defer></script>
   </section><!-- /.category -->
 {%- endif -%}
 
