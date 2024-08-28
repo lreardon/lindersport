@@ -1,0 +1,23 @@
+{
+	"sections": {
+		"main": {
+			"type": "main-returns",
+			// "settings": {
+			// 	"button_url": "shopify:\/\/pages\/contact-us",
+			// 	"button_text": "Size Guide"
+			// }
+		},
+		// "featured-collection": {
+		// 	"type": "featured-collection",
+		// 	"disabled": true,
+		// 	"settings": {
+		// 		"collection": "sweathers",
+		// 		"background": "#f6f6f6"
+		// 	}
+		// }
+	},
+	"order": [
+		"main",
+		// "featured-collection"
+	]
+}
