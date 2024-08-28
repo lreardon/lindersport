@@ -14,6 +14,8 @@
 -%}
 
 {%- for variant in product_item.variants -%}
+	{% assign variant_id = variant.id %}
+
   {%- liquid
     assign current_color = '%' | append: variant[key] | append: '%'
     assign should_skip = false
@@ -29,7 +31,7 @@
     assign used_colors = used_colors | append: current_color
   -%}
 
-  <div class="category__item transition-fade-in js-animated" style="opacity: 0;" data-js-animation="animation-fade-in" onclick="updateTrackedProduct('{{product_item.title}}')">
+  <div id="variant-{{ variant_id }}" class="category__item transition-fade-in js-animated" style="opacity: 0;" data-js-animation="animation-fade-in" onclick="updateTrackedVariant('{{variant_id}}')">
     <div class="category__image">
       <a href="{{- variant.url -}}" tabindex="-1" aria-label="Visit {{ product_item.title }}">
         {%- render 'image', image: variant.metafields.custom.full_body_image, sizes: '50vw', image_mobile: variant.metafields.custom.full_body_image, image_mobile_width: 375 -%}
