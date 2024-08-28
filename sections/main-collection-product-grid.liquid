@@ -106,31 +106,29 @@
                           type="number"
                           placeholder="0"
                           min="0"
-                          max="{{ filter.range_max | money_without_currency | replace: ',', '' }}">
-                        </input>
+                          max="{{ filter.range_max | money_without_currency | replace: ',', '' }}" />
                         <label class="field__label" for="Filter-{{ filter.label | escape }}-GTE">{{ 'sections.collection_template.from' | t }}</label>
                       </div>
-                      <div class="field">
-                        <span class="field__currency">{{ cart.currency.symbol }}</span>
-                        <input class="field__input"
-                          name="{{ filter.max_value.param_name }}"
-                          id="Filter-{{ filter.label | escape }}-LTE"
-                          {%- if filter.max_value.value -%}
-                            {%- if uses_comma_decimals -%}
-                              value="{{ filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
-                            {%- else -%}
-                              value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
-                            {% endif %}
-                          {%- endif -%}
-                          type="number"
-                          placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
-                          min="0"
-                          max="{{ filter.range_max | money_without_currency | replace: ',', '' }}">
-                        </input>
-                        <label class="field__label" for="Filter-{{ filter.label | escape }}-LTE">{{ 'sections.collection_template.to' | t }}</label>
-                      </div>
-                    </div>
-                  </price-range>
+											<div class="field">
+												<span class="field__currency">{{ cart.currency.symbol }}</span>
+												<input class="field__input"
+													name="{{ filter.max_value.param_name }}"
+													id="Filter-{{ filter.label | escape }}-LTE"
+													{%- if filter.max_value.value -%}
+														{%- if uses_comma_decimals -%}
+															value="{{ filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+														{%- else -%}
+															value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+														{% endif %}
+													{%- endif -%}
+													type="number"
+													placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+													min="0"
+													max="{{ filter.range_max | money_without_currency | replace: ',', '' }}" />
+												<label class="field__label" for="Filter-{{ filter.label | escape }}-LTE">{{ 'sections.collection_template.to' | t }}</label>
+											</div>
+										</price-range>
+									</div>
                 </details>
               {% endcase %}
             {%- endfor -%}
@@ -303,8 +301,7 @@
                               type="number"
                               placeholder="0"
                               min="0"
-                              max="{{ filter.range_max | divided_by: 100 | ceil }}">
-                            </input>
+                              max="{{ filter.range_max | divided_by: 100 | ceil }}" />
                             <label class="field__label" for="Mobile-Filter-{{ filter.label | escape }}-GTE">{{ 'sections.collection_template.from' | t }}</label>
                           </div>
                           <div class="field">
@@ -322,8 +319,7 @@
                               type="number"
                               placeholder="{{ filter.range_max | divided_by: 100 | ceil }}"
                               min="0"
-                              max="{{ filter.range_max | divided_by: 100 | ceil }}">
-                            </input>
+                              max="{{ filter.range_max | divided_by: 100 | ceil }}" />
                             <label class="field__label" for="Mobile-Filter-{{ filter.label | escape }}-LTE">{{ 'sections.collection_template.to' | t }}</label>
                           </div>
                         </price-range>
