@@ -81,6 +81,10 @@ function updateCurrentSection() {
     }
 }
 
+function updateTrackedProduct(product) {
+	console.log(`[TRACK] ${product}`);
+}
+
     function handlePageTransition() {
         console.log('handlePageTransition Called');
         // Store the current section before navigation
