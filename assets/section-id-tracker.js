@@ -53,10 +53,6 @@ if (typeof window.variantTrackerInitialized === 'undefined') {
     //     }, { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] });
     // }
 
-	function updateRememberedVariant(variantId) {
-		console.log(`[TRACK] ${variantId}`);
-	}
-
 	function handlePageTransition() {
 			// console.log('handlePageTransition Called');
 			// Store the current section before navigation
