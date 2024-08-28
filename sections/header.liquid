@@ -23,7 +23,7 @@
           {%- if section.settings.secondary_menu != blank -%}
             <ul class="header__menu header__menu--secondary list-unstyled">
               {%- render 'flat-menu', menu: section.settings.secondary_menu -%}
-							{%- render 'header-link', url: {{ pages.returns.url }}, title: 'Returns' %}
+							{%- render 'header-link', url: pages.returns.url, title: 'Returns' %}
 
 
               {%- for block in section.blocks -%}
