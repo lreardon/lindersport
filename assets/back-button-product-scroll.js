@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
+window.onload = () => {
+// document.addEventListener('DOMContentLoaded', () => {
   const rememberedVariant = localStorage.getItem('rememberedVariant');
 	console.log('rememberedVariant:', rememberedVariant);
 	if (rememberedVariant) {
@@ -18,4 +19,5 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     console.log('No rememberedVariant found in localStorage.');
   }
-});
+}
+// });
