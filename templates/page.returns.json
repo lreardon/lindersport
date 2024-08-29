@@ -1,0 +1,13 @@
+{
+	"sections": {
+		"main": {
+			"type": "main-returns",
+			"settings": {
+				"heading": "Returns"
+			}
+		}
+	},
+	"order": [
+		"main"
+	]
+}
