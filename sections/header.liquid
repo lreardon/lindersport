@@ -25,7 +25,6 @@
               {%- render 'flat-menu', menu: section.settings.secondary_menu -%}
 							{%- render 'header-link', url: pages.returns.url, title: 'Returns' %}
 
-
               {%- for block in section.blocks -%}
                 {%- if block.settings.email and block.settings.text != blank -%}
                   <li>
