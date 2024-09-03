@@ -40,9 +40,9 @@ if (document.readyState === 'loading') {
 
 // window.addEventListener('pageshow', handlePageShow);
 
-document.addEventListener('visibilitychange', function() {
-  if (!document.hidden) {
-    console.log('Page became visible');
-    runOnStart();
-  }
-});
+// document.addEventListener('visibilitychange', function() {
+//   if (!document.hidden) {
+//     console.log('Page became visible');
+//     runOnStart();
+//   }
+// });
