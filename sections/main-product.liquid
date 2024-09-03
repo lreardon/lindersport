@@ -10,17 +10,6 @@
 <script src="{{- 'product-form.js' | asset_url -}}" defer></script>
 <script src="{{- 'featured-collection.js' | asset_url -}}" defer></script>
 <script src="{{- 'select-product-variant.js' | asset_url -}}" defer></script>
-<script>
-			const currentVariantId = {{ product.selected_or_first_available_variant.id }};
-
-			window.addEventListener('popstate', function() {
-				// When back button is pressed, add the variant hash to the URL
-				console.log("HEY VARIANT");
-				if (!window.location.hash) {
-					history.replaceState(null, null, `#variant-${currentVariantId}`);
-				}
-			});
-	</script>
 
 {% capture color_option_index %}
   {% for option in product.options %}

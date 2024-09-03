@@ -27,12 +27,12 @@ if (document.readyState === 'loading') {
     runOnStart();
 }
 
-function handlePageShow(event) {
-    if (event.persisted) {
-        console.log('Page was restored from bfcache (back navigation)');
-        hasRun = false;
-    }
-    runOnStart();
-}
+// function handlePageShow(event) {
+//     if (event.persisted) {
+//         console.log('Page was restored from bfcache (back navigation)');
+//         hasRun = false;
+//     }
+//     runOnStart();
+// }
 
-window.addEventListener('pageshow', handlePageShow);
+// window.addEventListener('pageshow', handlePageShow);
