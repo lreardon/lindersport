@@ -1,4 +1,4 @@
-// function runOnStart() {
+function runOnStart() {
   const rememberedVariant = sessionStorage.getItem("rememberedVariant");
   console.log("rememberedVariant:", rememberedVariant);
   if (rememberedVariant) {
@@ -22,14 +22,13 @@
 			console.warn(`[TARGET] ${selector} not found`);
 		}
   }
-// }
+}
 
-// if (document.readyState === 'loading') {
-//     document.addEventListener('DOMContentLoaded', runOnStart);
-// } else {
-// 		console.log("OH HEY WE ARE HERE");
-//     runOnStart();
-// }
+if (document.readyState != 'loading') {
+    runOnStart();
+} else {
+    document.addEventListener('DOMContentLoaded', runOnStart);
+}
 
 // // function handlePageShow(event) {
 // //     if (event.persisted) {
