@@ -241,6 +241,7 @@ wxMjA3fDB8MHxzZWFyY2h8MXx8c3ByZWFkc2hlZXR8ZW58MHx8MHx8fDA%3D" alt="Your image de
 
 			window.addEventListener('popstate', function() {
 				// When back button is pressed, add the variant hash to the URL
+				console.log("HEY VARIANT");
 				if (!window.location.hash) {
 					history.replaceState(null, null, `#variant-${currentVariantId}`);
 				}
