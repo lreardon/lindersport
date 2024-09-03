@@ -47,7 +47,7 @@
     </details>
   </header-drawer>
 
-  <a href="{{- routes.root_url -}}" class="header__logo" aria-label="{{- shop.name -}}">
+  <a href="{{- routes.root_url -}}" class="header__logo" aria-label="{{- shop.name -}}" onclick="clearRememberedVariant()">
     {%- if section.settings.logo != blank -%}
       <img src="{{- section.settings.logo | image_url -}}" alt="{{- section.settings.logo.alt | default: shop.name -}}" width="auto" height="auto" loading="lazy">
     {%- else -%}
