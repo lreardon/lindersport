@@ -1,4 +1,9 @@
+let hasRun = false;
+
 function runOnStart() {
+    if (hasRun) return;
+    hasRun = true;
+
   const rememberedVariant = localStorage.getItem("rememberedVariant");
   console.log("rememberedVariant:", rememberedVariant);
   if (rememberedVariant) {
@@ -16,19 +21,18 @@ function runOnStart() {
   }
 }
 
-if(document.readyState !== 'loading') {
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runOnStart);
+} else {
     runOnStart();
-}
-else {
-    // document.addEventListener('DOMContentLoaded', function () {
-    document.addEventListener('load', function () {
-        runOnStart()
-    });
 }
 
-document.addEventListener('pageshow', function() {
-  if (!document.hidden) {
-    console.log('Page became visible');
+function handlePageShow(event) {
+    if (event.persisted) {
+        console.log('Page was restored from bfcache (back navigation)');
+        hasRun = false;
+    }
     runOnStart();
-  }
-});
+}
+
+window.addEventListener('pageshow', handlePageShow);
