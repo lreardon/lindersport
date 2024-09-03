@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "auto" }); // or smooth
-    }
+				console.log(`[SCROLLED TO] ${targetElement}`);
+    } else {
+			console.warn(`[TARGET] ${selector} not found`);
+		}
   }
 });
