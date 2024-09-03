@@ -8,7 +8,7 @@ function runOnStart() {
     console.log(`[TARGET] ${targetElement}`);
 
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "auto" }); // or smooth
+      targetElement.scrollIntoView({ behavior: "smooth" }); // or smooth
 				console.log(`[SCROLLED TO] ${targetElement}`);
     } else {
 			console.warn(`[TARGET] ${selector} not found`);
