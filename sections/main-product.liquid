@@ -10,6 +10,17 @@
 <script src="{{- 'product-form.js' | asset_url -}}" defer></script>
 <script src="{{- 'featured-collection.js' | asset_url -}}" defer></script>
 <script src="{{- 'select-product-variant.js' | asset_url -}}" defer></script>
+<script>
+			const currentVariantId = {{ product.selected_or_first_available_variant.id }};
+
+			window.addEventListener('popstate', function() {
+				// When back button is pressed, add the variant hash to the URL
+				console.log("HEY VARIANT");
+				if (!window.location.hash) {
+					history.replaceState(null, null, `#variant-${currentVariantId}`);
+				}
+			});
+	</script>
 
 {% capture color_option_index %}
   {% for option in product.options %}
@@ -235,19 +246,7 @@ wxMjA3fDB8MHxzZWFyY2h8MXx8c3ByZWFkc2hlZXR8ZW58MHx8MHx8fDA%3D" alt="Your image de
       {%- endif -%}
     </product-form>
   </div><!-- /.product__content -->  
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			const currentVariantId = {{ current_variant.id }};
-
-			window.addEventListener('popstate', function() {
-				// When back button is pressed, add the variant hash to the URL
-				console.log("HEY VARIANT");
-				if (!window.location.hash) {
-					history.replaceState(null, null, `#variant-${currentVariantId}`);
-				}
-			});
-		});
-	</script>
+	
 </section><!-- /.product -->
 
 {% schema %}
