@@ -42,6 +42,10 @@ if (document.readyState != 'loading') {
 
 document.addEventListener('visibilitychange', function() {
   if (!document.hidden) {
-    runOnStart("smooth");
+    if (window.scrollY > 0) {
+			runOnStart("smooth");
+		} else {
+		runOnStart("auto");
+		}
   }
 });
