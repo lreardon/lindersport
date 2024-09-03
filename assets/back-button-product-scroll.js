@@ -1,9 +1,5 @@
-let hasRun = false;
-
 function runOnStart() {
-    if (hasRun) return;
-    hasRun = true;
-
+document.addEventListener("DOMContentLoaded", () => {
   const rememberedVariant = localStorage.getItem("rememberedVariant");
   console.log("rememberedVariant:", rememberedVariant);
   if (rememberedVariant) {
@@ -19,20 +15,15 @@ function runOnStart() {
 			console.warn(`[TARGET] ${selector} not found`);
 		}
   }
+});
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', runOnStart);
-} else {
+
+if(document.readyState !== 'loading') {
     runOnStart();
 }
-
-// function handlePageShow(event) {
-//     if (event.persisted) {
-//         console.log('Page was restored from bfcache (back navigation)');
-//         hasRun = false;
-//     }
-//     runOnStart();
-// }
-
-// window.addEventListener('pageshow', handlePageShow);
+else {
+    document.addEventListener('DOMContentLoaded', function () {
+        runOnStart()
+    });
+}
