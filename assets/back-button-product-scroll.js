@@ -20,7 +20,8 @@ if(document.readyState !== 'loading') {
     runOnStart();
 }
 else {
-    document.addEventListener('DOMContentLoaded', function () {
+    // document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('load', function () {
         runOnStart()
     });
 }
