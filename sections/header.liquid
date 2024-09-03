@@ -8,6 +8,18 @@
 
 <noscript>{{ 'section-header.css' | asset_url | stylesheet_tag }}</noscript>
 
+<script>
+  // Check if the script is already included
+  if (!document.querySelector('script[src="{{ 'remember-variant.js' | asset_url }}"]')) {
+    // Create a new script element
+    var script = document.createElement('script');
+    script.src = "{{ 'remember-variant.js' | asset_url }}";
+    script.defer = true;
+    // Append the script to the document head
+    document.head.appendChild(script);
+  }
+</script>
+
 <header class="header">
   <header-drawer class="header__drawer">
     <details>
