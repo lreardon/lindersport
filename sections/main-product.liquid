@@ -10,18 +10,6 @@
 <script src="{{- 'product-form.js' | asset_url -}}" defer></script>
 <script src="{{- 'featured-collection.js' | asset_url -}}" defer></script>
 <script src="{{- 'select-product-variant.js' | asset_url -}}" defer></script>
-<script>
-	window.addEventListener('popstate', function(event) {
-	console.log("HEY HEY HEY");
-	await new Promise(r => setTimeout(r, 5000));
-  // Check if the URL doesn't already have a hash
-  if (!window.location.hash) {
-
-    // Add #variant to the URL without triggering a page reload
-    history.replaceState(null, '', window.location.pathname + window.location.search + '#variant-{{ product.selected_or_first_available_variant.id }}');
-  }
-});
-</script>
 
 {% capture color_option_index %}
   {% for option in product.options %}
