@@ -5,7 +5,3 @@
 		const rememberedVariantId = localStorage.getItem('rememberedVariant');
 		console.log(`[TRACKING] ${rememberedVariantId}`);
 	}
-
-	function clearRememberedVariant() {
-		localStorage.removeItem('rememberedVariant');
-	}
