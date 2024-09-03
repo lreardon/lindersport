@@ -42,7 +42,6 @@ if (document.readyState != 'loading') {
 
 document.addEventListener('visibilitychange', function() {
   if (!document.hidden) {
-    console.log('Page became visible');
     runOnStart("smooth");
   }
 });
