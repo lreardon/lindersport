@@ -1,4 +1,4 @@
-if (document.readyState != 'loading') {
+function runOnStart() {
   const rememberedVariant = localStorage.getItem("rememberedVariant");
   console.log("rememberedVariant:", rememberedVariant);
   if (rememberedVariant) {
@@ -14,4 +14,13 @@ if (document.readyState != 'loading') {
 			console.warn(`[TARGET] ${selector} not found`);
 		}
   }
+}
+
+if(document.readyState !== 'loading') {
+    runOnStart();
+}
+else {
+    document.addEventListener('DOMContentLoaded', function () {
+        runOnStart()
+    });
 }
