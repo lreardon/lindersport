@@ -26,7 +26,7 @@ else {
     });
 }
 
-document.addEventListener('visibilitychange', function() {
+document.addEventListener('pageshow', function() {
   if (!document.hidden) {
     console.log('Page became visible');
     runOnStart();
