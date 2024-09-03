@@ -1,3 +1,3 @@
 function clearRememberedVariant() {
-	localStorage.removeItem('rememberedVariant');
+	sessionStorage.removeItem('rememberedVariant');
 }

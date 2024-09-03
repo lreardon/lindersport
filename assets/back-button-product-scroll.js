@@ -1,5 +1,5 @@
 function runOnStart() {
-  const rememberedVariant = localStorage.getItem("rememberedVariant");
+  const rememberedVariant = sessionStorage.getItem("rememberedVariant");
   console.log("rememberedVariant:", rememberedVariant);
   if (rememberedVariant) {
     const selector = `#variant-${rememberedVariant}.category__item`;

@@ -1,7 +1,7 @@
 	function updateRememberedVariant(variantId) {
 		console.log(`[REMEMBER] ${variantId}`);
-		localStorage.setItem('rememberedVariant', variantId);
+		sessionStorage.setItem('rememberedVariant', variantId);
 
-		const rememberedVariantId = localStorage.getItem('rememberedVariant');
+		const rememberedVariantId = sessionStorage.getItem('rememberedVariant');
 		console.log(`[TRACKING] ${rememberedVariantId}`);
 	}
