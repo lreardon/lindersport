@@ -1,9 +1,4 @@
-let hasRun = false;
-
 function runOnStart() {
-    if (hasRun) return;
-    hasRun = true;
-
   const rememberedVariant = localStorage.getItem("rememberedVariant");
   console.log("rememberedVariant:", rememberedVariant);
   if (rememberedVariant) {
