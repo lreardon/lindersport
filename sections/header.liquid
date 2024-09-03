@@ -26,7 +26,7 @@
           {%- if section.settings.secondary_menu != blank -%}
             <ul class="header__menu header__menu--secondary list-unstyled">
               {%- render 'flat-menu', menu: section.settings.secondary_menu -%}
-							{%- render 'header-link', url: "https://www.lindersport.com/apps/return_prime", title: 'Returns & Exchanges' -%}
+							{%- render 'header-link', url: pages.returns.url, title: 'Returns & Exchanges' -%}
 
               {%- for block in section.blocks -%}
                 {%- if block.settings.email and block.settings.text != blank -%}
