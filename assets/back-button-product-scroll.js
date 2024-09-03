@@ -24,3 +24,10 @@ else {
         runOnStart()
     });
 }
+
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) {
+    console.log('Page became visible');
+    runOnStart();
+  }
+});
