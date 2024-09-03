@@ -1,4 +1,4 @@
-function runOnStart() {
+function runOnStart(behavior) {
   const rememberedVariant = sessionStorage.getItem("rememberedVariant");
   console.log("rememberedVariant:", rememberedVariant);
   if (rememberedVariant) {
@@ -16,7 +16,7 @@ function runOnStart() {
 
 			// // Perform the scroll immediately
 			// window.scrollTo(0, targetTop);
-      targetElement.scrollIntoView({ behavior: "auto" }); // or smooth
+      targetElement.scrollIntoView({ behavior: behavior }); // or smooth
 			console.log(`[SCROLLED TO] ${targetElement}`);
     } else {
 			console.warn(`[TARGET] ${selector} not found`);
@@ -25,9 +25,9 @@ function runOnStart() {
 }
 
 if (document.readyState != 'loading') {
-    runOnStart();
+    runOnStart("auto");
 } else {
-    document.addEventListener('DOMContentLoaded', runOnStart);
+    document.addEventListener('DOMContentLoaded', () => runOnStart("auto"));
 }
 
 // // function handlePageShow(event) {
@@ -35,14 +35,14 @@ if (document.readyState != 'loading') {
 // //         console.log('Page was restored from bfcache (back navigation)');
 // //         hasRun = false;
 // //     }
-// //     runOnStart();
+// //     runOnStart("smooth");
 // // }
 
 // // window.addEventListener('pageshow', handlePageShow);
 
-// document.addEventListener('visibilitychange', function() {
-//   if (!document.hidden) {
-//     console.log('Page became visible');
-//     runOnStart();
-//   }
-// });
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) {
+    console.log('Page became visible');
+    runOnStart("smooth");
+  }
+});
