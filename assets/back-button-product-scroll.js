@@ -17,7 +17,7 @@ function runOnStart() {
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('load', runOnStart);
+    document.addEventListener('DOMContentLoaded', runOnStart);
 } else {
     runOnStart();
 }
