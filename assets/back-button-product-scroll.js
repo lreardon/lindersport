@@ -8,12 +8,15 @@ function runOnStart() {
     console.log(`[TARGET] ${targetElement}`);
 
     if (targetElement) {
+			const rect = targetElement.getBoundingClientRect();
 			
-			// const rect = targetElement.getBoundingClientRect();
-			// const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-			// const targetTop = rect.top + scrollTop;
-			// window.scrollTo(0, targetTop);
-      targetElement.scrollIntoView({ behavior: "auto" }); // or smooth
+			// Calculate the scroll position
+			const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+			const targetTop = rect.top + scrollTop;
+
+			// Perform the scroll immediately
+			window.scrollTo(0, targetTop);
+      // targetElement.scrollIntoView({ behavior: "auto" }); // or smooth
 			console.log(`[SCROLLED TO] ${targetElement}`);
     } else {
 			console.warn(`[TARGET] ${selector} not found`);
