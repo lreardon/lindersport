@@ -27,6 +27,7 @@ function runOnStart() {
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', runOnStart);
 } else {
+		console.log("OH HEY WE ARE HERE");
     runOnStart();
 }
 
