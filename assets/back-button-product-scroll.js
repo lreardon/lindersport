@@ -8,16 +8,9 @@ function runOnStart(behavior) {
     console.log(`[TARGET] ${targetElement}`);
 
     if (targetElement) {
-			// const rect = targetElement.getBoundingClientRect();
-			
-			// // Calculate the scroll position
-			// const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-			// const targetTop = rect.top + scrollTop;
-
-			// // Perform the scroll immediately
-			// window.scrollTo(0, targetTop);
-      targetElement.scrollIntoView({ behavior: behavior }); // or smooth
-			console.log(`[SCROLLED TO] ${targetElement}`);
+      targetElement.scrollIntoView({ behavior: "auto" }); // or smooth
+				console.log(`[SCROLLED TO] ${targetElement}`);
+				localStorage.removeItem("rememberedVariant");
     } else {
 			console.warn(`[TARGET] ${selector} not found`);
 		}
