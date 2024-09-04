@@ -8,6 +8,9 @@
 
 <noscript>{{ 'section-header.css' | asset_url | stylesheet_tag }}</noscript>
 
+<script src="{{- 'forget-variant.js' | asset_url -}}" defer></script>
+
+
 <header class="header">
   <header-drawer class="header__drawer">
     <details>
@@ -23,7 +26,7 @@
           {%- if section.settings.secondary_menu != blank -%}
             <ul class="header__menu header__menu--secondary list-unstyled">
               {%- render 'flat-menu', menu: section.settings.secondary_menu -%}
-							{%- render 'header-link', url: pages.returns.url, title: 'Returns' -%}
+							{%- render 'header-link', url: pages.returns.url, title: 'Returns & Exchanges' -%}
 
               {%- for block in section.blocks -%}
                 {%- if block.settings.email and block.settings.text != blank -%}
@@ -47,7 +50,7 @@
     </details>
   </header-drawer>
 
-  <a href="{{- routes.root_url -}}" class="header__logo" aria-label="{{- shop.name -}}">
+  <a href="{{- routes.root_url -}}" class="header__logo" aria-label="{{- shop.name -}}" onclick="clearRememberedVariant()">
     {%- if section.settings.logo != blank -%}
       <img src="{{- section.settings.logo | image_url -}}" alt="{{- section.settings.logo.alt | default: shop.name -}}" width="auto" height="auto" loading="lazy">
     {%- else -%}

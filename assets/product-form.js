@@ -95,8 +95,8 @@ if (!customElements.get('product-form')) {
 
   updateURL(variantId) {
   if (!variantId) return;
-    const lastSection = localStorage.getItem('currentSection');
-  console.log('lastSection:', lastSection);
+    // const lastSection = sessionStorage.getItem('currentSection');
+  // console.log('lastSection:', lastSection);
   var url = new URL(window.location.toString());
 
   var searchParams = url.searchParams;
@@ -109,7 +109,7 @@ if (!customElements.get('product-form')) {
 // This function encapsulates the scrolling logic
 // function navigateToLastSection() {
 //   console.log('__NavigateToLast called')
-//   const lastSection = localStorage.getItem('currentSection');
+//   const lastSection = sessionStorage.getItem('currentSection');
 //   if (lastSection) {
 //     setTimeout(() => {
 //       const targetSection = document.getElementById(lastSection);
@@ -137,9 +137,9 @@ window.addEventListener('popstate', function() {
   if (!redirectScheduled) {
     redirectScheduled = true;
     setTimeout(function() {
-      console.log('Redirecting to root page');
-      const lastSection = localStorage.getItem('currentSection');
-      console.log('lastSection on popstate:', lastSection);
+      // console.log('Redirecting to root page');
+      // const lastSection = sessionStorage.getItem('currentSection');
+      // console.log('lastSection on popstate:', lastSection);
       
       // Use history.pushState to change the URL without reloading the page
       // const pushed = `/#${lastSection}`;

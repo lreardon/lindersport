@@ -12,17 +12,17 @@
 //     }
 // }
 
-// // Function to update URL based on localStorage
+// // Function to update URL based on sessionStorage
 // function updateUrlFromStorage() {
 //     try {
-//         const currentSection = localStorage.getItem('currentSection');
-//         console.log("[STORAGE] Current section from localStorage:", currentSection);
+//         const currentSection = sessionStorage.getItem('currentSection');
+//         console.log("[STORAGE] Current section from sessionStorage:", currentSection);
 //         if (currentSection) {
 //             updateUrl(currentSection);
 //             return true; // Indicate that we updated from storage
 //         }
 //     } catch (error) {
-//         console.error("[ERROR] Failed to get item from localStorage:", error);
+//         console.error("[ERROR] Failed to get item from sessionStorage:", error);
 //     }
 //     return false; // Indicate that we didn't update from storage
 // }
@@ -31,10 +31,10 @@
 // window.addEventListener('currentSectionChanged', (event) => {
 //     console.log('[CHANGE] Current section changed to:', event.detail);
 //     try {
-//         localStorage.setItem('currentSection', event.detail);
-//         console.log('[STORAGE] Updated localStorage, current value:', localStorage.getItem('currentSection'));
+//         sessionStorage.setItem('currentSection', event.detail);
+//         console.log('[STORAGE] Updated sessionStorage, current value:', sessionStorage.getItem('currentSection'));
 //     } catch (error) {
-//         console.error("[ERROR] Failed to set item in localStorage:", error);
+//         console.error("[ERROR] Failed to set item in sessionStorage:", error);
 //     }
 //     updateUrl(event.detail);
 // });

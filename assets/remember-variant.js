@@ -1,3 +1,3 @@
 function updateRememberedVariant(variantId) {
-	localStorage.setItem('rememberedVariant', variantId);
+	sessionStorage.setItem('rememberedVariant', variantId);
 }

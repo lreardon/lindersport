@@ -2,7 +2,7 @@
 // if (typeof window.variantTrackerInitialized === 'undefined') {
 //     window.variantTrackerInitialized = true;
 
-//     let rememberedVariant = localStorage.getItem('rememberedVariant') || null;
+//     let rememberedVariant = sessionStorage.getItem('rememberedVariant') || null;
 //     let sectionVisibility = {};
 //     let observer;
 //     let lastSection;
@@ -57,8 +57,8 @@
 // 			// console.log('handlePageTransition Called');
 // 			// Store the current section before navigation
 // 			// console.log('__Observer-Page-Transition Current Section:' + rememberedVariant);
-// 			// console.log('__Observer-Page-Transition Last Section:' + localStorage.getItem('rememberedVariant'));
-// 			lastSection = rememberedVariant || localStorage.getItem('rememberedVariant');
+// 			// console.log('__Observer-Page-Transition Last Section:' + sessionStorage.getItem('rememberedVariant'));
+// 			lastSection = rememberedVariant || sessionStorage.getItem('rememberedVariant');
 // 			// console.log(`Handling page transition to:  ${lastSection}`);
 // 			cleanupObserver();
 // 	}
