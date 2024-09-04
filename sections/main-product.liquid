@@ -14,7 +14,7 @@
 {% capture color_option_index %}
   {% for option in product.options %}
     {% if option == "Color" %}
-      {{ forloop.index }}
+			{{ forloop.index }}
       {%  break %}
     {% endif %}
   {% endfor %}
