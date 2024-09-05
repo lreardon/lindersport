@@ -10,6 +10,7 @@ function runOnStart() {
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "auto" }); // or smooth
 				console.log(`[SCROLLED TO] ${targetElement}`);
+				localStorage.removeItem("rememberedVariant");
     } else {
 			console.warn(`[TARGET] ${selector} not found`);
 		}
