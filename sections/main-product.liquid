@@ -208,7 +208,7 @@
             <div class="size-guide__drawer-inner js-drawer-inner">
               {%- assign image = current_variant.metafields.custom.size_guide.value | default: "" -%}
                 {% if image != "" %}
-                  <img src="{{ image }}" alt="Size Guide">
+                 <p>Size Guide</p>
                 {% else %}
                   <p>No size guide available</p>
                 {% endif %}
@@ -218,17 +218,13 @@
         {%- render 'image', image: image, sizes: '50vw' -%}
       </div>
     {%- endif -%}
-            
-    
-            
-
-              <button type="button" class="size-guide__drawer-close js-drawer-close">
-                Close
-              </button>
-            </div>
-          </details>
-        </size-guide-drawer>
-            
+          <button type="button" class="size-guide__drawer-close js-drawer-close">
+            Close
+          </button>
+        </div>
+      </details>
+    </size-guide-drawer>
+        
 
         </div>
       {%- endif -%}
