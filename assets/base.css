@@ -724,7 +724,17 @@ display: none;
   font-size: 1.6rem;
   
 }
+.category__product-title > a {
+  font-size: 1.6rem;
+  padding-top: 30px;
 
+}
+
+@media screen and (max-width: 350px) {
+  .category__product-title > a {
+    padding-top: 0px;
+  }
+}
 /* Jack: added font-size value to increase mobile font. This media screen overrode caption-price class, so the property is declared here  */
 .category__product-price {
   font-family: "interstate", sans-serif;
