@@ -5,13 +5,7 @@ size-guide-drawer {
 .size-guide__drawer > details {
   position: relative;
 }
-.size-guide-img img {
-  display: inline-block;
-  width: 70%;
-  object-fit: fill;
-  height: 70%;
 
-}
 .size-guide__drawer-inner {
   position: fixed;
   background-color: var(--color-reverse);
@@ -30,32 +24,33 @@ size-guide-drawer {
   height: 80vh; /* Adjust this value as needed */
   max-height: 80vh;
   transform: translateY(100%);
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   top: 302px;
 }
 
 /* Desktop styles */
 @media screen and (min-width: 990px) {
   .size-guide__drawer-inner {
-    top: 297px;
+    /* top: 297px; */
     bottom: 0;
     left: 75%;
     width: 50%;
     max-width: 67vw;
     height: auto;
     max-height: 80vh;
-    transform: translateX(-50%) translateY(100%);
+      transform: translateX(-50%) translateY(100%);
+  transition: transform 1s ease-out;
   }
    .size-guide-img img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: fill;
-    height: 100%;
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  
+    height: auto;
+    width: auto;
   }
 }
-}
+
 
 /* Wide screens */
 @media screen and (min-width: 1080px) {
@@ -84,11 +79,22 @@ size-guide-drawer {
   display: block;
 }
 
-.size-guide-img {
-    width: 100%;
-    height: 100%;
 
+.size-guide-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ensure the container takes full width */
+  height: auto; /* Match the container height you provided */
 }
+
+.size-guide-img img {
+  width: 100%; /* Make the image take full width of its container */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 100%; /* Ensure it doesn't exceed container height */
+  object-fit: contain; /* Ensure the entire image is visible without cropping */
+}
+
 
 .size-guide__drawer-close {
   position: absolute;
@@ -99,10 +105,3 @@ size-guide-drawer {
   box-shadow: none;
   padding: 1.2rem;
 }
-
-/* Add styles for the image */
-/* .size-guide-img img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-} */
