@@ -93,14 +93,13 @@ section.product.is-fixed {
 
 
 .product__price {
+  font-family: "interstate", sans-serif;
+  font-weight: 550;
+  font-style: normal;
   font-size: 1.9rem;
-  font-weight: 400;
   display: inline-block;
   max-width: fit-content;
   margin-bottom: 0.6rem;
-
-  /* changed font-size to 1.9 from 1.2 */
-  /* changed font weight from 600 to 400 */
 }
 
 .product__form {

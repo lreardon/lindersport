@@ -297,6 +297,13 @@ body,
     font-style: normal;
     font-size: larger;
 }
+/* title */
+.title-font {
+  font-family: "interstate", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  /* font-size: larger; */
+}
 /* Blockquote */
 
 blockquote {
@@ -682,41 +689,53 @@ table:not([class]) th {
 /* Product description generates an additional p tag with white-space as the value, as seen in Chino Pants Army at the time of writing. Neccesitates having both of these classes that target  */
 .category__product-description p{
   
-    font-family: "interstate", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    margin-bottom:10rem
+  font-family: "interstate", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  margin-bottom:10rem
 }
- .category__product-title ~ p{
-  
-    font-family: "interstate", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-   
-/* Testing on making the desc text hidden when on mobile */
-@media screen and (max-width: 749px){
-  .category__product-content > p { 
-    display: none;
-  }
+.category__product-title ~ p.category__product-description:has(style[data-mce-fragment]) {
+  display: none;
+}
+.category__product-title ~ p {
+font-family: "Interstate", sans-serif;
+font-weight: 500;
+font-style: normal;
+margin-top:0;
+margin-bottom:4rem
 
-  .category__product-title > a {
-    padding-top: 30px;
-    font-size: 1.6rem;
-    
-  }
- 
-  /* Jack: added font-size value to increase mobile font. This media screen overrode caption-price class, so the property is declared here  */
-  .category__product-price {
-    font-family: "interstate", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-     font-size: 1.6rem;
-  }   
 }
+.category__product-title ~ p:not(:empty):not(:has(*)):not([style*="display:none"]):not([style*="display: none"]) {
+display: none;
+}
+
+
+/* Testing on making the description text hidden when on mobile */
+@media screen and (max-width: 749px) {
+.category__product-center > p {
+  display: none;
+}
+ .category__product-title ~ p:has(span) {
+  display: none;
+}
+}
+.category__product-title > a {
+  padding-top: 30px;
+  font-size: 1.6rem;
+  
+}
+
+/* Jack: added font-size value to increase mobile font. This media screen overrode caption-price class, so the property is declared here  */
+.category__product-price {
+  font-family: "interstate", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+   font-size: 1.6rem;
+}   
  /*Pat Code Ends ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 
-}
+
 /*
 
  h1{
