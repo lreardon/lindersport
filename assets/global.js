@@ -74,36 +74,36 @@ const changeLocation = (url, shouldPush = true) => {
   }
 }
 
-function scrollToSection(href, event) {
-  if (!href) return
+// function scrollToSection(href, event) {
+//   if (!href) return
 
-  if (event) {
-    event.preventDefault()
-    event.stopPropagation()
-  }
+//   if (event) {
+//     event.preventDefault()
+//     event.stopPropagation()
+//   }
 
-  const section = document.getElementById(href.split('#')[1])
+//   const section = document.getElementById(href.split('#')[1])
 
-  if (!section) return
-  if (section.getBoundingClientRect().top == document.body.scrollTop) return
+//   if (!section) return
+//   if (section.getBoundingClientRect().top == document.body.scrollTop) return
 
-  window.setTimeout(() => {
-    if (url[1] != '#') window.scrollTo({ top: 0, behavior: 'auto' })
+//   window.setTimeout(() => {
+//     if (url[1] != '#') window.scrollTo({ top: 0, behavior: 'auto' })
 
-    document.body.removeAttribute('class')
-    document.body.setAttribute('class', html.body.getAttribute('class'))
-    document.body.innerHTML = html.body.innerHTML
-    document.body.classList.add(document.body.getAttribute('data-js-animation'))
-    if (url[1] == '#') window.setTimeout(() => scrollToSection(url, false), 500)
-    initAnimations()
-  }, 500)
+//     document.body.removeAttribute('class')
+//     document.body.setAttribute('class', html.body.getAttribute('class'))
+//     document.body.innerHTML = html.body.innerHTML
+//     document.body.classList.add(document.body.getAttribute('data-js-animation'))
+//     if (url[1] == '#') window.setTimeout(() => scrollToSection(url, false), 500)
+//     initAnimations()
+//   }, 500)
 
-  bodyScroll.unlock(section)
+//   bodyScroll.unlock(section)
 
-  if (zenscroll) return zenscroll.to(section)
+//   if (zenscroll) return zenscroll.to(section)
 
-  section.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
+//   section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+// }
 
 function scrollToSection(href, event) {
   if (!href) return
