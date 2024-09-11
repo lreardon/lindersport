@@ -88,9 +88,25 @@
 
     {%- if section.settings.collection.products.size > 0 -%}
       <div class="category__body">
-        {%- for product_item in section.settings.collection.products -%}
+				{% comment %} {%- for sub_category in section.settings. -%} {% endcomment %}
+        {% comment %} {%- for product_item in section.settings.collection.products -%}
           {%- render 'category-item', product_item: product_item -%}
-        {%- endfor -%}
+        {%- endfor -%} {% endcomment %}
+				{% assign prev_product_id = nil %}
+				{% for product_item in section.settings.collection.products %}
+					{% if product_item.id != prev_product_id %}
+						{% if prev_product_id != nil %}
+							</div>
+						{% endif %}
+						<div id="{{ product_item.title | handle }}">
+					{% endif %}
+					{%- render 'category-item', product_item: product_item -%}
+					{% assign prev_product_id = product_item.id %}
+
+					{% if forloop.last %}
+						</div>
+					{% endif %}
+				{% endfor %}
       </div><!-- /.category__body -->
     {%- endif -%}
   </section><!-- /.category -->
