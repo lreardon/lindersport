@@ -41,7 +41,7 @@
           {%- endif -%}
           <!--Klaviyo Email form  -->
           <div class="header__klaviyo">
-           <div class="klaviyo-form-X7dH6d"></div
+						<div class="klaviyo-form-X7dH6d"></div>
           </div>
         </nav>
       </div><!-- /.header__drawer-inner -->
@@ -52,7 +52,17 @@
 
   <a href="{{- routes.root_url -}}" class="header__logo" aria-label="{{- shop.name -}}" onclick="clearRememberedVariant()">
     {%- if section.settings.logo != blank -%}
-      <img src="{{- section.settings.logo | image_url -}}" alt="{{- section.settings.logo.alt | default: shop.name -}}" width="auto" height="auto" loading="lazy">
+			{{
+				section.settings.logo
+				| image_tag:
+					width: section.settings.logo.width,
+					height: section.settings.logo.height,
+					alt: section.settings.logo.alt | default: shop.name | escape,
+					class: 'header__logo-image',
+					preload: true,
+					widths: '50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750'
+			}}
+      {% comment %} <img src="{{- section.settings.logo | image_url -}}" alt="{{- section.settings.logo.alt | default: shop.name -}}" width="auto" height="auto" loading="lazy"> {% endcomment %}
     {%- else -%}
       {% render 'svg-logo' %}
     {%- endif -%}
