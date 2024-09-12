@@ -4,7 +4,7 @@
   * right of the logo are utility links (search/accounts/cart)
 {% endcomment %}
 
-<link rel="stylesheet" href="{{- 'section-header.css' | asset_url -}}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{- 'section-header.css' | asset_url -}}">
 
 <noscript>{{ 'section-header.css' | asset_url | stylesheet_tag }}</noscript>
 
@@ -14,19 +14,30 @@
 <header class="header">
   <header-drawer class="header__drawer">
     <details>
-      <summary class="header__link js-summary" data-menu-text="{{- 'general.header.menu' | t -}}" data-close-text="{{- 'general.header.close' | t -}}">
+      <summary
+				class="header__link js-summary"
+				data-menu-text="{{- 'general.header.menu' | t -}}"
+				data-close-text="{{- 'general.header.close' | t -}}"
+			>
       </summary>
 
       <div class="header__drawer-inner js-drawer-inner">
+				<br><br>
+				<hr class="header__hr">
+				<br><br>
         <nav>
           <ul class="header__menu header__menu--primary list-unstyled">
             {%- render 'flat-menu', menu: section.settings.menu -%}
           </ul>
 
+
           {%- if section.settings.secondary_menu != blank -%}
+						<br><br>
+						<hr class='header__hr'>
+						<br><br>
             <ul class="header__menu header__menu--secondary list-unstyled">
               {%- render 'flat-menu', menu: section.settings.secondary_menu -%}
-							{%- render 'header-link', url: pages.returns.url, title: 'Returns & Exchanges' -%}
+							{%- render 'header-link', url: pages.returns.url, title: 'Returns & Exchanges' -%} <!-- TODO: manage this in Shopify UI -->
 
               {%- for block in section.blocks -%}
                 {%- if block.settings.email and block.settings.text != blank -%}
@@ -41,7 +52,7 @@
           {%- endif -%}
           <!--Klaviyo Email form  -->
           <div class="header__klaviyo">
-           <div class="klaviyo-form-X7dH6d"></div
+						<div class="klaviyo-form-X7dH6d"></div>
           </div>
         </nav>
       </div><!-- /.header__drawer-inner -->
