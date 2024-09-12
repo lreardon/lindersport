@@ -38,7 +38,7 @@
       </a>
     </div><!-- /.category__image -->
 
-    <div class="category__product center">
+    <div class="category__product">
       <div class="category__product-image">
         {%- assign image_ref = variant.image | default: product_item.featured_image -%}
 
@@ -47,8 +47,8 @@
         </a>
       </div><!-- /.category__product-image -->
 
-      <div class="category__product-content center">
-        <div class="category__product-title title ">
+      <div class="category__product-content">
+        <div class="category__product-title">
           <a href="{{- variant.url -}}" class="full-unstyled-link title-font utility ">
             {{- product_item.title | escape -}}
           </a>

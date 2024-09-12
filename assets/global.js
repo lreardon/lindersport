@@ -313,7 +313,7 @@ class MenuDrawer extends HTMLElement {
     this.querySelectorAll('summary').forEach((summary) =>
       summary.addEventListener('click', this.onSummaryClick.bind(this))
     )
-    this.querySelectorAll('button').forEach((button) =>
+    this.querySelectorAll('button:not(.products__menu__category__button)').forEach((button) =>
       button.addEventListener('click', this.onCloseButtonClick.bind(this))
     )
   }
@@ -457,7 +457,6 @@ class SizeGuide extends MenuDrawer {
       '--header-bottom-position',
       `60px`
     )
-   
   }
 
   openMenuDrawer(summaryElement) {
@@ -534,7 +533,6 @@ class HeaderDrawer extends MenuDrawer {
       '--header-bottom-position',
       `60px`
     )
-   
   }
 
     setSizeGuidePosition() {

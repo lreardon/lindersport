@@ -9,6 +9,7 @@
 <noscript>{{ 'section-header.css' | asset_url | stylesheet_tag }}</noscript>
 
 <script src="{{- 'forget-variant.js' | asset_url -}}" defer></script>
+<script src="{{- 'header-drawer.js' | asset_url -}}" defer></script>
 
 
 <header class="header">
@@ -27,7 +28,7 @@
 				<br><br>
         <nav>
           <ul class="header__menu header__menu--primary list-unstyled">
-            {%- render 'flat-menu', menu: section.settings.menu -%}
+            {%- render 'products-menu', menu: section.settings.menu -%}
           </ul>
 
 

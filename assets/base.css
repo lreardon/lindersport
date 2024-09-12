@@ -767,16 +767,15 @@ display: none;
     display: none !important;
   }
   .center {
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-content:center;
-}
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+	}
 }
 
 .center {
   text-align: center;
- 
 }
 
 .right {

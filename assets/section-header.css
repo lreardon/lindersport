@@ -55,13 +55,31 @@ header-drawer {
   display: block;
 }
 
+.products__menu__category__button {
+  font-size: 1.2rem;
+	cursor: pointer;
+  line-height: 1.4;
+  text-decoration: none;
+	background-color: var(--color-reverse);
+  color: var(--color-ink);
+  display: block;
+}
+
+.header__subsection {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.header__subsection > li {
+	list-style-type: none;
+}
+
 .header__sublink {
   font-size: 1.2rem;
   line-height: 1.4;
   text-decoration: none;
   color: var(--color-ink);
   display: block;
-	padding-left: 3rem;
 }
 
 .header__hr {
@@ -185,6 +203,18 @@ details[open]>.header__icon--menu .icon-hamburger {
 .header__drawer summary {
   position: relative;
   z-index: 3;
+}
+
+.header__subsection {
+	transition: opacity 1.2s ease, height 1.2s ease;
+  opacity: 1;
+  height: auto;
+  overflow: hidden;
+}
+
+.header__subsection.collapsed {
+  opacity: 0;
+  height: 0;
 }
 
 .header__drawer > details > summary:after {
