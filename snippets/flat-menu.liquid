@@ -6,10 +6,10 @@
 -%}
 
 
-{% comment %} for child_link in link.links
+{% comment %} {% comment %} for child_link in link.links
       render 'header-link', url: child_link.url, title: child_link.title
 
       for grandchild_link in child_link.links
         render 'header-link', url: grandchild_link.url, title: grandchild_link.title
       endfor
-    endfor {% endcomment %}
+    endfor {% endcomment %} {% endcomment %}
