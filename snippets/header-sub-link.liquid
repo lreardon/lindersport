@@ -1,0 +1,14 @@
+{%-
+  liquid
+
+  assign mod_url = url
+  assign first_char = url | split: '' | first
+
+  if first_char == '#' and request.page_type != 'index'
+    assign mod_url = routes.root_url | append: url
+  endif
+-%}
+
+<li>
+  <a href="{{- mod_url -}}" class="header__sublink">{{- title -}}</a><!-- /.header__link -->
+</li>
