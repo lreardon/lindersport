@@ -6,7 +6,6 @@
 <section class="cart js-cart">
   {%- if cart.item_count > 0 -%}
     <h1 class="cart__title utility">{{ 'sections.cart.title' | t: count: cart.item_count }}</h1>
-
     <div class="cart__items">
       {%- for cart_item in cart.items -%}
         {%- render 'cart-item', item: cart_item -%}
@@ -44,7 +43,12 @@
       </p><!-- /.caption -->
     </div><!-- /.cart__actions -->
   {%- else -%}
-
+		<div class="cart__warnings">
+			<h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
+			<a href="{{ routes.root_url }}" class="link">
+				{{ 'general.continue_shopping' | t }}
+			</a>
+		</div>
   {%- endif -%}
 
 </section><!-- /.cart -->

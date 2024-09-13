@@ -19,12 +19,6 @@ cart-items.is-empty .title,
   display: block;
 }
 
-.cart__warnings {
-  display: none;
-  text-align: center;
-  padding: 7rem 0;
-}
-
 .cart__empty-text {
   margin: 4.5rem 0 5.5rem;
 }

@@ -74,6 +74,15 @@
   margin: 2rem auto;
 }
 
+.cart__warnings {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 7rem 0;
+}
+
 @media (min-width: 990px) {
   .cart__title {
     text-align: center;
