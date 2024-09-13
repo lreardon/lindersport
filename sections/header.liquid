@@ -4,9 +4,7 @@
   * right of the logo are utility links (search/accounts/cart)
 {% endcomment %}
 
-<link rel="stylesheet" href="{{- 'section-header.css' | asset_url -}}">
-
-<noscript>{{ 'section-header.css' | asset_url | stylesheet_tag }}</noscript>
+{{ 'section-header.css' | asset_url | stylesheet_tag }}
 
 <script src="{{- 'forget-variant.js' | asset_url -}}" defer></script>
 <script src="{{- 'header-drawer.js' | asset_url -}}" defer></script>
