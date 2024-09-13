@@ -23,9 +23,6 @@
       </summary>
 
       <div class="header__drawer-inner js-drawer-inner">
-				<br><br>
-				<hr class="header__hr">
-				<br><br>
         <nav>
           <ul class="header__menu header__menu--primary list-unstyled">
             {%- render 'products-menu', menu: section.settings.menu -%}
@@ -33,9 +30,6 @@
 
 
           {%- if section.settings.secondary_menu != blank -%}
-						<br><br>
-						<hr class='header__hr'>
-						<br><br>
             <ul class="header__menu header__menu--secondary list-unstyled">
               {%- render 'flat-menu', menu: section.settings.secondary_menu -%}
 							{%- render 'header-link', url: pages.returns.url, title: 'Returns & Exchanges' -%} <!-- TODO: manage this in Shopify UI -->
