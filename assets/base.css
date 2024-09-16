@@ -720,14 +720,9 @@ display: none;
 }
 }
 .category__product-title > a {
-  padding-top: 30px;
+  /* padding-top: 30px; */
   font-size: 1.6rem;
   
-}
-.category__product-title > a {
-  font-size: 1.6rem;
-  padding-top: 30px;
-
 }
 
 @media screen and (max-width: 350px) {

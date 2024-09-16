@@ -106,7 +106,11 @@
 	box-sizing: border-box;
 }
 
-.category__product-content p {
+/* .category__product-content p {
+	text-align: center;
+} */
+
+.category__product-content {
 	text-align: center;
 }
 
@@ -114,6 +118,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	/* text-align: center; */
   /* margin-block: 2rem 0.8rem; */
 }
 
