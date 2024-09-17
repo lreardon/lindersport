@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Return Request Approved</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width">
+	<style>
+		body {
+			margin: 0;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+		}
+
+		.important {
+			padding: 10px;
+			margin: 20px 0;
+			font-weight: bold;
+			font-size: 16px;
+			text-align: center;
+			border: 2px solid #ff0000;
+		}
+
+		table {
+			width: 100%;
+			border-spacing: 0;
+			border-collapse: collapse;
+		}
+
+		h2 {
+			margin: 10px 0;
+			line-height: 1.2;
+		}
+
+		.container {
+			width: 94% !important;
+			text-align: left;
+			border-spacing: 0;
+			border-collapse: collapse;
+			margin: 0 auto;
+		}
+
+		.body {
+			height: 100% !important;
+			width: 586px;
+			margin: 0 auto;
+			border-spacing: 0;
+			border-collapse: collapse;
+		}
+
+		.header {
+			margin-top: 20px !important;
+			margin-bottom: 2px !important;
+		}
+
+		.shop-name__cell {
+			display: block;
+		}
+
+		hr.dotted {
+			border: none;
+			border-top: 1px dotted #777;
+			margin: 20px 0;
+		}
+
+		.order-number__cell {
+			display: block;
+			text-align: left !important;
+			margin-top: 20px;
+			text-transform: capitalise;
+			font-size: 14px;
+			color: #999;
+		}
+
+		.order-number__text {
+			font-size: 14px;
+			color: #999;
+		}
+
+		.order-list__item {
+			width: 100%;
+		}
+
+		.order-list__item__cell {
+			padding-bottom: 15px;
+			border-bottom: 1px solid #d3dbe2;
+		}
+
+		.order-list__product-description-cell {
+			width: 100%;
+		}
+
+		.order-list__item-title {
+			font-size: 16px;
+			font-weight: 600;
+			line-height: 1.4;
+			color: #555;
+		}
+
+		.order-list__item-variant {
+			font-size: 14px;
+			color: #999;
+		}
+
+		.order-list__price-cell {
+			white-space: nowrap;
+		}
+
+		.order-list__item-price {
+			color: #555;
+			line-height: 150%;
+			font-size: 16px;
+			font-weight: 600;
+			margin: 0 0 0 15px;
+		}
+
+		.order-list__product-image {
+			margin-right: 15px;
+			border-radius: 8px;
+			border: 1px solid #e5e5e5;
+			height: 60px;
+			width: 60px;
+		}
+
+		.section__cell {
+			padding: 5px 0;
+		}
+
+		.footer {
+			width: 100%;
+			border-spacing: 0;
+			border-collapse: collapse;
+			border-top-width: 1px;
+			border-top-color: #e5e5e5;
+			border-top-style: solid;
+		}
+
+		.footer__cell {
+			padding: 5px 0;
+		}
+
+		.disclaimer__subtext {
+			color: #999;
+			line-height: 150%;
+			font-size: 13px;
+			margin: 0;
+		}
+
+		a {
+			font-size: 14px;
+			text-decoration: none;
+			color: #1990C6;
+		}
+	</style>
+</head>
+
+<body>
+	<table class="body">
+		<tr>
+			<td>
+				<table class="header row">
+					<tr>
+						<td class="header__cell">
+							<center>
+								<table class="container">
+									<tr>
+										<td>
+											<table class="row">
+												<tr>
+													<td class="shop-name__cell">
+														<img src=${store_logo} alt="store logo" width="120">
+													</td>
+													<td class="order-number__cell">
+														<span class="order-number__text">
+															Order #${order_number}
+														</span>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</center>
+						</td>
+					</tr>
+				</table>
+				<table class="row content">
+					<tr>
+						<td class="content__cell">
+							<center>
+								<table class="container">
+									<tr>
+										<td>
+											<h2 style="margin-bottom: 20px;">Return Request Approved</h2>
+											<span class="order-number__text">
+												Hi ${first_name}, We are happy to let you know that your request to return has been approved. To ensure a successful return, please follow the below instructions.
+											</span>
+											<table class="row actions">
+											</table>
+										</td>
+									</tr>
+								</table>
+							</center>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<hr>
+					<div class="important">
+								Send return shipment to the below address.
+							</div>
+							<div style="text-align: center;">
+								<!-- ${warehouse_address} -->
+								The Fill Mill c/o Linder Sport<br>
+								81A Irons Street<br>
+								Toms River, NJ 08753<br>
+								United States
+							</div>
+							<br>
+							<hr>
+											<div class="important">
+								Print this section and include it with your item(s).
+							</div>
+				<table class="row section">
+					<tr>
+						<td class="section__cell">
+							<center>
+								<table class="container">
+									<tr>
+
+										<td>
+											<h3>Item(s) to be returned</h3>
+										</td>
+									</tr>
+								</table>
+								<table class="container">
+									<tr>
+										<td>
+											<table class="row">
+												<line-items>
+													<tr class="order-list__item">
+														<td>
+															<table>
+																<td>
+																	<img src="${product_image}" align="left" width="60" height="60"
+																		class="order-list__product-image" />
+																</td>
+																<td class="order-list__product-description-cell">
+																	<span class="order-list__item-title">${product_title} ×${product_qty}</span><br />
+																</td>
+																<td class="order-list__price-cell">
+																	<p class="order-list__item-price">
+																		${line_item_price}
+																	</p>
+																</td>
+															</table>
+														</td>
+													</tr>
+													<tr class="order-list__item">
+														<td>
+															<h3 class="order-list__item-title">${request_reason}</h3>
+														</td>
+													</tr>
+													<tr class="order-list__item">
+														<td>
+															<h4 class="order-list__item-title">${notes}</h4>
+														</td>
+													</tr>
+												</line-items>
+											</table>
+								</table>
+								<table class="row section">
+									<tr>
+										<td class="section__cell">
+											<center>
+												<table class="container">
+													<tr>
+														<td>
+															<table class="row">
+																<tr>
+																	<td class="customer-info__item">
+																		<h4>Return address</h4>
+																		<p style="color: #777; line-height: 150%; font-size: 14px; margin: 0;">
+																			${warehouse_address}
+																		</p>
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</center>
+										</td>
+									</tr>
+								</table>
+						</td>
+					</tr>
+					<table class="row footer">
+						<hr class="dotted"><br>
+						<tr>
+							<td class="footer__cell">
+					
+								<center>
+					
+									<table class="container">
+										<tr>
+											<td>
+												<p class="disclaimer__subtext">If you have any questions, reply to this email or contact us at
+													<a href="mailto:${sender_email}">${sender_email}</a></p>
+											</td>
+										</tr>
+									</table>
+								</center>
+							</td>
+						</tr>
+					</table>
+					
+</body>
+
+</html>
