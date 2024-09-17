@@ -98,7 +98,7 @@
 						{% if prev_product_id != nil %}
 							</div>
 						{% endif %}
-						<div id="{{ product_item.title | handle }}">
+						<div id="{{ product_item.title | handle }}" class="category__subsection">
 					{% endif %}
 					{%- render 'category-item', product_item: product_item -%}
 					{% assign prev_product_id = product_item.id %}
