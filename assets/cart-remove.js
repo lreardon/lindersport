@@ -10,15 +10,14 @@ if (!customElements.get('cart-remove')) {
      *
      * @param {String} cart - The entire cart page HTML
      */
-
     connectedCallback() {
-      this.section = this.closest('.js-cart')
-      this.link = this.querySelector('a');
-      if(!this.link || !this.section) return;
+      this.section = this.closest('.js-cart');
+      this.button = this.querySelector('button');
+      if(!this.button || !this.section) return;
 
-      this.url = this.link.getAttribute('href');
+      this.url = this.button.getAttribute('data-url');
 
-      this.link.addEventListener('click', (event) => {
+      this.button.addEventListener('click', (event) => {
         event.preventDefault();
 
         removeFromCart(this.url, updateCart, null);

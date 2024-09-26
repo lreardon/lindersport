@@ -1,6 +1,5 @@
 function runOnStart(behavior) {
   const rememberedVariant = sessionStorage.getItem("rememberedVariant");
-  console.log("rememberedVariant:", rememberedVariant);
   if (rememberedVariant) {
     const selector = `#variant-${rememberedVariant}.category__item`;
     const targetElement = document.querySelector(selector);

@@ -83,6 +83,25 @@
 	padding: 7rem 0;
 }
 
+.cart__remove {
+  align-items: end;
+}
+
+cart-remove {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+cart-remove button {
+  min-width: 4.5rem;
+  min-height: 4.5rem;
+  padding: 0;
+	cursor: pointer;
+	background: transparent;
+  margin: 0 0.1rem 0.1rem 0;
+}
+
 @media (min-width: 990px) {
   .cart__title {
     text-align: center;
@@ -91,7 +110,7 @@
 
   .cart__item {
     padding: 1.6rem 2rem;
-  }
+  }	
 
   .cart__actions button {
     max-width: 30rem;
