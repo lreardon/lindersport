@@ -9,11 +9,9 @@ function alternateCategoryItems() {
 			for (const category_subsection of category_subsections) {
 				var category_subsection_items = category_subsection.querySelectorAll('.category__item');
 				if (category_subsection_items.length % 2 === 1) {
-					console.log('SCREEN IS WIDE AND SUBCATEGORY IS ODD');
 					var placeholder = document.createElement('div');
 					placeholder.classList.add('category__item');
 					placeholder.classList.add('placeholder');
-					console.log(placeholder);
 					category_subsection.appendChild(placeholder);
 				}
 			}

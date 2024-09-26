@@ -1,11 +1,7 @@
 function selectProductColor(color) {
   const currentVariantElement = document.querySelector('form select option:checked');
-  console.log(currentVariantElement);
   const currentColor = currentVariantElement.dataset.color || null;
   const currentSize = currentVariantElement.dataset.size || null;
-
-  console.log(currentColor);
-  console.log(currentSize); 
   
   const variantId = selectVariantByColorAndSize({color: color, size: currentSize});
   if (variantId == null) {
@@ -76,7 +72,6 @@ function selectVariantByColorAndSize({color, size}) {
   if (size != null) {
     selector += `[data-size="${size}"]`;
   }
-  console.log(selector);
   
   const newVariant = document.querySelector(selector);
   newVariant.setAttribute('selected', true);

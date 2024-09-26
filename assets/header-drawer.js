@@ -13,6 +13,5 @@ function toggleSection(section) {
 	});
 	// Show the selected section
 	sectionToShow = document.querySelector(`#header__subsection-${section}`);
-	console.log(sectionToShow);
 	sectionToShow.classList.remove('collapsed');
 }
