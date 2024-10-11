@@ -7,7 +7,8 @@
 
 (function(window) {
     'use strict';
-    window.sessionStorage = window.sessionStorage || {
+		if (window.sessionStorage) return;
+    window.sessionStorage = {
         length: 0,
         setItem: function(key, value) {
             document.cookie = key + '=' + value + '; path=/';
