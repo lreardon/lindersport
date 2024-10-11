@@ -6,15 +6,16 @@ function runOnStart(behavior) {
 
     if (targetElement) {
 			console.log(targetElement.getBoundingClientRect().top);
-			if (behavior == "auto") {
-			requestAnimationFrame(() => {
+			switch (behavior) {
+				case "smooth":
+					targetElement.scrollIntoView({ behavior: behavior });
+					break;
+				default:
+					requestAnimationFrame(() => {
 						targetElement.scrollIntoView({ behavior: behavior });
-						sessionStorage.removeItem("rememberedVariant");
 					});
-			} else if (behavior == "smooth") {
-				targetElement.scrollIntoView({ behavior: behavior });
-				sessionStorage.removeItem("rememberedVariant");
-			}
+					sessionStorage.removeItem("rememberedVariant");
+				}
     }
   }
 }
