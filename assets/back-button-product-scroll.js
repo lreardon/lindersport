@@ -5,8 +5,16 @@ function runOnStart(behavior) {
     const targetElement = document.querySelector(selector);
 
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: behavior }); // or smooth
+			console.log(targetElement.getBoundingClientRect().top);
+			if (behavior == "smooth") {
+			requestAnimationFrame(() => {
+						targetElement.scrollIntoView({ behavior: behavior });
+						sessionStorage.removeItem("rememberedVariant");
+					});
+			} else if (behavior == "auto") {
+				targetElement.scrollIntoView({ behavior: behavior });
 				sessionStorage.removeItem("rememberedVariant");
+			}
     }
   }
 }

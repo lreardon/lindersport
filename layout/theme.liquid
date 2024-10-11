@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     <link rel="stylesheet" href="https://use.typekit.net/zcn4mcc.css">
 
+
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
@@ -36,6 +37,14 @@
     <script src="{{- 'body-scroll-lock.js' | asset_url -}}" defer></script>
     <script src="{{ 'helper-functions.js' | asset_url }}" defer></script>
     <script src="{{ 'global.js' | asset_url }}" defer></script>
+		{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll-polyfill/0.4.4/smoothscroll.min.js" defer></script>
+		<script defer>
+			document.addEventListener('DOMContentLoaded', function() {
+				console.log(smoothscroll);
+				smoothscroll.polyfill();
+				console.log('smoothscroll.polyfill called');
+			});
+		</script> {% endcomment %}
 
     <script src="{{- 'swiper.min.js' | asset_url -}}" defer></script>
     {{- 'swiper.min.css' | asset_url | stylesheet_tag -}}
@@ -53,7 +62,13 @@
 			{{ settings.type_header_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
     {%- endunless -%}
 
-    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+    <script>
+			document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+			if (Shopify.designMode) {
+				document.documentElement.classList.add('shopify-design-mode');
+			}
+		</script>
+
   </head>
 
   <body class="transition-fade-in js-animated template-{{- template -}}" style="opacity: 0;" data-js-animation="animation-fade-in">
