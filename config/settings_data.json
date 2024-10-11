@@ -10,8 +10,8 @@
 {
   "current": {
     "color_primary": "#020202",
-    "social_instagram_link": "https:\/\/www.instagram.com\/linder.sport\/shopify",
-    "favicon": "shopify:\/\/shop_images\/LS_LOGO_BLACK_TRANSPARENT.png",
+    "social_instagram_link": "https://www.instagram.com/linder.sport/shopify",
+    "favicon": "shopify://shop_images/LS_LOGO_BLACK_TRANSPARENT.png",
     "colors_accent_1": "#000000",
     "sections": {
       "header": {
@@ -21,14 +21,14 @@
             "type": "email_link",
             "settings": {
               "text": "Customer support",
-              "email": "help@lindersport.com"
+              "email": "info@lindersport.com"
             }
           },
           "84508417-2aa4-4057-a95f-db6949703e15": {
             "type": "email_link",
             "settings": {
               "text": "Press",
-              "email": "press@lindersport.com"
+              "email": "info@lindersport.com"
             }
           }
         },
@@ -37,7 +37,7 @@
           "84508417-2aa4-4057-a95f-db6949703e15"
         ],
         "settings": {
-          "logo": "shopify:\/\/shop_images\/LINDER-SPORT-LOGO_copy.png",
+          "logo": "shopify://shop_images/LINDER-SPORT-LOGO_copy.png",
           "menu": "main",
           "secondary_menu": "secondary"
         }
@@ -55,7 +55,7 @@
     ],
     "blocks": {
       "855628211100114053": {
-        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
         "settings": {
         }
