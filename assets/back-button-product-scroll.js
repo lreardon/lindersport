@@ -14,8 +14,9 @@ function runOnStart(behavior) {
 					requestAnimationFrame(() => {
 						targetElement.scrollIntoView({ behavior: behavior });
 					});
-					sessionStorage.removeItem("rememberedVariant");
-				}
+					break;
+			}
+			sessionStorage.removeItem("rememberedVariant");
     }
   }
 }
