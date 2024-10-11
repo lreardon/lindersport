@@ -23,18 +23,10 @@
               "text": "Customer support",
               "email": "info@lindersport.com"
             }
-          },
-          "84508417-2aa4-4057-a95f-db6949703e15": {
-            "type": "email_link",
-            "settings": {
-              "text": "Press",
-              "email": "info@lindersport.com"
-            }
           }
         },
         "block_order": [
-          "89d48d3a-5b7a-4eb7-9fee-71d9d1e44fa7",
-          "84508417-2aa4-4057-a95f-db6949703e15"
+          "89d48d3a-5b7a-4eb7-9fee-71d9d1e44fa7"
         ],
         "settings": {
           "logo": "shopify://shop_images/LINDER-SPORT-LOGO_copy.png",
