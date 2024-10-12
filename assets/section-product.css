@@ -138,6 +138,8 @@ section.product.is-fixed {
 @media (min-width: 990px) {
   .product {
     display: flex;
+		height: 100vh;
+    overflow: hidden;
   }
 
   .product__gallery {
@@ -187,6 +189,7 @@ section.product.is-fixed {
     padding-top: 0;
     padding-inline: 6.94%;
     padding-bottom: 5.4rem;
+		overflow: scroll;
   }
 
   .product__image {

@@ -75,30 +75,30 @@
               {%- assign variant_ids = image.variants | map: 'id' | join: ' ' -%}
     
               <div class="swiper-slide product__gallery-image" data-variants="{{- variant_ids -}}">
-  <div class="swiper-lazy-preloader"></div>
-  {%- render 'image', 
-    image: image, 
-    sizes: '50vw', 
-    lazy_load: true,
-    class: 'swiper-lazy',
-    data_src: true
-  -%}
-</div>
+								<div class="swiper-lazy-preloader"></div>
+								{%- render 'image', 
+									image: image, 
+									sizes: '50vw', 
+									lazy_load: true,
+									class: 'swiper-lazy',
+									data_src: true
+								-%}
+							</div>
 							
             {%- endfor -%}
     
             {%- if used_images == 0 -%}
               {%- for image in product.images -%}
                 <div class="swiper-slide product__gallery-image" data-variants="{{- variant_ids -}}">
-  <div class="swiper-lazy-preloader"></div>
-  {%- render 'image', 
-    image: image, 
-    sizes: '50vw', 
-    lazy_load: true,
-    class: 'swiper-lazy',
-    data_src: true
-  -%}
-</div>
+									<div class="swiper-lazy-preloader"></div>
+									{%- render 'image', 
+										image: image, 
+										sizes: '50vw', 
+										lazy_load: true,
+										class: 'swiper-lazy',
+										data_src: true
+									-%}
+								</div>
               {%- endfor -%}
             {%- endif -%}
           </div>
