@@ -1,4 +1,4 @@
-function runOnStart(behavior) {
+function scrollToRememberedVariant(behavior) {
   const rememberedVariant = sessionStorage.getItem("rememberedVariant");
   if (rememberedVariant) {
     const selector = `#variant-${rememberedVariant}.category__item`;
@@ -21,22 +21,55 @@ function runOnStart(behavior) {
   }
 }
 
+// if (document.readyState != 'loading') {
+//     runOnStart("auto");
+// } else {
+//     document.addEventListener('DOMContentLoaded', () => runOnStart("auto"));
+// }
+
+// document.addEventListener('visibilitychange', function() {
+//   if (!document.hidden) {
+//     if (window.scrollY > 0) {
+// 			runOnStart("smooth");
+// 		} else {
+// 		runOnStart("auto");
+// 		}
+//   }
+// });
+
+
+
+
+// Independent implementation
+
+function scrollToHashElement(behavior) {
+	const targetId = window.location.hash.substring(1);
+	const targetElement = document.getElementById(targetId);
+	if (targetElement) {
+		// Use requestAnimationFrame to ensure the scroll happens after the page is fully loaded
+		requestAnimationFrame(() => {
+			targetElement.scrollIntoView({ behavior: behavior });
+		});
+	}
+}
+
 if (document.readyState != 'loading') {
-		console.log('case 1');
-    runOnStart("auto");
+		console.log(window.location);
+		if (window.location.hash) {
+			scrollToHashElement("auto");
+		} else {
+			scrollToRememberedVariant("auto");
+		}
 } else {
-		console.log('case 2');
-    document.addEventListener('DOMContentLoaded', () => runOnStart("auto"));
+    document.addEventListener('DOMContentLoaded', () => scrollToHashElement("auto"));
 }
 
 document.addEventListener('visibilitychange', function() {
   if (!document.hidden) {
     if (window.scrollY > 0) {
-			console.log('case 3');
-			runOnStart("smooth");
+			scrollToRememberedVariant("smooth");
 		} else {
-			console.log('case 4');
-		runOnStart("auto");
+		scrollToRememberedVariant("auto");
 		}
   }
 });

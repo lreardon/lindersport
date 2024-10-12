@@ -6,8 +6,12 @@
  */
 
 (function(window) {
+	// console.log('HEY');
     'use strict';
-		if (window.sessionStorage) return;
+		if (window.sessionStorage) {
+			// console.log(window.sessionStorage);
+			return;
+		}
     window.sessionStorage = {
         length: 0,
         setItem: function(key, value) {

@@ -2,9 +2,9 @@
 <link rel="stylesheet" href="{{- 'component-product-swatch.css' | asset_url -}}" media="print" onload="this.media = 'all'">
 <link rel="stylesheet" href="{{- 'component-radio.css' | asset_url -}}" media="print" onload="this.media = 'all'">
 <link rel="stylesheet" href="{{- 'size-guide-drawer.css' | asset_url -}}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{- 'swiper.min.css' | asset_url -}}" media="print" onload="this.media = 'all'">
 
 <script src="{{- 'swiper.min.js' | asset_url -}}" defer></script>
-{{- 'swiper.min.css' | asset_url | stylesheet_tag -}}
 
 <script src="{{- 'product-gallery.js' | asset_url -}}" defer></script>
 <script src="{{- 'product-form.js' | asset_url -}}" defer></script>
@@ -75,15 +75,30 @@
               {%- assign variant_ids = image.variants | map: 'id' | join: ' ' -%}
     
               <div class="swiper-slide product__gallery-image" data-variants="{{- variant_ids -}}">
-                {%- render 'image', image: image, sizes: '50vw' -%}
-              </div>
+  <div class="swiper-lazy-preloader"></div>
+  {%- render 'image', 
+    image: image, 
+    sizes: '50vw', 
+    lazy_load: true,
+    class: 'swiper-lazy',
+    data_src: true
+  -%}
+</div>
+							
             {%- endfor -%}
     
             {%- if used_images == 0 -%}
               {%- for image in product.images -%}
                 <div class="swiper-slide product__gallery-image" data-variants="{{- variant_ids -}}">
-                  {%- render 'image', image: image, sizes: '50vw' -%}
-                </div>
+  <div class="swiper-lazy-preloader"></div>
+  {%- render 'image', 
+    image: image, 
+    sizes: '50vw', 
+    lazy_load: true,
+    class: 'swiper-lazy',
+    data_src: true
+  -%}
+</div>
               {%- endfor -%}
             {%- endif -%}
           </div>
