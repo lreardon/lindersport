@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_primary": "#020202",
@@ -29,7 +29,7 @@
           "89d48d3a-5b7a-4eb7-9fee-71d9d1e44fa7"
         ],
         "settings": {
-          "logo": "shopify://shop_images/LINDER-SPORT-LOGO_copy.png",
+          "logo": "shopify://shop_images/LS_LOGO_BLACK_TRANSPARENT_bc9e446e-a535-4119-bff9-0a26c646b9a8.png",
           "menu": "main",
           "secondary_menu": "secondary"
         }
