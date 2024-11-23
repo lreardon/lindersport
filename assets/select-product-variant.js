@@ -76,12 +76,12 @@ function selectVariantByColorAndSize({color, size}) {
   const newVariant = document.querySelector(selector);
   newVariant.setAttribute('selected', true);
 
-	console.log(newVariant.dataset);
-	isAvailable = newVariant.dataset.available == "true";
+	// console.log(newVariant.dataset);
+	// isAvailable = newVariant.dataset.available == "true";
   
   const variantId = newVariant.value;
   switchActiveProductImage(variantId);
-	switchActiveProductActionsButton(isAvailable);
+	switchActiveProductActionsButton(variantId);
 
   return variantId;
 }
@@ -107,7 +107,6 @@ function switchActiveProductImage(variantId) {
 }
 
 function switchActiveProductActionsButton(variantId) {
-	console.log(variantId);
 	document.querySelectorAll(`.product__actions`).forEach((e) => e.classList.add('hidden'));
 	document.querySelector(`.product__actions[data-variant-id="${variantId}"]`).classList.remove('hidden');
 }
