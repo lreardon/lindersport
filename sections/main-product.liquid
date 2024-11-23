@@ -185,18 +185,29 @@
           {{ sizes }}
           <br>
         {%- endif -%}
+				
+    {% for variant in product.variants %}
 
-        <div class="product__actions">
+				{% capture maybe_hidden %}          
+          {% unless variant.id == current_variant.id %}
+            hidden
+          {% endunless %}
+        {% endcapture %}
+
+        <div class="product__actions  {{- maybe_hidden -}}">
           {%- if current_variant.available -%}
             <button type="submit" class="button button--primary js-product-submit" 
                     data-add="{{- 'products.product.add_to_cart' | t -}}" 
-                    data-added="{{- 'products.product.added_to_cart' | t -}}">
+                    data-added="{{- 'products.product.added_to_cart' | t -}}"
+										data-variant-id="{{- variant.id -}}"
+						>
               {{- 'products.product.add_to_cart' | t -}}
             </button>
           {%- else -%}
           <button id="BIS_trigger" type="button" class="waitlist-button">Waitlist</button>
             {%- endif -%}
         </div><!-- /.product__actions -->
+			{% endfor %}
 
 
         <p class="form-error js-error"></p><!-- /.form-error js-error -->

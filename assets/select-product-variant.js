@@ -75,9 +75,13 @@ function selectVariantByColorAndSize({color, size}) {
   
   const newVariant = document.querySelector(selector);
   newVariant.setAttribute('selected', true);
+
+	console.log(newVariant.dataset);
+	isAvailable = newVariant.dataset.available == "true";
   
   const variantId = newVariant.value;
   switchActiveProductImage(variantId);
+	switchActiveProductActionsButton(isAvailable);
 
   return variantId;
 }
@@ -93,11 +97,18 @@ function switchActiveGallery(variantId) {
   activeGallery.classList.remove('hidden');
 
   // Synchronize the swiper index based on the previous location
-  const activeSwiper = activeGallery.swiper;
+  // const activeSwiper = activeGallery.swiper;
   activeGallery.swiper.slideTo(prevGallerySwiperIndex, 0);
 }
 
 function switchActiveProductImage(variantId) {
   document.querySelectorAll(`.product__image`).forEach((e) => e.classList.add('hidden'));
   document.querySelector(`.product__image[data-variant-id="${variantId}"]`).classList.remove('hidden');
+}
+
+function switchActiveProductActionsButton(variantId) {
+	const productActionsButtons = document.querySelectorAll('product__actions');
+	productActionsButtons.forEach((e) => e.classList.add('hidden'));
+	const activeProductActionsButton = document.querySelector(`product__actions[data-variant-id="${variantId}"]`);
+  activeProductActionsButton.classList.remove('hidden');
 }
