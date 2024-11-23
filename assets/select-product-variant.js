@@ -1,3 +1,10 @@
+document.addEventListener('DOMContentLoaded', function() {
+	const currentVariantElement = document.querySelector('form select option:checked');
+	const currentColor = currentVariantElement.dataset.color || null;
+	const currentSize = currentVariantElement.dataset.size || null;
+	selectVariantByColorAndSize({color: currentColor, size: currentSize});
+});
+
 function selectProductColor(color) {
   const currentVariantElement = document.querySelector('form select option:checked');
   const currentColor = currentVariantElement.dataset.color || null;
