@@ -403,6 +403,7 @@ class MenuDrawer extends HTMLElement {
 
   closeSubmenu(detailsElement) {
     detailsElement.classList.remove('menu-opening')
+		details.removeAttribute('open')
     removeTrapFocus()
     this.closeAnimation(detailsElement)
   }
