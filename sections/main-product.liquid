@@ -195,7 +195,7 @@
         {% endcapture %}
 
         <div class="product__actions  {{- maybe_hidden -}}">
-          {%- if current_variant.available -%}
+          {%- if variant.available -%}
             <button type="submit" class="button button--primary js-product-submit" 
                     data-add="{{- 'products.product.add_to_cart' | t -}}" 
                     data-added="{{- 'products.product.added_to_cart' | t -}}"
@@ -231,9 +231,10 @@
           <details>
             <summary class="size-guide__link js-summary" data-menu-text="{{- section.settings.button_text | escape -}}" data-close-text="{{- 'general.header.close' | t -}}">  {{ section.settings.button_text | default: 'Size Guide' }}</summary>
             <div class="size-guide__drawer-inner js-drawer-inner">
+						{% comment %} TODO: Change this current_variant to the current selected variant {% endcomment %}
               {%- assign image = current_variant.metafields.custom.size_guide.value | default: "" -%}
                 {% if image != "" %}
-                 <p>Size Guide</p>
+                  <p>Size Guide</p>
                 {% else %}
                   <p>No size guide available</p>
                 {% endif %}
