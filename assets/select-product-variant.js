@@ -45,6 +45,10 @@ function selectProductColor(color) {
     const correspondingSizeInput = document.querySelector(`.product__sizes .radio input[value="${size}"]`).closest('.radio');
     if (availableVariantIds.includes(productVariant.value)) {
       correspondingSizeInput.classList.remove('radio--sold-out');
+			if (inputs.length > 0) { // should always be true
+          let input = inputs[0];
+          input.removeAttribute('checked');
+      }
 			correspondingSizeInput.removeAttribute('disabled');
     } else {
       correspondingSizeInput.classList.add('radio--sold-out');
