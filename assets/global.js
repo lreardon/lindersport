@@ -482,6 +482,7 @@ class SizeGuide extends MenuDrawer {
     this.closeButtons = this.querySelectorAll('.js-drawer-close')
     this.closeButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
+				console.log('CLOSE CLICKED');
         event.preventDefault()
         this.removeLock()
       })
