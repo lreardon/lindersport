@@ -107,8 +107,8 @@ function switchActiveProductImage(variantId) {
 }
 
 function switchActiveProductActionsButton(variantId) {
-	const productActionsButtons = document.querySelectorAll('product__actions');
+	const productActionsButtons = document.querySelectorAll('.product__actions');
 	productActionsButtons.forEach((e) => e.classList.add('hidden'));
-	const activeProductActionsButton = document.querySelector(`product__actions[data-variant-id="${variantId}"]`);
+	const activeProductActionsButton = document.querySelector(`.product__actions[data-variant-id="${variantId}"]`);
   activeProductActionsButton.classList.remove('hidden');
 }
