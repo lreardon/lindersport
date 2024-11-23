@@ -48,9 +48,8 @@ function selectProductColor(color) {
 			const inputs = correspondingSizeInput.getElementsByTagName('input'); // should contain exactly one input
 			if (inputs.length > 0) { // should always be true
           let input = inputs[0];
-          input.removeAttribute('checked');
+					input.removeAttribute('disabled');
       }
-			correspondingSizeInput.removeAttribute('disabled');
     } else {
       correspondingSizeInput.classList.add('radio--sold-out');
       const inputs = correspondingSizeInput.getElementsByTagName('input'); // should contain exactly one input
