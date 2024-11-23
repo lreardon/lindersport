@@ -392,7 +392,7 @@ class MenuDrawer extends HTMLElement {
         this.mainDetailsToggle.hasAttribute('open') &&
         !this.mainDetailsToggle.contains(document.activeElement)
       )
-        this.closeMenuDrawer(event)
+        this.closeMenuDrawer()
     })
   }
 
@@ -408,9 +408,7 @@ class MenuDrawer extends HTMLElement {
   }
 
   closeAnimation(detailsElement) {
-		console.log(detailsElement);
     detailsElement.addEventListener('transitionend', () => {
-			console.log('transitionend');
 			detailsElement.removeAttribute('open')
         if (detailsElement.closest('details[open]')) {
           trapFocus(
@@ -429,23 +427,23 @@ class SizeGuide extends MenuDrawer {
     super()
   }
 
-  setBottomPosition() {
-    this.header =
-      this.header || document.getElementById('shopify-section-header')
+  // setBottomPosition() {
+  //   this.header =
+  //     this.header || document.getElementById('shopify-section-header')
 
-    this.borderOffset =
-      this.borderOffset ||
-      this.closest('.header-wrapper').classList.contains(
-        'header-wrapper--border-bottom'
-      )
-        ? 1
-        : 0
+    // this.borderOffset =
+    //   this.borderOffset ||
+    //   this.closest('.header-wrapper').classList.contains(
+    //     'header-wrapper--border-bottom'
+    //   )
+    //     ? 1
+    //     : 0
         //adjusted to be the same height as the header at all viewports
-    document.documentElement.style.setProperty(
-      '--header-bottom-position',
-      `60px`
-    )
-  }
+    // document.documentElement.style.setProperty(
+    //   '--header-bottom-position',
+    //   `60px`
+    // )
+  // }
 
   openMenuDrawer(summaryElement) {
     this.setBottomPosition()
@@ -470,7 +468,7 @@ class SizeGuide extends MenuDrawer {
   }
 
   connectedCallback() {
-    this.setBottomPosition()
+    // this.setBottomPosition()
     this.mainSummary = this.querySelector('.js-summary')
 
     if (this.mainSummary)
@@ -484,7 +482,7 @@ class SizeGuide extends MenuDrawer {
       button.addEventListener('click', (event) => {
         event.preventDefault()
         this.removeLock()
-				this.closeMenuDrawer(event)
+				this.mainSummary.parentElement.removeAttribute('open');
       })
     })
 
