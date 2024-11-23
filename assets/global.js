@@ -446,7 +446,7 @@ class SizeGuide extends MenuDrawer {
   // }
 
   openMenuDrawer(summaryElement) {
-    this.setBottomPosition()
+    // this.setBottomPosition()
 
     bodyScroll.lock(this)
 
