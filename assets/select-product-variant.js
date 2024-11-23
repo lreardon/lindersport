@@ -45,6 +45,7 @@ function selectProductColor(color) {
     const correspondingSizeInput = document.querySelector(`.product__sizes .radio input[value="${size}"]`).closest('.radio');
     if (availableVariantIds.includes(productVariant.value)) {
       correspondingSizeInput.classList.remove('radio--sold-out');
+			correspondingSizeInput.removeAttribute('disabled');
     } else {
       correspondingSizeInput.classList.add('radio--sold-out');
       const inputs = correspondingSizeInput.getElementsByTagName('input'); // should contain exactly one input
