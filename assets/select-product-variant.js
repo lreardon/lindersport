@@ -45,19 +45,19 @@ function selectProductColor(color) {
     const correspondingSizeInput = document.querySelector(`.product__sizes .radio input[value="${size}"]`).closest('.radio');
     if (availableVariantIds.includes(productVariant.value)) {
       correspondingSizeInput.classList.remove('radio--sold-out');
-			const inputs = correspondingSizeInput.getElementsByTagName('input'); // should contain exactly one input
-			if (inputs.length > 0) { // should always be true
-          let input = inputs[0];
-					input.removeAttribute('disabled');
-      }
+			// const inputs = correspondingSizeInput.getElementsByTagName('input'); // should contain exactly one input
+			// if (inputs.length > 0) { // should always be true
+      //     let input = inputs[0];
+			// 		input.removeAttribute('disabled');
+      // }
     } else {
       correspondingSizeInput.classList.add('radio--sold-out');
-      const inputs = correspondingSizeInput.getElementsByTagName('input'); // should contain exactly one input
-      if (inputs.length > 0) { // should always be true
-          let input = inputs[0];
-          input.setAttribute('disabled', '');
-          input.removeAttribute('checked');
-      }
+      // const inputs = correspondingSizeInput.getElementsByTagName('input'); // should contain exactly one input
+      // if (inputs.length > 0) { // should always be true
+      //     let input = inputs[0];
+      //     input.setAttribute('disabled', '');
+      //     input.removeAttribute('checked');
+      // }
     }
   }
 }
