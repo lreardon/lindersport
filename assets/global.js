@@ -392,7 +392,7 @@ class MenuDrawer extends HTMLElement {
         this.mainDetailsToggle.hasAttribute('open') &&
         !this.mainDetailsToggle.contains(document.activeElement)
       )
-        this.closeMenuDrawer()
+        this.closeMenuDrawer(event)
     })
   }
 
@@ -484,6 +484,7 @@ class SizeGuide extends MenuDrawer {
       button.addEventListener('click', (event) => {
         event.preventDefault()
         this.removeLock()
+				this.closeMenuDrawer(event)
       })
     })
 
