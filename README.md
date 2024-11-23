@@ -11,3 +11,8 @@ There are 3 main branches, `main`, `stag`, and `release`. Additionally, every de
 To contribute, starting on the `main` branch, checkout a new development branch with `gcb dev-<BRANCH_NAME>` (preferably with that `dev-` prefix). At some point, merge it into your `dev-<DEVELOPER_NAME>` branch. These branches are linked to a Shopify theme, so you can view how your changes effect the site there.
 
 When the code is ready to merge, push it to `main`. After that merge process is done, when the code is ready to ship, merge `main` into `stag`. Do an idiot check against this preview to ensure nothing will be broken. Then you can merge `stag` into `release`. Manage your own development brnaches as you see fit. Don't delete `dev-<DEVELOPER_NAME>`, `main`, `stag` or `release`.
+
+
+Working around Shopify
+
+Shopify likes to dedicate a whole page to each variant, and then trigger a page reload when a new variant is et as "active". There are also some properties which are exposed to the liquid templating language, but which aren't easily accessed from .js files. To work around these limitations, we often load all the requisite assets at once and then hide/show various components based on "current variant" logic which is handled in regular javascript.
