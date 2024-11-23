@@ -479,14 +479,14 @@ class SizeGuide extends MenuDrawer {
           bodyScroll.clear()
       })
 
-    this.closeButtons = this.querySelectorAll('.js-drawer-close')
-    this.closeButtons.forEach((button) => {
-      button.addEventListener('click', (event) => {
-				console.log('CLOSE CLICKED');
-        event.preventDefault()
-        this.removeLock()
-      })
-    })
+    // this.closeButtons = this.querySelectorAll('.js-drawer-close')
+    // this.closeButtons.forEach((button) => {
+    //   button.addEventListener('click', (event) => {
+		// 		console.log('CLOSE CLICKED');
+    //     event.preventDefault()
+    //     this.removeLock()
+    //   })
+    // })
 
     this.inner = this.querySelector('.js-drawer-inner')
 
