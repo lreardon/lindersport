@@ -1,14 +1,14 @@
-window.addEventListener('load', function() {
-	console.log("GOING TO SELECT PRODUCT VARIANT");
+document.addEventListener('DOMContentLoaded', function() {
+	console.log("GOING TO SELECT PRODUCT COLOR DIRECTLY");
 	const currentVariantElement = document.querySelector('form select option:checked');
 	const currentColor = currentVariantElement.dataset.color || null;
-	const currentSize = currentVariantElement.dataset.size || null;
-	selectVariantByColorAndSize({color: currentColor, size: currentSize});
+	// const currentSize = currentVariantElement.dataset.size || null;
+	selectProductColor(currentColor);
 });
 
 function selectProductColor(color) {
   const currentVariantElement = document.querySelector('form select option:checked');
-  const currentColor = currentVariantElement.dataset.color || null;
+  // const currentColor = currentVariantElement.dataset.color || null;
   const currentSize = currentVariantElement.dataset.size || null;
   
   const variantId = selectVariantByColorAndSize({color: color, size: currentSize});
