@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+	console.log("GOING TO SELECT PRODUCT VARIANT");
 	const currentVariantElement = document.querySelector('form select option:checked');
 	const currentColor = currentVariantElement.dataset.color || null;
 	const currentSize = currentVariantElement.dataset.size || null;
