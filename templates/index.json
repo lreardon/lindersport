@@ -30,20 +30,6 @@
         "cc_url_mobile": ""
       }
     },
-    "category_zFeLWN": {
-      "type": "category",
-      "settings": {
-        "custom_id": "tees",
-        "collection": "tees",
-        "heading_color": "#ffffff",
-        "body_color": "#000000",
-        "ratio": "fullwidth",
-        "poster_desktop": "shopify://shop_images/TeesHeader.png",
-        "cc_url_desktop": "",
-        "poster_mobile": "shopify://shop_images/TeeMobile.png",
-        "cc_url_mobile": ""
-      }
-    },
     "d33e9f1a-006d-4d59-8710-512937f98f35": {
       "type": "category",
       "settings": {
@@ -55,6 +41,20 @@
         "poster_desktop": "shopify://shop_images/RugbysHeader.png",
         "cc_url_desktop": "",
         "poster_mobile": "shopify://shop_images/RugbysMobile.png",
+        "cc_url_mobile": ""
+      }
+    },
+    "category_zFeLWN": {
+      "type": "category",
+      "settings": {
+        "custom_id": "tees",
+        "collection": "tees",
+        "heading_color": "#ffffff",
+        "body_color": "#000000",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/TeesHeader.png",
+        "cc_url_desktop": "",
+        "poster_mobile": "shopify://shop_images/TeeMobile.png",
         "cc_url_mobile": ""
       }
     },
@@ -113,6 +113,19 @@
         "poster_mobile": "shopify://shop_images/BagMobile04.png",
         "cc_url_mobile": ""
       }
+    },
+    "category_Bd3jTq": {
+      "type": "category",
+      "settings": {
+        "custom_id": "",
+        "collection": "",
+        "heading_color": "",
+        "body_color": "",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/caps.png",
+        "cc_url_desktop": "",
+        "cc_url_mobile": ""
+      }
     }
   },
   "order": [
@@ -123,6 +136,7 @@
     "c9930c29-7f97-41c5-b067-31b8aba8663e",
     "fd851d4f-b149-4482-bd0e-afc15ef7c25e",
     "2338a213-79bc-4fdf-8916-1b0a63ee29f5",
-    "cc5e670a-4864-480d-9b05-eaeb59756a86"
+    "cc5e670a-4864-480d-9b05-eaeb59756a86",
+    "category_Bd3jTq"
   ]
 }
