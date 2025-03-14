@@ -118,7 +118,7 @@
       "type": "category",
       "settings": {
         "custom_id": "baseball caps",
-        "collection": "",
+        "collection": "caps",
         "heading_color": "",
         "body_color": "",
         "ratio": "fullwidth",
