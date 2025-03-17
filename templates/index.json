@@ -21,8 +21,8 @@
       "settings": {
         "custom_id": "baseball caps",
         "collection": "caps",
-        "heading_color": "#FFFFFF",
-        "body_color": "#FFFFFF",
+        "heading_color": "#ffffff",
+        "body_color": "#020202",
         "ratio": "fullwidth",
         "poster_desktop": "shopify://shop_images/capsheader.png",
         "cc_url_desktop": "",
