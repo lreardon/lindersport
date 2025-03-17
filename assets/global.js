@@ -120,7 +120,7 @@ function scrollToSection(href, event) {
   if (event) {
     event.preventDefault()
     event.stopPropagation()
-    history.pushState(null, "", href)
+    // history.pushState(null, "", href)
   }
 
   const section = document.getElementById(href.split('#')[1])
