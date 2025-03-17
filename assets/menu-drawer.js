@@ -6,11 +6,11 @@ class MenuDrawer extends HTMLElement {
       const summaryElements = this.querySelectorAll('summary')
       this.addAccessibilityAttributes(summaryElements)
   
-      if (navigator.platform === 'iPhone')
-        document.documentElement.style.setProperty(
-          '--viewport-height',
-          `${window.innerHeight}px`
-        )
+      // if (navigator.platform === 'iPhone')
+      //   document.documentElement.style.setProperty(
+      //     '--viewport-height',
+      //     `${window.innerHeight}px`
+      //   )
   
       this.addEventListener('keyup', this.onKeyUp.bind(this))
       this.addEventListener('focusout', this.onFocusOut.bind(this))

@@ -1,6 +1,4 @@
-{%-
-  liquid
-
+{%- liquid
   assign mod_url = url
   assign first_char = url | split: '' | first
 
@@ -10,5 +8,6 @@
 -%}
 
 <li>
-  <a href="{{- mod_url -}}" class="product__menu__sublink" onclick="clearRememberedVariant()">{{- title -}}</a><!-- /.header__link -->
+  <a href="{{- mod_url -}}" class="product__menu__sublink" onclick="clearRememberedVariant()">{{- title -}}</a>
+  <!-- /.header__link -->
 </li>
