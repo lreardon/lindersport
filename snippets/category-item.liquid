@@ -1,6 +1,4 @@
-{%-
-  liquid
-
+{%- liquid
   assign used_colors = blank
 
   for option in product_item.options
@@ -14,7 +12,7 @@
 -%}
 
 {%- for variant in product_item.variants -%}
-	{% assign variant_id = variant.id %}
+  {% assign variant_id = variant.id %}
 
   {%- liquid
     assign current_color = '%' | append: variant[key] | append: '%'
@@ -31,21 +29,39 @@
     assign used_colors = used_colors | append: current_color
   -%}
 
-  <div id="variant-{{ variant_id }}" class="category__item transition-fade-in js-animated trackable" style="opacity: 0;" data-js-animation="animation-fade-in" onclick="updateRememberedVariant('{{variant_id}}')">
+  <div
+    id="variant-{{ variant_id }}"
+    class="category__item transition-fade-in js-animated trackable"
+    style="opacity: 0;"
+    data-js-animation="animation-fade-in"
+    onclick="updateRememberedVariant('{{variant_id}}')"
+  >
     <div class="category__image">
       <a href="{{- variant.url -}}" tabindex="-1" aria-label="Visit {{ product_item.title }}">
-        {%- render 'image', image: variant.metafields.custom.full_body_image, sizes: '50vw', image_mobile: variant.metafields.custom.full_body_image, image_mobile_width: 375 -%}
+        {%- render 'image',
+          image: variant.metafields.custom.full_body_image,
+          sizes: '50dvw',
+          image_mobile: variant.metafields.custom.full_body_image,
+          image_mobile_width: 375
+        -%}
       </a>
-    </div><!-- /.category__image -->
+    </div>
+    <!-- /.category__image -->
 
     <div class="category__product">
       <div class="category__product-image">
         {%- assign image_ref = variant.image | default: product_item.featured_image -%}
 
         <a href="{{- variant.url -}}" aria-label="Visit {{ product_item.title }}">
-          {%- render 'image', image: image_ref, sizes: '(min-width: 990px) 50vw, 100vw', image_mobile: image_ref, image_mobile_width: 375 -%}
+          {%- render 'image',
+            image: image_ref,
+            sizes: '(min-width: 990px) 50dvw, 100dvw',
+            image_mobile: image_ref,
+            image_mobile_width: 375
+          -%}
         </a>
-      </div><!-- /.category__product-image -->
+      </div>
+      <!-- /.category__product-image -->
 
       <div class="category__product-content">
         <div class="category__product-title">
@@ -53,25 +69,32 @@
             {{- product_item.title | escape -}}
           </a>
 
-					<!-- Render option2 dynamically here -->
-									
-					<p class="utility">
-						{{- variant.option2 -}}
-					</p>
+          <!-- Render option2 dynamically here -->
 
-          <div class="category__product-price caption-price">   <!-- Need to make another css variable for price-caption to distingusih it from description caption -->
+          <p class="utility">
+            {{- variant.option2 -}}
+          </p>
+
+          <div class="category__product-price caption-price">
+            <!-- Need to make another css variable for price-caption to distingusih it from description caption -->
             {% render 'price', product: product_item, variant: variant, price_class: 'justify-center' %}
-          </div><!-- /.category__product-price caption -->
-        </div><!-- /.category__product-title utility -->
+          </div>
+          <!-- /.category__product-price caption -->
+        </div>
+        <!-- /.category__product-title utility -->
 
         {%- assign description = variant.metafields.custom.description.value | default: product_item.description -%}
 
         {%- if description != blank -%}
           <p class="category__product-description caption-description">
             {{- description -}}
-          </p><!-- /.category__product-description caption -->
+          </p>
+          <!-- /.category__product-description caption -->
         {%- endif -%}
-      </div><!-- /.category__product-content -->
-    </div><!-- /.category__product -->
-  </div><!-- /.category__item -->
+      </div>
+      <!-- /.category__product-content -->
+    </div>
+    <!-- /.category__product -->
+  </div>
+  <!-- /.category__item -->
 {%- endfor -%}

@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
-		{% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"> {% endcomment %}
+    {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"> {% endcomment %}
     <!-- Jack Code -->
-    <!-- <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0"> -->
+    <!--
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+      <meta http-equiv="Pragma" content="no-cache">
+      <meta http-equiv="Expires" content="0">
+    -->
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     <link rel="stylesheet" href="https://use.typekit.net/zcn4mcc.css">
-
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
@@ -23,10 +24,9 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
-
     {% comment %}{% endcomment %}
     <title>{{ page_title }}</title>
-    
+
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
@@ -36,19 +36,23 @@
 
     <script src="{{- 'body-scroll-lock.js' | asset_url -}}" defer></script>
     <script src="{{ 'helper-functions.js' | asset_url }}" defer></script>
-    <script src="{{ 'global.js' | asset_url }}" defer></script>
-		<script src="{{ 'session-storage-polyfill.js' | asset_url }}" defer></script>
-		{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll-polyfill/0.4.4/smoothscroll.min.js" defer></script>
-		<script defer>
-			document.addEventListener('DOMContentLoaded', function() {
-				console.log(smoothscroll);
-				smoothscroll.polyfill();
-				console.log('smoothscroll.polyfill called');
-			});
-		</script> {% endcomment %}
+    {% comment %} <script src="{{ 'global.js' | asset_url }}" defer></script> {% endcomment %}
+    <script type="module" src="{{ 'global.js' | asset_url }}"></script>
+    <script src="{{ 'session-storage-polyfill.js' | asset_url }}" defer></script>
+    {% comment %}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll-polyfill/0.4.4/smoothscroll.min.js" defer></script>
+      <script defer>
+      	document.addEventListener('DOMContentLoaded', function() {
+      		console.log(smoothscroll);
+      		smoothscroll.polyfill();
+      		console.log('smoothscroll.polyfill called');
+      	});
+      </script>
+    {% endcomment %}
 
-    <script src="{{- 'swiper.min.js' | asset_url -}}" defer></script>
-    {{- 'swiper.min.css' | asset_url | stylesheet_tag -}}
+    <script src="{{- 'swiper-bundle.min.js' | asset_url -}}" defer></script>
+
+    {{- 'swiper-bundle.min.css' | asset_url | stylesheet_tag -}}
 
     {{ content_for_header }}
 
@@ -57,21 +61,24 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
-			{{ settings.type_body_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+      {{ settings.type_body_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
     {%- endunless -%}
-		{%- unless settings.type_header_font.system? -%}
-			{{ settings.type_header_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+    {%- unless settings.type_header_font.system? -%}
+      {{ settings.type_header_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
     {%- endunless -%}
 
     <script>
-			document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
-		</script>
-
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
   </head>
 
-  <body class="transition-fade-in js-animated template-{{- template -}}" style="opacity: 0;" data-js-animation="animation-fade-in">
+  <body
+    class="transition-fade-in js-animated template-{{- template -}}"
+    style="opacity: 0;"
+    data-js-animation="animation-fade-in"
+  >
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
-      {{ "accessibility.skip_to_text" | t }}
+      {{ 'accessibility.skip_to_text' | t }}
     </a>
 
     {% section 'header' %}
@@ -90,26 +97,26 @@
       window.routes = {
         cart_add_url: '{{ routes.cart_add_url }}',
         cart_change_url: '{{ routes.cart_change_url }}',
-        cart_update_url: '{{ routes.cart_update_url }}'
+        cart_update_url: '{{ routes.cart_update_url }}',
       };
 
       window.cartStrings = {
         error: `{{ 'sections.cart.cart_error' | t }}`,
-        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t }}`
-      }
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t }}`,
+      };
 
       window.variantStrings = {
         addToCart: `{{ 'products.product.add_to_cart' | t }}`,
         soldOut: `{{ 'products.product.sold_out' | t }}`,
         unavailable: `{{ 'products.product.unavailable' | t }}`,
-      }
+      };
     </script>
 
     <script src="{{ 'slider.js' | asset_url }}" defer></script>
     <script src="{{ 'variants.js' | asset_url }}" defer></script>
     <script src="{{ 'zenscroll-min.js' | asset_url }}" defer></script>
-		<script src="{{- 'remember-variant.js' | asset_url -}}" defer></script>
-		<script src="{{- 'back-button-product-scroll.js' | asset_url -}}" defer></script>
-		<script src="{{- 'alternate-category-items.js' | asset_url -}}" defer></script>
+    <script src="{{- 'remember-variant.js' | asset_url -}}" defer></script>
+    <script src="{{- 'back-button-product-scroll.js' | asset_url -}}" defer></script>
+    <script src="{{- 'alternate-category-items.js' | asset_url -}}" defer></script>
   </body>
 </html>

@@ -5,7 +5,7 @@ function scrollToRememberedVariant(behavior) {
     const targetElement = document.querySelector(selector);
 
     if (targetElement) {
-			console.log(targetElement.getBoundingClientRect().top);
+			// console.log(targetElement.getBoundingClientRect().top);
 			switch (behavior) {
 				case "smooth":
 					targetElement.scrollIntoView({ behavior: behavior });
@@ -54,7 +54,7 @@ function scrollToHashElement(behavior) {
 }
 
 if (document.readyState != 'loading') {
-		console.log(window.location);
+		// console.log(window.location);
 		if (window.location.hash) {
 			scrollToHashElement("auto");
 		} else {

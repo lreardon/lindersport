@@ -1,3 +1,5 @@
+import MenuDrawer from './menu-drawer.js'
+
 // Resets page scroll to 0 on first load.
 // Can be auto or manual
 history.scrollRestoration = 'manual'
@@ -290,136 +292,6 @@ Shopify.CountryProvinceSelector.prototype = {
   },
 }
 
-class MenuDrawer extends HTMLElement {
-  constructor() {
-    super()
-
-    this.mainDetailsToggle = this.querySelector('details')
-    const summaryElements = this.querySelectorAll('summary')
-    this.addAccessibilityAttributes(summaryElements)
-
-    if (navigator.platform === 'iPhone')
-      document.documentElement.style.setProperty(
-        '--viewport-height',
-        `${window.innerHeight}px`
-      )
-
-    this.addEventListener('keyup', this.onKeyUp.bind(this))
-    this.addEventListener('focusout', this.onFocusOut.bind(this))
-    this.bindEvents()
-  }
-
-  bindEvents() {
-    this.querySelectorAll('summary').forEach((summary) =>
-      summary.addEventListener('click', this.onSummaryClick.bind(this))
-    )
-    this.querySelectorAll('button:not(.products__menu__category__button)').forEach((button) =>
-      button.addEventListener('click', this.onCloseButtonClick.bind(this))
-    )
-  }
-
-  addAccessibilityAttributes(summaryElements) {
-    summaryElements.forEach((element) => {
-      element.setAttribute('role', 'button')
-      element.setAttribute('aria-expanded', false)
-      element.setAttribute('aria-controls', element.nextElementSibling.id)
-    })
-  }
-
-  onKeyUp(event) {
-    if (event.code.toUpperCase() !== 'ESCAPE') return
-
-    const openDetailsElement = event.target.closest('details[open]')
-    if (!openDetailsElement) return
-
-    openDetailsElement === this.mainDetailsToggle
-      ? this.closeMenuDrawer(this.mainDetailsToggle.querySelector('summary'))
-      : this.closeSubmenu(openDetailsElement)
-  }
-
-  onSummaryClick(event) {
-    const summaryElement = event.currentTarget
-    const detailsElement = summaryElement.parentNode
-    const isOpen = detailsElement.hasAttribute('open')
-
-    if (detailsElement === this.mainDetailsToggle) {
-      if (isOpen) event.preventDefault()
-      isOpen
-        ? this.closeMenuDrawer(summaryElement)
-        : this.openMenuDrawer(summaryElement)
-    } else {
-      trapFocus(
-        summaryElement.nextElementSibling,
-        detailsElement.querySelector('button')
-      )
-
-      setTimeout(() => {
-        detailsElement.classList.add('menu-opening')
-      })
-    }
-  }
-
-  openMenuDrawer(summaryElement) {
-    setTimeout(() => {
-      this.mainDetailsToggle.classList.add('menu-opening')
-    })
-    summaryElement.setAttribute('aria-expanded', true)
-    trapFocus(this.mainDetailsToggle, summaryElement)
-    document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`)
-  }
-
-  closeMenuDrawer(event, elementToFocus = false) {
-    if (event !== undefined) {
-      this.mainDetailsToggle.classList.remove('menu-opening')
-      this.mainDetailsToggle.querySelectorAll('details').forEach((details) => {
-        details.removeAttribute('open')
-        details.classList.remove('menu-opening')
-      })
-      this.mainDetailsToggle
-        .querySelector('summary')
-        .setAttribute('aria-expanded', false)
-      document.body.classList.remove(
-        `overflow-hidden-${this.dataset.breakpoint}`
-      )
-      removeTrapFocus(elementToFocus)
-      this.closeAnimation(this.mainDetailsToggle)
-    }
-  }
-
-  onFocusOut(event) {
-    setTimeout(() => {
-      if (
-        this.mainDetailsToggle.hasAttribute('open') &&
-        !this.mainDetailsToggle.contains(document.activeElement)
-      )
-        this.closeMenuDrawer()
-    })
-  }
-
-  onCloseButtonClick(event) {
-    const detailsElement = event.currentTarget.closest('details')
-    this.closeSubmenu(detailsElement)
-  }
-
-  closeSubmenu(detailsElement) {
-    detailsElement.classList.remove('menu-opening')
-    removeTrapFocus()
-    this.closeAnimation(detailsElement)
-  }
-
-  closeAnimation(detailsElement) {
-    detailsElement.addEventListener('transitionend', () => {
-			detailsElement.removeAttribute('open')
-        if (detailsElement.closest('details[open]')) {
-          trapFocus(
-            detailsElement.closest('details[open]'),
-            detailsElement.querySelector('summary')
-          )
-        }
-			}, { once: true },)
-  }
-}
-
 customElements.define('menu-drawer', MenuDrawer)
 // break
 class SizeGuide extends MenuDrawer {
@@ -431,37 +303,76 @@ class SizeGuide extends MenuDrawer {
   //   this.header =
   //     this.header || document.getElementById('shopify-section-header')
 
-    // this.borderOffset =
-    //   this.borderOffset ||
-    //   this.closest('.header-wrapper').classList.contains(
-    //     'header-wrapper--border-bottom'
-    //   )
-    //     ? 1
-    //     : 0
-        //adjusted to be the same height as the header at all viewports
-    // document.documentElement.style.setProperty(
-    //   '--header-bottom-position',
-    //   `60px`
-    // )
+  //   this.borderOffset =
+  //     this.borderOffset ||
+  //     this.closest('.header-wrapper').classList.contains(
+  //       'header-wrapper--border-bottom'
+  //     )
+  //       ? 1
+  //       : 0
+  //       // adjusted to be the same height as the header at all viewports
+  //   document.documentElement.style.setProperty(
+  //     '--header-bottom-position',
+  //     `60px`
+  //   )
   // }
+
+
 
   openMenuDrawer(summaryElement) {
     // this.setBottomPosition()
+    console.log(summaryElement)
+    let sizeGuideDrawer = this.querySelector('.size-guide__drawer-inner')
+    console.log(sizeGuideDrawer)
 
-    bodyScroll.lock(this)
+    bodyScroll.lock(sizeGuideDrawer)
+    // this.lockScroll()
 
-    setTimeout(() => {
-      this.mainDetailsToggle.classList.add('menu-opening')
-    })
+    // bodyScroll.lock(sizeGuideDrawer)
 
-    summaryElement.setAttribute('aria-expanded', true)
-    trapFocus(this.mainDetailsToggle, summaryElement)
-    document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`)
+    // setTimeout(() => {
+    //   this.mainDetailsToggle.classList.add('menu-opening')
+    // })
+
+    // summaryElement.setAttribute('aria-expanded', true)
+    // trapFocus(this.mainDetailsToggle, summaryElement)
+    // document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`)
+  }
+
+
+  lockScroll() {
+    // Store current scroll position
+    const scrollY = window.scrollY;
+    console.log('scroll y')
+    console.log(scrollY)
+    
+    // Apply fixed positioning to body without changing visual position
+    document.body.style.position = 'fixed';
+    // document.body.style.width = '100%';
+    // document.body.style.height = '100dvh';
+    // document.body.style.top = `-${scrollY}px`;
+    
+    // Store the scroll position for later
+    document.body.dataset.scrollY = scrollY;
+  }
+
+  
+  unlockScroll() {
+    // Get stored scroll position
+    const scrollY = document.body.dataset.scrollY;
+    
+    // Restore normal scrolling
+    document.body.style.position = '';
+    // document.body.style.width = '';
+    // document.body.style.top = '';
+    
+    // Scroll back to original position
+    window.scrollTo(0, parseInt(scrollY || '0'));
   }
 
   removeLock() {
-    if (document.body.getAttribute('style').includes('overflow: hidden'))
-      bodyScroll.clear()
+    // if (document.body.getAttribute('style').includes('overflow: hidden'))
+    bodyScroll.clear()
 
     if (!this.mainSummary) return
     this.mainSummary.click()
@@ -469,6 +380,8 @@ class SizeGuide extends MenuDrawer {
 
   connectedCallback() {
     // this.setBottomPosition()
+    // console.log('HEY HEY')
+    // console.log(this)
     this.mainSummary = this.querySelector('.js-summary')
 
     if (this.mainSummary)
@@ -479,6 +392,7 @@ class SizeGuide extends MenuDrawer {
 
     this.closeButtons = this.querySelectorAll('.js-drawer-close')
     this.closeButtons.forEach((button) => {
+      console.log(button)
       button.addEventListener('click', (event) => {
         event.preventDefault()
         this.removeLock()
@@ -522,28 +436,30 @@ class HeaderDrawer extends MenuDrawer {
     )
   }
 
-    setSizeGuidePosition() {
-    this.sizeGuide =
-      this.sizeGuide || document.querySelector('.size-guide');
+  // setSizeGuidePosition() {
+  //   this.sizeGuide =
+  //     this.sizeGuide || document.querySelector('.size-guide');
 
-    this.sizeGuideOffset =
-      this.sizeGuideOffset ||
-      this.sizeGuide.closest('.size-guide-wrapper').classList.contains(
-        'size-guide-wrapper--border-bottom'
-      )
-        ? 1
-        : 0;
-    // Adjusted to be the same height as the size guide at all viewports
-    document.documentElement.style.setProperty(
-      '--size-guide-position',
-      `60px`
-    );
-  }
+  //   this.sizeGuideOffset =
+  //     this.sizeGuideOffset ||
+  //     this.sizeGuide.closest('.size-guide-wrapper').classList.contains(
+  //       'size-guide-wrapper--border-bottom'
+  //     )
+  //       ? 1
+  //       : 0;
+  //   // Adjusted to be the same height as the size guide at all viewports
+  //   document.documentElement.style.setProperty(
+  //     '--size-guide-position',
+  //     `60px`
+  //   );
+  // }
 
   openMenuDrawer(summaryElement) {
     this.setBottomPosition()
 
-    bodyScroll.lock(this)
+    let scrollableNav = summaryElement.closest('details').querySelector('.header__drawer-inner nav')
+    // console.log(scrollableNav)
+    bodyScroll.lock(scrollableNav)
 
     setTimeout(() => {
       this.mainDetailsToggle.classList.add('menu-opening')

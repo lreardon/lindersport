@@ -480,7 +480,7 @@ a.active-facets__button:focus .active-facets__button-inner {
 }
 
 .mobile-facets__wrapper .disclosure-has-popup[open] > summary::before {
-  height: 100vh;
+  height: 100dvh;
   z-index: 3;
 }
 

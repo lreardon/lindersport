@@ -7,56 +7,76 @@
         <div class="page-width page-width--narrow">
           {% render block %}
         </div>
-      {%- when 'featured_image'-%}
+      {%- when 'featured_image' -%}
         {%- if article.image -%}
           <div class="article-template__hero-container" {{ block.shopify_attributes }}>
-            <div class="article-template__hero-{{ block.settings.image_height }} media"
+            <div
+              class="article-template__hero-{{ block.settings.image_height }} media"
               itemprop="image"
-              {% if block.settings.image_height == 'adapt' and article.image %} style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"{% endif %}
+              {% if block.settings.image_height == 'adapt' and article.image %}
+                style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"
+              {% endif %}
             >
-              <img srcset="{% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
+              <img
+                srcset="
+                  {% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
                   {% if article.image.width >= 700 %}{{ article.image | image_url: width: 700 }} 700w,{% endif %}
                   {% if article.image.width >= 749 %}{{ article.image | image_url: width: 749 }} 749w,{% endif %}
                   {% if article.image.width >= 1498 %}{{ article.image | image_url: width: 1498 }} 1498w,{% endif %}
                   {% if article.image.width >= 1100 %}{{ article.image | image_url: width: 1100 }} 1100w,{% endif %}
-                  {% if article.image.width >= 2200 %}{{ article.image | image_url: width: 2200 }} 2200w,{% endif %}"
-                sizes="(min-width: 1200px) 1100px, (min-width: 750px) calc(100vw - 10rem), 100vw"
+                  {% if article.image.width >= 2200 %}{{ article.image | image_url: width: 2200 }} 2200w,{% endif %}
+                "
+                sizes="(min-width: 1200px) 1100px, (min-width: 750px) calc(100dvw - 10rem), 100dvw"
                 src="{{ article.image | image_url: width: 1100 }}"
                 loading="lazy"
                 width="{{ article.image.width }}"
                 height="{{ article.image.height }}"
-                alt="{{ article.image.alt | escape }}">
+                alt="{{ article.image.alt | escape }}"
+              >
             </div>
           </div>
         {%- endif -%}
 
-        {%- when 'title'-%}
-          <header class="page-width page-width--narrow" {{ block.shopify_attributes }}>
-            <h1 class="article-template__title" itemprop="headline">{{ article.title | escape }}</h1>
-            {%- if block.settings.blog_show_date -%}
-              <span class="circle-divider caption-with-letter-spacing" itemprop="dateCreated pubdate datePublished">{{ article.published_at | time_tag: format: 'month_year' }}</span>
-            {%- endif -%}
-            {%- if block.settings.blog_show_author -%}
-              <span class="caption-with-letter-spacing" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <span itemprop="name">{{ article.author }}</span>
-              </span>
-            {%- endif -%}
-          </header>
+      {%- when 'title' -%}
+        <header class="page-width page-width--narrow" {{ block.shopify_attributes }}>
+          <h1 class="article-template__title" itemprop="headline">{{ article.title | escape }}</h1>
+          {%- if block.settings.blog_show_date -%}
+            <span class="circle-divider caption-with-letter-spacing" itemprop="dateCreated pubdate datePublished">
+              {{- article.published_at | time_tag: format: 'month_year' -}}
+            </span>
+          {%- endif -%}
+          {%- if block.settings.blog_show_author -%}
+            <span class="caption-with-letter-spacing" itemprop="author" itemscope itemtype="http://schema.org/Person">
+              <span itemprop="name">{{ article.author }}</span>
+            </span>
+          {%- endif -%}
+        </header>
 
-        {%- when 'content'-%}
-          <div class="article-template__content page-width page-width--narrow rte" itemprop="articleBody" {{ block.shopify_attributes }}>
-              {{ article.content }}
-          </div>
+      {%- when 'content' -%}
+        <div
+          class="article-template__content page-width page-width--narrow rte"
+          itemprop="articleBody"
+          {{ block.shopify_attributes }}
+        >
+          {{ article.content }}
+        </div>
 
-        {%- when 'social_sharing'-%}
-          <div class="article-template__social-sharing page-width page-width--narrow" {{ block.shopify_attributes }}>
-            {% render 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
-          </div>
+      {%- when 'social_sharing' -%}
+        <div class="article-template__social-sharing page-width page-width--narrow" {{ block.shopify_attributes }}>
+          {% render 'social-sharing',
+            share_title: article.title,
+            share_permalink: article.url,
+            share_image: article.image
+          %}
+        </div>
     {%- endcase -%}
   {%- endfor -%}
 
   <div class="element-margin center">
-    <a href="{{ blog.url }}" class="article-template__link link{% if blog.comments_enabled? == false %} spaced-section{% endif %}">
+    <a
+      href="{{ blog.url }}"
+      class="article-template__link link{% if blog.comments_enabled? == false %} spaced-section{% endif %}"
+    >
       {% render 'icon-arrow' %}
       {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
     </a>
@@ -83,7 +103,10 @@
                 <article id="{{ comment.id }}" class="article-template__comments-comment">
                   {{ comment.content }}
                   <footer class="right">
-                    <span class="circle-divider caption-with-letter-spacing">{{ comment.author }}</span><span class="caption-with-letter-spacing">{{ comment.created_at | time_tag: format: 'month_year' }}</span>
+                    <span class="circle-divider caption-with-letter-spacing">{{ comment.author }}</span
+                    ><span class="caption-with-letter-spacing">
+                      {{- comment.created_at | time_tag: format: 'month_year' -}}
+                    </span>
                   </footer>
                 </article>
               {%- endfor -%}
@@ -102,7 +125,8 @@
           {%- if form.errors -%}
             <div class="form__message" role="alert">
               <h3 class="form-status caption-large" tabindex="-1" autofocus>
-                {% render 'icon-error' %} {{ 'templates.contact.form.error_heading' | t }}
+                {% render 'icon-error' %}
+                {{ 'templates.contact.form.error_heading' | t }}
               </h3>
             </div>
             <ul class="form-status-list caption-large">
@@ -111,8 +135,8 @@
                   <a href="#CommentForm-{{ field }}" class="link">
                     {%- if form.errors.translated_fields[field] contains 'author' -%}
                       {{ 'blogs.article.name' | t }}
-                    {%- elsif form.errors.translated_fields[field] contains 'body'-%}
-                     {{ 'blogs.article.message' | t }}
+                    {%- elsif form.errors.translated_fields[field] contains 'body' -%}
+                      {{ 'blogs.article.message' | t }}
                     {%- else -%}
                       {{ form.errors.translated_fields[field] }}
                     {%- endif -%}
@@ -123,11 +147,18 @@
             </ul>
           {%- elsif form.posted_successfully? -%}
             <div class="form-status-list form__message" role="status">
-              <h3 class="form-status" tabindex="-1" autofocus>{% render 'icon-success' %} {{ post_message | t }}</h3>
+              <h3 class="form-status" tabindex="-1" autofocus>
+                {% render 'icon-success' %}
+                {{ post_message | t }}
+              </h3>
             </div>
           {%- endif -%}
 
-          <div{% if blog.moderated? == false %} class="article-template__comments-fields"{% endif %}>
+          <div
+            {% if blog.moderated? == false %}
+              class="article-template__comments-fields"
+            {% endif %}
+          >
             <div class="article-template__comment-fields">
               <div class="field field--with-error">
                 <input
@@ -144,10 +175,17 @@
                   {% endif %}
                   placeholder="{{ 'blogs.article.name' | t }}"
                 >
-                <label class="field__label" for="CommentForm-author">{{ 'blogs.article.name' | t }} <span aria-hidden="true">*</span></label>
+                <label class="field__label" for="CommentForm-author">
+                  {{- 'blogs.article.name' | t }}
+                  <span aria-hidden="true">*</span></label
+                >
                 {%- if form.errors contains 'author' -%}
                   <small id="CommentForm-author-error">
-                    <span class="form__message">{% render 'icon-error' %}{{ 'blogs.article.name' | t }} {{ form.errors.messages['author'] }}.</span>
+                    <span class="form__message">
+                      {%- render 'icon-error' -%}
+                      {{- 'blogs.article.name' | t }}
+                      {{ form.errors.messages.author }}.</span
+                    >
                   </small>
                 {%- endif -%}
               </div>
@@ -168,10 +206,17 @@
                   {% endif %}
                   placeholder="{{ 'blogs.article.email' | t }}"
                 >
-                <label class="field__label" for="CommentForm-email">{{ 'blogs.article.email' | t }} <span aria-hidden="true">*</span></label>
+                <label class="field__label" for="CommentForm-email">
+                  {{- 'blogs.article.email' | t }}
+                  <span aria-hidden="true">*</span></label
+                >
                 {%- if form.errors contains 'email' -%}
                   <small id="CommentForm-email-error">
-                    <span class="form__message">{% render 'icon-error' %}{{ 'blogs.article.email' | t }} {{ form.errors.messages['email'] }}.</span>
+                    <span class="form__message">
+                      {%- render 'icon-error' -%}
+                      {{- 'blogs.article.email' | t }}
+                      {{ form.errors.messages.email }}.</span
+                    >
                   </small>
                 {%- endif -%}
               </div>
@@ -189,11 +234,18 @@
                 {% endif %}
                 placeholder="{{ 'blogs.article.message' | t }}"
               >{{ form.body }}</textarea>
-                <label class="form__label field__label" for="CommentForm-body">{{ 'blogs.article.message' | t }} <span aria-hidden="true">*</span></label>
+              <label class="form__label field__label" for="CommentForm-body">
+                {{- 'blogs.article.message' | t }}
+                <span aria-hidden="true">*</span></label
+              >
             </div>
             {%- if form.errors contains 'body' -%}
               <small id="CommentForm-body-error">
-                <span class="form__message">{% render 'icon-error' %}{{ 'blogs.article.message' | t }} {{ form.errors.messages['body'] }}.</span>
+                <span class="form__message">
+                  {%- render 'icon-error' -%}
+                  {{- 'blogs.article.message' | t }}
+                  {{ form.errors.messages.body }}.</span
+                >
               </small>
             {%- endif -%}
           </div>
@@ -203,10 +255,9 @@
           <input type="submit" class="button" value="{{ 'blogs.article.post' | t }}">
         {% endform %}
       </div>
-  </div>
+    </div>
   {%- endif -%}
 </article>
-
 
 {% schema %}
 {
