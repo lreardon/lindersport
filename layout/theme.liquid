@@ -38,6 +38,8 @@
     <script src="{{ 'helper-functions.js' | asset_url }}" defer></script>
     {% comment %} <script src="{{ 'global.js' | asset_url }}" defer></script> {% endcomment %}
     <script type="module" src="{{ 'global.js' | asset_url }}"></script>
+    <script type="module" src="{{- 'back-button-product-scroll.js' | asset_url -}}"></script>
+
     <script src="{{ 'session-storage-polyfill.js' | asset_url }}" defer></script>
     {% comment %}
       <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll-polyfill/0.4.4/smoothscroll.min.js" defer></script>
@@ -116,7 +118,6 @@
     <script src="{{ 'variants.js' | asset_url }}" defer></script>
     <script src="{{ 'zenscroll-min.js' | asset_url }}" defer></script>
     <script src="{{- 'remember-variant.js' | asset_url -}}" defer></script>
-    <script src="{{- 'back-button-product-scroll.js' | asset_url -}}" defer></script>
     <script src="{{- 'alternate-category-items.js' | asset_url -}}" defer></script>
   </body>
 </html>

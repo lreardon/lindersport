@@ -16,6 +16,8 @@
   --color-badge-background: var(--color-reverse);
   --color-badge-border: var(--color-ink);
   --alpha-badge-border: 0.1;
+  
+  --header-height: 60px;
 }
 
 /* Animations */

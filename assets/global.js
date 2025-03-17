@@ -22,11 +22,11 @@ const observer = new IntersectionObserver((entries) => {
   })
 })
 
-function globalScroll(y, behavior) {
-  if (zenscroll) zenscroll.toY(y)
+// function globalScroll(y, behavior) {
+//   if (zenscroll) zenscroll.toY(y)
 
-  window.scrollTo({ top: y, behavior })
-}
+//   window.scrollTo({ top: y, behavior })
+// }
 
 /**
  * Images loaded with AJAX on Safari render incorrectly. This function sets the image width or height (whichever is larger)
@@ -109,12 +109,18 @@ const changeLocation = (url, shouldPush = true) => {
 //   section.scrollIntoView({ behavior: 'smooth', block: 'start' })
 // }
 
+document.addEventListener('DOMContentLoaded', () => {
+  let headerHeight = document.querySelector('.header').offsetHeight
+  if (zenscroll) zenscroll.setup(null, headerHeight)
+});
+
 function scrollToSection(href, event) {
   if (!href) return
 
   if (event) {
     event.preventDefault()
     event.stopPropagation()
+    history.pushState(null, "", href)
   }
 
   const section = document.getElementById(href.split('#')[1])

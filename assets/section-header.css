@@ -15,7 +15,7 @@ header-drawer {
   left: 0;
   right: 0;
   z-index: 3;
-  height: 60px;
+  height: --header-height;
 }
 
 .header {
@@ -25,7 +25,7 @@ header-drawer {
   align-items: center;
   padding: 2rem 2rem;
   background-color: white;
-  height: 60px;
+  height: --header-height;
 }
 
 @media screen and (min-width: 990px) {
