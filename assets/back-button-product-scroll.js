@@ -5,13 +5,20 @@ function scrollToRememberedVariant(behavior) {
     const targetElement = document.querySelector(selector);
 
     if (targetElement) {
-			console.log(targetElement.getBoundingClientRect().top);
 			switch (behavior) {
 				case "smooth":
+					if (typeof zenscroll !== "undefined") {
+						zenscroll.to(targetElement, 0);
+						break;
+					}
 					targetElement.scrollIntoView({ behavior: behavior });
 					break;
 				default:
 					requestAnimationFrame(() => {
+						if (typeof zenscroll !== "undefined") {
+							zenscroll.to(targetElement, 0);
+							return;
+						}
 						targetElement.scrollIntoView({ behavior: behavior });
 					});
 					break;
@@ -37,24 +44,41 @@ function scrollToRememberedVariant(behavior) {
 //   }
 // });
 
+// function ensureZenscrollIsLoadedAndSetUp() {
+// 	  if (typeof zenscroll === 'undefined') {
+// 	// Load zenscroll.js dynamically
+// 	const script = document.createElement('script');
+// 	script.src = 'https://cdnjs.cloudflare.com/ajax/libs/zenscroll/4.0.0/zenscroll.min.js';
+// 	script.onload = () => {
+// 	  zenscroll.setup(100, 0);
+// 	};
+// }
 
 
 
 // Independent implementation
 
 function scrollToHashElement(behavior) {
+	// ensureZenscrollIsLoadedAndSetUp();
+	console.log('hash')
 	const targetId = window.location.hash.substring(1);
 	const targetElement = document.getElementById(targetId);
+	
+
+
 	if (targetElement) {
 		// Use requestAnimationFrame to ensure the scroll happens after the page is fully loaded
 		requestAnimationFrame(() => {
+			if (typeof zenscroll !== "undefined") {
+				zenscroll.to(targetElement, behavior == 'smooth' ? null : 0);
+				return;
+			}
 			targetElement.scrollIntoView({ behavior: behavior });
 		});
 	}
 }
 
 if (document.readyState != 'loading') {
-		console.log(window.location);
 		if (window.location.hash) {
 			scrollToHashElement("auto");
 		} else {
