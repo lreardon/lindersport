@@ -24,7 +24,7 @@ header-drawer {
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
   padding: 2rem 2rem;
-  background-color: white;
+  /* background-color: white; */
   height: --header-height;
 }
 
