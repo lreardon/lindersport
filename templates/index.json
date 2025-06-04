@@ -16,19 +16,6 @@
         "color_secondary": "#efefef"
       }
     },
-    "category_Bd3jTq": {
-      "type": "category",
-      "settings": {
-        "custom_id": "baseball caps",
-        "collection": "caps",
-        "heading_color": "#ffffff",
-        "body_color": "#020202",
-        "ratio": "fullwidth",
-        "poster_desktop": "shopify://shop_images/capsheader.png",
-        "cc_url_desktop": "",
-        "cc_url_mobile": ""
-      }
-    },
     "8837fbff-6831-43dc-843b-6b325d5ea09c": {
       "type": "category",
       "settings": {
@@ -113,6 +100,19 @@
         "cc_url_mobile": ""
       }
     },
+    "category_Bd3jTq": {
+      "type": "category",
+      "settings": {
+        "custom_id": "baseball caps",
+        "collection": "caps",
+        "heading_color": "#ffffff",
+        "body_color": "#020202",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/capsheader.png",
+        "cc_url_desktop": "",
+        "cc_url_mobile": ""
+      }
+    },
     "cc5e670a-4864-480d-9b05-eaeb59756a86": {
       "type": "category",
       "settings": {
@@ -130,13 +130,13 @@
   },
   "order": [
     "ac099b6c-a188-4855-8e5f-b02ae72b0959",
-    "category_Bd3jTq",
-    "8837fbff-6831-43dc-843b-6b325d5ea09c",
+    "category_zFeLWN",
+    "fd851d4f-b149-4482-bd0e-afc15ef7c25e",
     "2338a213-79bc-4fdf-8916-1b0a63ee29f5",
     "d33e9f1a-006d-4d59-8710-512937f98f35",
-    "category_zFeLWN",
     "c9930c29-7f97-41c5-b067-31b8aba8663e",
-    "fd851d4f-b149-4482-bd0e-afc15ef7c25e",
+    "8837fbff-6831-43dc-843b-6b325d5ea09c",
+    "category_Bd3jTq",
     "cc5e670a-4864-480d-9b05-eaeb59756a86"
   ]
 }
