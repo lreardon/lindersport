@@ -1,3 +1,5 @@
-<div class="custom-page" style="background-image: url('{{ 'store.jpg' | asset_url }}');">
-  <!-- page content -->
+{{ 'visit-page.css' | asset_url | stylesheet_tag }}
+
+<div class="custom-page-background">
+  {{ page.content }}
 </div>
