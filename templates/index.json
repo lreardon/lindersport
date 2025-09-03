@@ -1,1 +1,142 @@
-{"sections":{"ac099b6c-a188-4855-8e5f-b02ae72b0959":{"type":"checkered-background","settings":{"color_primary":"#ffffff","color_secondary":"#efefef"}},"category_zFeLWN":{"type":"category","settings":{"custom_id":"tees","collection":"tees","heading_color":"#ffffff","body_color":"#000000","ratio":"fullwidth","poster_desktop":"shopify:\/\/shop_images\/TeesHeader.png","cc_url_desktop":"","poster_mobile":"shopify:\/\/shop_images\/TeeMobile.png","cc_url_mobile":""}},"d33e9f1a-006d-4d59-8710-512937f98f35":{"type":"category","settings":{"custom_id":"rugbys","collection":"rugbys","heading_color":"#ffffff","body_color":"#000000","ratio":"fullwidth","poster_desktop":"shopify:\/\/shop_images\/RugbysHeader.png","cc_url_desktop":"","poster_mobile":"shopify:\/\/shop_images\/RugbysMobile.png","cc_url_mobile":""}},"c9930c29-7f97-41c5-b067-31b8aba8663e":{"type":"category","settings":{"custom_id":"sweatshirts","collection":"sweatshirts","heading_color":"#ffffff","body_color":"#020202","ratio":"fullwidth","poster_desktop":"shopify:\/\/shop_images\/SweatshirtHeader.png","cc_url_desktop":"","poster_mobile":"shopify:\/\/shop_images\/SweatshirtMobile.png","cc_url_mobile":""}},"fd851d4f-b149-4482-bd0e-afc15ef7c25e":{"type":"category","settings":{"custom_id":"shirts","collection":"shirts","heading_color":"#000000","body_color":"","ratio":"fullwidth","poster_desktop":"shopify:\/\/shop_images\/ShirtHeader4.png","cc_url_desktop":"","poster_mobile":"shopify:\/\/shop_images\/ShirtingMobile_c55296dc-f72d-431d-822d-29ff6d78eedb.png","cc_url_mobile":""}},"8837fbff-6831-43dc-843b-6b325d5ea09c":{"type":"category","settings":{"custom_id":"sweaters","collection":"sweaters","heading_color":"#ffffff","body_color":"#020202","ratio":"fullwidth","poster_desktop":"shopify:\/\/shop_images\/SweatersHeader01.png","cc_url_desktop":"","poster_mobile":"shopify:\/\/shop_images\/SweaterHeader-mobile2.png","cc_url_mobile":""}},"2338a213-79bc-4fdf-8916-1b0a63ee29f5":{"type":"category","settings":{"custom_id":"pants","collection":"pants","heading_color":"#ffffff","body_color":"#020202","ratio":"fullwidth","poster_desktop":"shopify:\/\/shop_images\/PantsHeader.png","cc_url_desktop":"","poster_mobile":"shopify:\/\/shop_images\/PantsMobile.png","cc_url_mobile":""}},"cc5e670a-4864-480d-9b05-eaeb59756a86":{"type":"category","settings":{"custom_id":"bags","collection":"accessories","heading_color":"","body_color":"","ratio":"fullwidth","poster_desktop":"shopify:\/\/shop_images\/BagHeader2_d7c7597a-044e-424f-b5d4-87027bf90e26.png","cc_url_desktop":"","poster_mobile":"shopify:\/\/shop_images\/BagMobile04.png","cc_url_mobile":""}}},"order":["ac099b6c-a188-4855-8e5f-b02ae72b0959","category_zFeLWN","d33e9f1a-006d-4d59-8710-512937f98f35","c9930c29-7f97-41c5-b067-31b8aba8663e","fd851d4f-b149-4482-bd0e-afc15ef7c25e","8837fbff-6831-43dc-843b-6b325d5ea09c","2338a213-79bc-4fdf-8916-1b0a63ee29f5","cc5e670a-4864-480d-9b05-eaeb59756a86"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ac099b6c-a188-4855-8e5f-b02ae72b0959": {
+      "type": "checkered-background",
+      "settings": {
+        "color_primary": "#ffffff",
+        "color_secondary": "#efefef"
+      }
+    },
+    "8837fbff-6831-43dc-843b-6b325d5ea09c": {
+      "type": "category",
+      "settings": {
+        "custom_id": "sweaters",
+        "collection": "sweaters",
+        "heading_color": "#ffffff",
+        "body_color": "#020202",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/SweatersHeader01.png",
+        "cc_url_desktop": "",
+        "poster_mobile": "shopify://shop_images/SweaterHeader-mobile2.png",
+        "cc_url_mobile": ""
+      }
+    },
+    "2338a213-79bc-4fdf-8916-1b0a63ee29f5": {
+      "type": "category",
+      "settings": {
+        "custom_id": "pants",
+        "collection": "pants",
+        "heading_color": "#ffffff",
+        "body_color": "#020202",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/PantsHeader.png",
+        "cc_url_desktop": "",
+        "poster_mobile": "shopify://shop_images/PantsMobile.png",
+        "cc_url_mobile": ""
+      }
+    },
+    "d33e9f1a-006d-4d59-8710-512937f98f35": {
+      "type": "category",
+      "settings": {
+        "custom_id": "rugbys",
+        "collection": "rugbys",
+        "heading_color": "#ffffff",
+        "body_color": "#000000",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/RugbysHeader.png",
+        "cc_url_desktop": "",
+        "poster_mobile": "shopify://shop_images/RugbysMobile.png",
+        "cc_url_mobile": ""
+      }
+    },
+    "category_zFeLWN": {
+      "type": "category",
+      "settings": {
+        "custom_id": "tees",
+        "collection": "tees",
+        "heading_color": "#ffffff",
+        "body_color": "#000000",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/TeesHeader.png",
+        "cc_url_desktop": "",
+        "poster_mobile": "shopify://shop_images/TeeMobile.png",
+        "cc_url_mobile": ""
+      }
+    },
+    "c9930c29-7f97-41c5-b067-31b8aba8663e": {
+      "type": "category",
+      "settings": {
+        "custom_id": "sweatshirts",
+        "collection": "sweatshirts",
+        "heading_color": "#ffffff",
+        "body_color": "#020202",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/SweatshirtHeader.png",
+        "cc_url_desktop": "",
+        "poster_mobile": "shopify://shop_images/SweatshirtMobile.png",
+        "cc_url_mobile": ""
+      }
+    },
+    "fd851d4f-b149-4482-bd0e-afc15ef7c25e": {
+      "type": "category",
+      "settings": {
+        "custom_id": "shirts",
+        "collection": "shirts",
+        "heading_color": "#000000",
+        "body_color": "",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/ShirtHeader4.png",
+        "cc_url_desktop": "",
+        "poster_mobile": "shopify://shop_images/ShirtingMobile_c55296dc-f72d-431d-822d-29ff6d78eedb.png",
+        "cc_url_mobile": ""
+      }
+    },
+    "category_Bd3jTq": {
+      "type": "category",
+      "settings": {
+        "custom_id": "baseball caps",
+        "collection": "caps",
+        "heading_color": "#ffffff",
+        "body_color": "#020202",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/capsheader.png",
+        "cc_url_desktop": "",
+        "cc_url_mobile": ""
+      }
+    },
+    "cc5e670a-4864-480d-9b05-eaeb59756a86": {
+      "type": "category",
+      "settings": {
+        "custom_id": "bags",
+        "collection": "accessories",
+        "heading_color": "",
+        "body_color": "",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/BagHeader2_d7c7597a-044e-424f-b5d4-87027bf90e26.png",
+        "cc_url_desktop": "",
+        "poster_mobile": "shopify://shop_images/BagMobile04.png",
+        "cc_url_mobile": ""
+      }
+    }
+  },
+  "order": [
+    "ac099b6c-a188-4855-8e5f-b02ae72b0959",
+    "category_zFeLWN",
+    "fd851d4f-b149-4482-bd0e-afc15ef7c25e",
+    "2338a213-79bc-4fdf-8916-1b0a63ee29f5",
+    "d33e9f1a-006d-4d59-8710-512937f98f35",
+    "c9930c29-7f97-41c5-b067-31b8aba8663e",
+    "8837fbff-6831-43dc-843b-6b325d5ea09c",
+    "category_Bd3jTq",
+    "cc5e670a-4864-480d-9b05-eaeb59756a86"
+  ]
+}

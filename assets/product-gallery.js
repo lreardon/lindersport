@@ -15,6 +15,11 @@ if (!customElements.get('product-gallery')) {
     initSlider(startingIndex = 0, hasMousewheel = true) {
       const options = {
         initialSlide: startingIndex,
+				lazy: {
+					loadPrevNext: true,
+					loadPrevNextAmount: 2,
+					loadOnTransitionStart: true
+				},
         pagination: {
           el: '.swiper-pagination',
           clickable: true,

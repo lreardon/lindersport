@@ -15,7 +15,7 @@ header-drawer {
   left: 0;
   right: 0;
   z-index: 3;
-  height: 60px;
+  height: --header-height;
 }
 
 .header {
@@ -24,6 +24,8 @@ header-drawer {
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
   padding: 2rem 2rem;
+  /* background-color: white; */
+  height: --header-height;
 }
 
 @media screen and (min-width: 990px) {
@@ -55,6 +57,11 @@ header-drawer {
   display: block;
 }
 
+/* .visit__our__store__menu__item {
+  font-weight: 500;
+  color: #9a0606;
+} */
+
 .products__menu__category__button {
   font-size: 1.2rem;
 	cursor: pointer;
@@ -74,7 +81,7 @@ header-drawer {
 	list-style-type: none;
 }
 
-.header__sublink {
+.product__menu__sublink {
   font-size: 1.2rem;
   line-height: 1.4;
   text-decoration: none;
@@ -198,6 +205,7 @@ details[open]>.header__icon--menu .icon-hamburger {
 .header__drawer {
   grid-area: navigation;
   display: block;
+  height: 100%;
 }
 
 .header__drawer summary {
@@ -228,12 +236,16 @@ details[open]>.header__icon--menu .icon-hamburger {
 .header__drawer-inner {
   background-color: var(--color-reverse);
   width: 100%;
-  max-width: 50vw;
+
+  max-width: 50dvw;
   padding: var(--header-bottom-position, 6rem) 2rem 2.8rem 1rem;
-  position: fixed;
+  position: absolute;
+  overflow-y: hidden;
   top: 0;
   left: 0;
-  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
   transform: translate3d(-100%, 0, 0);
   transition: transform var(--duration-long) ease-in-out;
   z-index: 2;
@@ -241,14 +253,18 @@ details[open]>.header__icon--menu .icon-hamburger {
 
 .header__drawer .menu-opening .header__drawer-inner {
   transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .header__drawer-inner nav {
   height: 100%;
+  position: relative;
+  max-height: 100%;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  overflow-y: auto;
+  justify-content: start;
+  --webkit-overflow-scrolling: touch;
 }
 
 .header__menu li + li {
@@ -282,7 +298,7 @@ details[open]>.header__icon--menu .icon-hamburger {
 
 @media (min-width: 990px) {
   .header__drawer-inner {
-    max-width: 25vw;
+    max-width: 25dvw;
   }
 }
 
@@ -291,13 +307,13 @@ details[open]>.header__icon--menu .icon-hamburger {
 /* 
 @media (min-width: 400px){
   .header__klaviyo {
-    width: 40vw;
+    width: 40dvw;
   }
 }
 
 @media (min-width: 990px){
   .header__klaviyo {
-    width: 15vw;
+    width: 15dvw;
   }
 }
  */

@@ -16,6 +16,8 @@
   --color-badge-background: var(--color-reverse);
   --color-badge-border: var(--color-ink);
   --alpha-badge-border: 0.1;
+  
+  --header-height: 60px;
 }
 
 /* Animations */
@@ -473,15 +475,18 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100%;
+  /* min-height: 100dvh; */
+	width: 100%;
   margin: 0;
-  font-size: 2.2vw;  /* Pat Code: changed this from 1.5 rem*/
+  font-size: 2.2dvw;  /* Pat Code: changed this from 1.5 rem*/
   letter-spacing: 0.06rem;
   line-height: 1.0; /* Jack change, changed from 1.8*/
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
   font-weight: var(--font-body-weight);
   scroll-behavior: smooth;
+  /* --webkit-overflow-scrolling: touch; */
+
 }
 
 @media screen and (min-width: 750px) {

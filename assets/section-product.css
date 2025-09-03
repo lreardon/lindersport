@@ -14,7 +14,7 @@
 }
 
 section.product.is-fixed {
-  width: 100vw;
+  width: 100dvw;
   position: fixed;
   top: 0;
 }
@@ -42,8 +42,8 @@ section.product.is-fixed {
 .product__gallery > * {
   text-align: center;
   display: block;
-  height: 100vw;
-  max-height: 40vh;
+  height: 100dvw;
+  max-height: 40dvh;
   position: sticky;
   top: 0;
 }
@@ -138,6 +138,8 @@ section.product.is-fixed {
 @media (min-width: 990px) {
   .product {
     display: flex;
+		height: 100dvh;
+    overflow: hidden;
   }
 
   .product__gallery {
@@ -151,7 +153,7 @@ section.product.is-fixed {
   }
 
   .product__gallery > * {
-    height: 100vh;
+    height: 100dvh;
     max-height: unset;
   }
 
@@ -187,6 +189,7 @@ section.product.is-fixed {
     padding-top: 0;
     padding-inline: 6.94%;
     padding-bottom: 5.4rem;
+		overflow: scroll;
   }
 
   .product__image {

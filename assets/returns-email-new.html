@@ -11,13 +11,30 @@
 			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 		}
 
-		.important {
+		.return-label-instructions {
 			padding: 10px;
+			padding-left: 30px;
+			padding-right: 30px;
 			margin: 20px 0;
 			font-weight: bold;
 			font-size: 16px;
+			line-height: 1.8;
+			text-align: center;
+			border: 2px solid #0000ff;
+			word-break: keep-all;
+		}
+
+		.important {
+			padding: 10px;
+			padding-left: 30px;
+			padding-right: 30px;
+			margin: 20px 0;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 1.8;
 			text-align: center;
 			border: 2px solid #ff0000;
+			word-break: keep-all;
 		}
 
 		table {
@@ -191,6 +208,7 @@
 									<tr>
 										<td>
 											<h2 style="margin-bottom: 20px;">Return Request Approved</h2>
+											<br>
 											<span class="order-number__text">
 												Hi ${first_name}, We are happy to let you know that your request to return has been approved. To ensure a successful return, please follow the below instructions.
 											</span>
@@ -204,9 +222,17 @@
 					</tr>
 				</table>
 				<br>
+				<br>
 				<hr>
-					<div class="important">
-								Send return shipment to the below address.
+				<br>
+					<div class="return-label-instructions">
+							If you requested a return shipping label, please find it attached to this email.
+					</div>
+				<br>
+				<br>
+				<br>
+					<div class="return-label-instructions">
+								If you are self-shipping, please use the below address.
 							</div>
 							<div style="text-align: center;">
 								<!-- ${warehouse_address} -->
@@ -216,9 +242,16 @@
 								United States
 							</div>
 							<br>
-							<hr>
+							<br>
+							<br>
+							<br>
+<hr>
+							<br>
+							<br>
+							<br>
+
 											<div class="important">
-								Print this section and include it with your item(s).
+								IMPORTANT: Print this summary and include it with your item(s).
 							</div>
 				<table class="row section">
 					<tr>
@@ -255,47 +288,13 @@
 															</table>
 														</td>
 													</tr>
-													<tr class="order-list__item">
-														<td>
-															<h3 class="order-list__item-title">${request_reason}</h3>
-														</td>
-													</tr>
-													<tr class="order-list__item">
-														<td>
-															<h4 class="order-list__item-title">${notes}</h4>
-														</td>
-													</tr>
 												</line-items>
 											</table>
-								</table>
-								<table class="row section">
-									<tr>
-										<td class="section__cell">
-											<center>
-												<table class="container">
-													<tr>
-														<td>
-															<table class="row">
-																<tr>
-																	<td class="customer-info__item">
-																		<h4>Return address</h4>
-																		<p style="color: #777; line-height: 150%; font-size: 14px; margin: 0;">
-																			${warehouse_address}
-																		</p>
-																	</td>
-																</tr>
-															</table>
-														</td>
-													</tr>
-												</table>
-											</center>
-										</td>
-									</tr>
 								</table>
 						</td>
 					</tr>
 					<table class="row footer">
-						<hr class="dotted"><br>
+						<br><br>
 						<tr>
 							<td class="footer__cell">
 					

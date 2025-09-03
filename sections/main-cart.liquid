@@ -2,6 +2,7 @@
 
 <script src="{{- 'quantity-selector.js' | asset_url -}}" defer></script>
 <script src="{{- 'cart-remove.js' | asset_url -}}" defer></script>
+<script src="{{- 'forget-variant.js' | asset_url }}" defer></script>
 
 <section class="cart js-cart">
   {%- if cart.item_count > 0 -%}
@@ -45,7 +46,7 @@
   {%- else -%}
 		<div class="cart__warnings">
 			<h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
-			<a href="{{ routes.root_url }}" class="link">
+			<a href="{{ routes.root_url }}" class="link" onclick="clearRememberedVariant()">
 				{{ 'general.continue_shopping' | t }}
 			</a>
 		</div>

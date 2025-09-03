@@ -211,7 +211,6 @@ fieldset.product-form__input .form__label {
   margin: 1.5rem 0;
 }
 
-}
 .product__info-container .product-form,
 .product__info-container .product__description,
 .product__info-container .share-button {
@@ -473,11 +472,11 @@ a.product__text {
 .product-media-modal__dialog {
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 100dvh;
 }
 
 .product-media-modal__content {
-  max-height: 100vh;
+  max-height: 100dvh;
   width: 100%;
   overflow: auto;
 }

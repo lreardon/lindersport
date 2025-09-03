@@ -1,6 +1,4 @@
-{%-
-  liquid
-
+{%- liquid
   assign mod_url = url
   assign first_char = url | split: '' | first
 
@@ -9,6 +7,17 @@
   endif
 -%}
 
+{% assign page_handle = mod_url | split: '/' | last %}
+{% assign page_obj = pages[page_handle] %}
+{% assign menu_color = page_obj.metafields.custom.menu_color %}
+
 <li>
-  <a href="{{- mod_url -}}" class="header__link">{{- title -}}</a><!-- /.header__link -->
+  <a
+    href="{{- mod_url -}}"
+    style="color: {{- menu_color | default: '#000' | escape -}}"
+    class="header__link"
+  >
+    {{- title -}}
+  </a>
+  <!-- /.header__link -->
 </li>

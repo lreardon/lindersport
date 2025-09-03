@@ -1,17 +1,15 @@
 {% for link in menu.links %}
-	{% render 'products-menu-category-button', url: link.url, title: link.title %}
+  {% render 'products-menu-category-button', url: link.url, title: link.title %}
 
-	{% if link.links.size > 0 %}
-		<ul id="header__subsection-{{- link.title -}}" class="header__subsection collapsed">
-			{% for child_link in link.links %}
-			{% render 'header-sub-link', url: child_link.url, title: child_link.title %}
-				
-				{% for grandchild_link in child_link.links %}
-					{% render 'header-link', url: grandchild_link.url, title: grandchild_link.title %}
-				{% endfor %}
-			
-			{% endfor %}	
-		</ul>
-	{% endif %}
+  {% if link.links.size > 0 %}
+    <ul id="header__subsection-{{- link.title -}}" class="header__subsection collapsed">
+      {% for child_link in link.links %}
+        {% render 'product-menu-sub-link', url: child_link.url, title: child_link.title %}
 
-{%   endfor %}
+        {% for grandchild_link in child_link.links %}
+          {% render 'header-link', url: grandchild_link.url, title: grandchild_link.title %}
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endfor %}

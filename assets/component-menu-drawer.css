@@ -8,9 +8,9 @@
   position: absolute;
   cursor: default;
   width: 100%;
-  height: calc(100vh - 100%);
+  height: calc(100dvh - 100%);
   height: calc(
-    var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%))
+    var(--viewport-height, 100dvh) - (var(--header-bottom-position, 100%))
   );
   top: 100%;
   left: 0;
@@ -47,16 +47,16 @@ menu-drawer > details[open] > summary::before {
 }
 
 .js .menu-drawer {
-  height: calc(100vh - 100%);
+  height: calc(100dvh - 100%);
   height: calc(
-    var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%))
+    var(--viewport-height, 100dvh) - (var(--header-bottom-position, 100%))
   );
 }
 
 .js details[open] > .menu-drawer,
 .js details[open] > .menu-drawer__submenu {
-  transition: transform var(--duration-default) ease,
-    visibility var(--duration-default) ease;
+  transition: transform var(--duration-default) ease-in-out,
+    visibility var(--duration-default) ease-in-out;
 }
 
 .no-js details[open] > .menu-drawer,
@@ -64,6 +64,8 @@ menu-drawer > details[open] > summary::before {
 details[open].menu-opening > .menu-drawer__submenu {
   transform: translateX(0);
   visibility: visible;
+	transition: transform var(--duration-default) ease-in-out,
+		visibility var(--duration-default) ease-in-out;
 }
 
 @media screen and (min-width: 750px) {

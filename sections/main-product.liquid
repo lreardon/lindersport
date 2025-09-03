@@ -1,11 +1,15 @@
 <link rel="stylesheet" href="{{- 'section-product.css' | asset_url -}}" media="print" onload="this.media = 'all'">
-<link rel="stylesheet" href="{{- 'component-product-swatch.css' | asset_url -}}" media="print" onload="this.media = 'all'">
+<link
+  rel="stylesheet"
+  href="{{- 'component-product-swatch.css' | asset_url -}}"
+  media="print"
+  onload="this.media = 'all'"
+>
 <link rel="stylesheet" href="{{- 'component-radio.css' | asset_url -}}" media="print" onload="this.media = 'all'">
 <link rel="stylesheet" href="{{- 'size-guide-drawer.css' | asset_url -}}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{- 'swiper-bundle.min.css' | asset_url -}}" media="print" onload="this.media = 'all'">
 
-<script src="{{- 'swiper.min.js' | asset_url -}}" defer></script>
-{{- 'swiper.min.css' | asset_url | stylesheet_tag -}}
-
+<script src="{{- 'swiper-bundle.min.js' | asset_url -}}" async></script>
 <script src="{{- 'product-gallery.js' | asset_url -}}" defer></script>
 <script src="{{- 'product-form.js' | asset_url -}}" defer></script>
 <script src="{{- 'featured-collection.js' | asset_url -}}" defer></script>
@@ -33,71 +37,84 @@
 {% endcapture %}
 {% assign size_option_index_0 = size_option_index | minus: 1 %}
 
-
 {% assign current_variant = product.selected_or_first_available_variant %}
 
 <section class="product js-target-section">
   <div class="product__gallery">
-      {%- for variant in product.variants -%}
-        
-        {% capture maybe_hidden %}          
+    {%- for variant in product.variants -%}
+      {% capture maybe_hidden %}          
           {% unless variant.id == current_variant.id %}
             hidden
           {% endunless %}
         {% endcapture %}
-        
-        <product-gallery class="swiper {{- maybe_hidden -}}" data-variant-id="{{- variant.id -}}">
-          <div class="swiper-wrapper">
-            {%- assign used_images = 0 -%}
-    
-            {%- for image in product.images -%}
-              {%-
-                liquid
-    
-                assign should_continue = true
-                assign image_alt = image.alt | handle
-    
-                for option in variant.options
-                  assign option_handle = option | handle
-    
-                  if option_handle == image_alt
-                    assign should_continue = false
-                  endif
-                endfor
-    
-                if should_continue and product.variants.size > 1
-                  continue
+
+      <product-gallery class="swiper {{- maybe_hidden -}}" data-variant-id="{{- variant.id -}}">
+        <div class="swiper-wrapper">
+          {%- assign used_images = 0 -%}
+
+          {%- for image in product.images -%}
+            {%- liquid
+              assign should_continue = true
+              assign image_alt = image.alt | handle
+
+              for option in variant.options
+                assign option_handle = option | handle
+
+                if option_handle == image_alt
+                  assign should_continue = false
                 endif
-    
-                assign used_images = used_images | plus: 1
+              endfor
+
+              if should_continue and product.variants.size > 1
+                continue
+              endif
+
+              assign used_images = used_images | plus: 1
+            -%}
+
+            {%- assign variant_ids = image.variants | map: 'id' | join: ' ' -%}
+
+            <div class="swiper-slide product__gallery-image" data-variants="{{- variant_ids -}}">
+              <div class="swiper-lazy-preloader"></div>
+              {%- render 'image',
+                image: image,
+                sizes: '50dvw',
+                lazy_load: true,
+                class: 'swiper-lazy',
+                data_src: true
               -%}
-    
-              {%- assign variant_ids = image.variants | map: 'id' | join: ' ' -%}
-    
+            </div>
+          {%- endfor -%}
+
+          {%- if used_images == 0 -%}
+            {%- for image in product.images -%}
               <div class="swiper-slide product__gallery-image" data-variants="{{- variant_ids -}}">
-                {%- render 'image', image: image, sizes: '50vw' -%}
+                <div class="swiper-lazy-preloader"></div>
+                {%- render 'image',
+                  image: image,
+                  sizes: '50dvw',
+                  lazy_load: true,
+                  class: 'swiper-lazy',
+                  data_src: true
+                -%}
               </div>
             {%- endfor -%}
-    
-            {%- if used_images == 0 -%}
-              {%- for image in product.images -%}
-                <div class="swiper-slide product__gallery-image" data-variants="{{- variant_ids -}}">
-                  {%- render 'image', image: image, sizes: '50vw' -%}
-                </div>
-              {%- endfor -%}
-            {%- endif -%}
-          </div>
-          <div class="swiper-pagination"></div>
-        </product-gallery>
-      {%- endfor -%}
+          {%- endif -%}
+        </div>
+        <div class="swiper-pagination"></div>
+      </product-gallery>
+    {%- endfor -%}
   </div>
 
   <div class="product__content center">
     {% for variant in product.variants %}
       {%- assign image = variant.image | default: product.featured_image -%}
       {%- if image != blank -%}
-        <div class="product__image js-product-image {% unless variant == current_variant %}hidden{% endunless %}" data-variant-id="{{ variant.id }}">
-          {%- render 'image', image: image, sizes: '50vw' -%}
+        <div
+          class="product__image js-product-image {% unless variant == current_variant %}hidden{% endunless %}"
+          data-variant-id="{{ variant.id }}"
+        >
+          {%- render 'image', image: image, sizes: '50dvw' -%}
         </div>
       {%- endif -%}
     {% endfor %}
@@ -112,19 +129,20 @@
             <span class="product__title-variant js-variant-title">{{- option.selected_value -}}</span>
           {%- endif -%}
         {%- endfor -%}
-      </h1><!-- /.product__title -->
+      </h1>
+      <!-- /.product__title -->
 
       {%- render 'price', product: product, variant: current_variant, price_class: 'product__price js-price' -%}
 
       <div class="product__description caption">
         {{- product.description -}}
-      </div><!-- /.product__description caption -->
+      </div>
+      <!-- /.product__description caption -->
 
       {%- form 'product', product -%}
         <select name="id" id="master-select" class="hidden js-master-select">
           {%- for variant in product.variants -%}
-            <div>
-            </div>
+            <div></div>
             <option
               value="{{- variant.id -}}"
               {% if variant.id == current_variant.id %}
@@ -139,8 +157,8 @@
               data-compare="{{- variant.compare_at_price | money -}}"
               {% if color_option_index_0 > -1 %}
                 data-color="{{ variant.options[color_option_index_0] }}"
-              {%  endif %}
-              {%  if size_option_index_0 > -1 %}
+              {% endif %}
+              {% if size_option_index_0 > -1 %}
                 data-size="{{ variant.options[size_option_index_0] }}"
               {% endif %}
             >
@@ -152,40 +170,55 @@
         {%- if product.variants.size > 1 -%}
           {%- assign swatches = blank -%}
           {%- assign sizes = blank -%}
-          
-          {%- for option in product.options_with_values -%}    
+
+          {%- for option in product.options_with_values -%}
             {% if option.name == 'Color' %}
               {% capture swatches %}
                 {% render 'swatches', option: option %}
               {% endcapture %}
             {% endif %}
-            
+
             {% if option.name == 'Size' -%}
               {% capture sizes %}
                 {% render 'sizes', option: option %}
               {% endcapture %}
             {% endif %}
           {% endfor %}
-          
+
           {{ swatches }}
           {{ sizes }}
           <br>
         {%- endif -%}
 
-        <div class="product__actions">
-          {%- if current_variant.available -%}
-            <button type="submit" class="button button--primary js-product-submit" 
-                    data-add="{{- 'products.product.add_to_cart' | t -}}" 
-                    data-added="{{- 'products.product.added_to_cart' | t -}}">
-              {{- 'products.product.add_to_cart' | t -}}
-            </button>
-          {%- else -%}
-          <button id="BIS_trigger" type="button" class="waitlist-button">Waitlist</button>
+        {% for variant in product.variants %}
+          {% capture maybe_hidden %}          
+          {% unless variant.id == current_variant.id %}
+            hidden
+          {% endunless %}
+        {% endcapture %}
+
+          <div
+            class="product__actions {{- maybe_hidden -}}"
+            data-variant-id="{{- variant.id -}}"
+          >
+            {%- if variant.available -%}
+              <button
+                type="submit"
+                class="button button--primary js-product-submit"
+                data-add="{{- 'products.product.add_to_cart' | t -}}"
+                data-added="{{- 'products.product.added_to_cart' | t -}}"
+              >
+                {{- 'products.product.add_to_cart' | t -}}
+              </button>
+            {%- else -%}
+              <button id="BIS_trigger" type="button" class="waitlist-button">Waitlist</button>
             {%- endif -%}
-        </div><!-- /.product__actions -->
+          </div>
+          <!-- /.product__actions -->
+        {% endfor %}
 
-
-        <p class="form-error js-error"></p><!-- /.form-error js-error -->
+        <p class="form-error js-error"></p>
+        <!-- /.form-error js-error -->
 
         {%- if form.errors != blank -%}
           {% for error in form.errors %}
@@ -201,37 +234,41 @@
       {%- endform -%}
 
       {%- if section.settings.button_text != blank and section.settings.button_url != blank -%}
-        <div class="product__button button-small caption color-ink js-button "> 
-        <size-guide-drawer class="size-guide__drawer"> 
-          <details>
-            <summary class="size-guide__link js-summary" data-menu-text="{{- section.settings.button_text | escape -}}" data-close-text="{{- 'general.header.close' | t -}}">  {{ section.settings.button_text | default: 'Size Guide' }}</summary>
-            <div class="size-guide__drawer-inner js-drawer-inner">
-              {%- assign image = current_variant.metafields.custom.size_guide.value | default: "" -%}
-                {% if image != "" %}
-                 <p>Size Guide</p>
+        <div class="product__button button-small caption color-ink js-button ">
+          <size-guide-drawer class="size-guide__drawer">
+            <details>
+              <summary
+                class="size-guide__link js-summary"
+                data-menu-text="{{- section.settings.button_text | escape -}}"
+                data-close-text="{{- 'general.header.close' | t -}}"
+              >
+                {{ section.settings.button_text | default: 'Size Guide' }}
+              </summary>
+              <div class="size-guide__drawer-inner js-drawer-inner">
+                {% comment %} TODO: Change this current_variant to the current selected variant {% endcomment %}
+                {%- assign image = current_variant.metafields.custom.size_guide.value | default: '' -%}
+                {% if image != '' %}
+                  <p>Size Guide</p>
                 {% else %}
                   <p>No size guide available</p>
                 {% endif %}
 
-              {%- if image != blank -%}
-      <div class="size-guide-img js-product-image">
-        {%- render 'image', image: image, sizes: '50vw' -%}
-      </div>
-    {%- endif -%}
-          <button type="button" class="size-guide__drawer-close js-drawer-close">
-            Close
-          </button>
-        </div>
-      </details>
-    </size-guide-drawer>
-        
-
+                {%- if image != blank -%}
+                  <div class="size-guide-img js-product-image">
+                    {%- render 'image', image: image, sizes: '50dvw' -%}
+                  </div>
+                {%- endif -%}
+                <button type="button" class="size-guide__drawer-close js-drawer-close">Close</button>
+              </div>
+            </details>
+          </size-guide-drawer>
         </div>
       {%- endif -%}
     </product-form>
-  </div><!-- /.product__content -->  
-	
-</section><!-- /.product -->
+  </div>
+  <!-- /.product__content -->
+</section>
+<!-- /.product -->
 
 {% schema %}
 {
