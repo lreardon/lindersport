@@ -57,6 +57,11 @@ header-drawer {
   display: block;
 }
 
+/* .visit__our__store__menu__item {
+  font-weight: 500;
+  color: #9a0606;
+} */
+
 .products__menu__category__button {
   font-size: 1.2rem;
 	cursor: pointer;

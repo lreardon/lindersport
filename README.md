@@ -2,6 +2,10 @@
 
 This repository is the source of truth for Linder Sport's Shopify themes. The repository is linked to Shopify through Shopify's GitHub integration. Branches here correspond to Shopify themes. It is possible to add a new branch for themes in Shopify's Theme Manager area by clicking "Add Theme", clicking the "Github" option, and selecting the appropriate branch.
 
+## Development
+
+Use `shopify theme dev` to develop and preview in real time.
+
 ## How to use this repository
 
 There are 3 main branches, `main`, `stag`, and `release`. Additionally, every developer should have a `dev-<DEVELOPER_NAME>` branch.
