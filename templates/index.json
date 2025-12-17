@@ -16,17 +16,31 @@
         "color_secondary": "#efefef"
       }
     },
-    "8837fbff-6831-43dc-843b-6b325d5ea09c": {
+    "category_zFeLWN": {
       "type": "category",
       "settings": {
-        "custom_id": "sweaters",
-        "collection": "sweaters",
+        "custom_id": "tees",
+        "collection": "tees",
         "heading_color": "#ffffff",
-        "body_color": "#020202",
+        "body_color": "#000000",
         "ratio": "fullwidth",
-        "poster_desktop": "shopify://shop_images/SweatersHeader01.png",
+        "poster_desktop": "shopify://shop_images/TeesHeader.png",
         "cc_url_desktop": "",
-        "poster_mobile": "shopify://shop_images/SweaterHeader-mobile2.png",
+        "poster_mobile": "shopify://shop_images/TeeMobile.png",
+        "cc_url_mobile": ""
+      }
+    },
+    "fd851d4f-b149-4482-bd0e-afc15ef7c25e": {
+      "type": "category",
+      "settings": {
+        "custom_id": "shirts",
+        "collection": "shirts",
+        "heading_color": "#000000",
+        "body_color": "",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/ShirtHeader4.png",
+        "cc_url_desktop": "",
+        "poster_mobile": "shopify://shop_images/ShirtingMobile_c55296dc-f72d-431d-822d-29ff6d78eedb.png",
         "cc_url_mobile": ""
       }
     },
@@ -58,20 +72,6 @@
         "cc_url_mobile": ""
       }
     },
-    "category_zFeLWN": {
-      "type": "category",
-      "settings": {
-        "custom_id": "tees",
-        "collection": "tees",
-        "heading_color": "#ffffff",
-        "body_color": "#000000",
-        "ratio": "fullwidth",
-        "poster_desktop": "shopify://shop_images/TeesHeader.png",
-        "cc_url_desktop": "",
-        "poster_mobile": "shopify://shop_images/TeeMobile.png",
-        "cc_url_mobile": ""
-      }
-    },
     "c9930c29-7f97-41c5-b067-31b8aba8663e": {
       "type": "category",
       "settings": {
@@ -86,17 +86,17 @@
         "cc_url_mobile": ""
       }
     },
-    "fd851d4f-b149-4482-bd0e-afc15ef7c25e": {
+    "8837fbff-6831-43dc-843b-6b325d5ea09c": {
       "type": "category",
       "settings": {
-        "custom_id": "shirts",
-        "collection": "shirts",
-        "heading_color": "#000000",
-        "body_color": "",
+        "custom_id": "sweaters",
+        "collection": "sweaters",
+        "heading_color": "#ffffff",
+        "body_color": "#020202",
         "ratio": "fullwidth",
-        "poster_desktop": "shopify://shop_images/ShirtHeader4.png",
+        "poster_desktop": "shopify://shop_images/SweatersHeader01.png",
         "cc_url_desktop": "",
-        "poster_mobile": "shopify://shop_images/ShirtingMobile_c55296dc-f72d-431d-822d-29ff6d78eedb.png",
+        "poster_mobile": "shopify://shop_images/SweaterHeader-mobile2.png",
         "cc_url_mobile": ""
       }
     },
@@ -117,7 +117,7 @@
       "type": "category",
       "settings": {
         "custom_id": "bags",
-        "collection": "accessories",
+        "collection": "accessories-1",
         "heading_color": "",
         "body_color": "",
         "ratio": "fullwidth",
