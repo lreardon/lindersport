@@ -475,7 +475,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* min-height: 100dvh; */
+  min-height: 100dvh; /* TODO: Added because footer was displaying too high on the Cart page. 12/17/2025 -- remove this comment if no issues arise */
 	width: 100%;
   margin: 0;
   font-size: 2.2dvw;  /* Pat Code: changed this from 1.5 rem*/
