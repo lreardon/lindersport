@@ -126,11 +126,26 @@
         "poster_mobile": "shopify://shop_images/BagMobile04.png",
         "cc_url_mobile": ""
       }
+    },
+    "category_fYprtY": {
+      "type": "category",
+      "name": "Category",
+      "settings": {
+        "custom_id": "Outerwear",
+        "collection": "outerwear",
+        "heading_color": "#000000",
+        "body_color": "",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/JacketHeader.png",
+        "cc_url_desktop": "",
+        "cc_url_mobile": ""
+      }
     }
   },
   "order": [
     "ac099b6c-a188-4855-8e5f-b02ae72b0959",
     "category_zFeLWN",
+    "category_fYprtY",
     "fd851d4f-b149-4482-bd0e-afc15ef7c25e",
     "2338a213-79bc-4fdf-8916-1b0a63ee29f5",
     "d33e9f1a-006d-4d59-8710-512937f98f35",
