@@ -30,6 +30,21 @@
         "cc_url_mobile": ""
       }
     },
+    "category_fYprtY": {
+      "type": "category",
+      "name": "Category",
+      "settings": {
+        "custom_id": "Outerwear",
+        "collection": "outerwear",
+        "heading_color": "#000000",
+        "body_color": "",
+        "ratio": "fullwidth",
+        "poster_desktop": "shopify://shop_images/JacketHeader.png",
+        "cc_url_desktop": "",
+        "poster_mobile": "shopify://shop_images/JacketHeader.png",
+        "cc_url_mobile": ""
+      }
+    },
     "fd851d4f-b149-4482-bd0e-afc15ef7c25e": {
       "type": "category",
       "settings": {
@@ -124,20 +139,6 @@
         "poster_desktop": "shopify://shop_images/BagHeader2_d7c7597a-044e-424f-b5d4-87027bf90e26.png",
         "cc_url_desktop": "",
         "poster_mobile": "shopify://shop_images/BagMobile04.png",
-        "cc_url_mobile": ""
-      }
-    },
-    "category_fYprtY": {
-      "type": "category",
-      "name": "Category",
-      "settings": {
-        "custom_id": "Outerwear",
-        "collection": "outerwear",
-        "heading_color": "#000000",
-        "body_color": "",
-        "ratio": "fullwidth",
-        "poster_desktop": "shopify://shop_images/JacketHeader.png",
-        "cc_url_desktop": "",
         "cc_url_mobile": ""
       }
     }
