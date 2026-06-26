@@ -36,8 +36,8 @@
       "settings": {
         "custom_id": "Outerwear",
         "collection": "outerwear",
-        "heading_color": "#ffffff",
-        "body_color": "#FFFFFF",
+        "heading_color": "#000000",
+        "body_color": "#000000",
         "ratio": "fullwidth",
         "poster_desktop": "shopify://shop_images/JacketHeader.png",
         "cc_url_desktop": "",
